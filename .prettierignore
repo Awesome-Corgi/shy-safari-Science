@@ -9,3 +9,7 @@ bun.lockb
 /static/
 /build/
 /.scratch/
+
+# Installed agent skills, copied from their upstream repos and not ours to
+# reformat (or lint: see the eslint config).
+/.agents/

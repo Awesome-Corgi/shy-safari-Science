@@ -10,6 +10,11 @@ const gitignorePath = path.resolve(import.meta.dirname, ".gitignore");
 
 export default defineConfig(
   includeIgnoreFile(gitignorePath),
+  {
+    // Agent skills are copied in from their own repositories, engine bundle
+    // and all; they are not ours to lint, and one is a 550 KB build artifact.
+    ignores: [".agents/**"],
+  },
   js.configs.recommended,
   ts.configs.recommended,
   svelte.configs.recommended,
