@@ -12,6 +12,7 @@ import { cancelFrame, requestFrame } from "$lib/frames";
 import { notes } from "$lib/notes/notes.svelte";
 import { RoomMonitor } from "$lib/noise/roomMonitor.svelte";
 import { isAvailable, SCENES } from "$lib/scenes";
+import { loadSceneArt } from "$lib/scenes/art.svelte";
 import { DEFAULT_SCENE, type SceneId } from "$lib/scenes/types";
 import { Session } from "$lib/session/session.svelte";
 import { sightings } from "$lib/session/sightings.svelte";
@@ -84,6 +85,9 @@ export class App {
     settings.scene = id;
     this.#sceneId = id;
     this.session.useScene(id, SCENES[id].roster, SCENES[id].arrivals);
+    // Each Scene's art is fetched on demand (`scenes/art.svelte.ts`); this one
+    // is about to be on screen, so ask for it now.
+    void loadSceneArt(id);
   }
 
   /**
@@ -131,7 +135,16 @@ export class App {
     // default". Writing the concrete id back would change the setting on
     // every reload — which silently discards the calibration attached to it —
     // and would pin the app to an exact device that may not exist next week.
-    const started = await this.microphone.start(settings.deviceId);
+    let started = await this.microphone.start(settings.deviceId);
+    if (!started && settings.deviceId && this.microphone.status === "missing") {
+      // The microphone the teacher chose last time has gone: unplugged, or
+      // renamed by the browser since. Fall back to whatever this computer
+      // calls the default rather than leaving them stuck on a name that no
+      // longer exists. Clearing it also drops the calibration that belonged
+      // to the old device.
+      settings.deviceId = "";
+      started = await this.microphone.start("");
+    }
     if (started) this.monitor.reset();
     return started;
   }

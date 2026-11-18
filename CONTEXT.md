@@ -158,7 +158,7 @@ Calibration is optional; without it the app uses a sensible default.
 
 The Scene shown in a small window of its own that stays on top of the
 teacher's other tabs and windows, say over their slides. Only the Scene, the
-Noise Meter and the arrival counter go with it, and a button to pause; the
+Noise Meter and the counter go with it, and a button to pause; the
 Timer, Notes and every other control wait in the tab. Floating changes
 nothing about the Session: the room is listened to and Creatures arrive and
 Run Away just as before.

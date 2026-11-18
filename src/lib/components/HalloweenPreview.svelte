@@ -19,21 +19,30 @@
    */
 
   import { SCENES } from "$lib/scenes";
+  import { loadSceneArt, sceneArt } from "$lib/scenes/art.svelte";
   import { NEWCOMERS } from "$lib/scenes/halloween/calendar";
   import { creatureName, current, t } from "$lib/i18n/index.svelte";
 
   let { onclose }: { onclose: () => void } = $props();
 
   const scene = SCENES.halloween;
+  /** The Hollow's drawings; nothing shows until they arrive. */
+  const art = $derived(sceneArt("halloween"));
+
+  $effect(() => {
+    void loadSceneArt("halloween");
+  });
 
   /** Opening animals first, then each Newcomer on its day. */
-  const lineup = scene.roster
-    .filter((def) => def.slug in scene.creatureArt)
-    .map((def) => ({
-      slug: def.slug,
-      day: NEWCOMERS.find((newcomer) => newcomer.slug === def.slug)?.day,
-    }))
-    .sort((a, b) => (a.day ?? "").localeCompare(b.day ?? ""));
+  const lineup = $derived(
+    scene.roster
+      .filter((def) => art !== undefined && def.slug in art.creatureArt)
+      .map((def) => ({
+        slug: def.slug,
+        day: NEWCOMERS.find((newcomer) => newcomer.slug === def.slug)?.day,
+      }))
+      .sort((a, b) => (a.day ?? "").localeCompare(b.day ?? "")),
+  );
 
   function unlocks(day: string | undefined) {
     if (!day) return t("preview.opening");
@@ -97,7 +106,7 @@
           class="flex min-w-0 flex-col items-center rounded-lg border border-slate-200 p-3 text-center"
         >
           <img
-            src={artUrl(`halloween/${slug}`, scene.creatureArt[slug])}
+            src={artUrl(`halloween/${slug}`, art?.creatureArt[slug] ?? "")}
             alt=""
             draggable="false"
             class="h-28 w-full object-contain sm:h-40"

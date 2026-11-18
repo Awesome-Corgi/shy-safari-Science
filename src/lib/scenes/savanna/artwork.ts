@@ -8,8 +8,9 @@
  * `id` attributes: every Creature on screen shares one document. See
  * `docs/svg-art-brief.md`.
  *
- * Eager, so a lazy fetch never lands at the moment an arrival has to be
- * unmissable.
+ * Loaded once per Scene, the first time that Scene is used
+ * (`scenes/art.svelte.ts`): the whole set arrives together, so no arrival
+ * ever waits on a fetch.
  */
 
 const creatureFiles = import.meta.glob("./creatures/*.svg", {

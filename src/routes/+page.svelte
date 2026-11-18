@@ -14,7 +14,6 @@
   import ArrivalCounter from "$lib/components/ArrivalCounter.svelte";
   import SettingsPanel from "$lib/components/SettingsPanel.svelte";
   import Timer from "$lib/components/Timer.svelte";
-  import BrandChip from "$lib/components/BrandChip.svelte";
   import LanguagePicker from "$lib/components/LanguagePicker.svelte";
   import PageMeta from "$lib/components/PageMeta.svelte";
   import InfoDrawer, { FAQ_IDS } from "$lib/components/InfoDrawer.svelte";
@@ -90,6 +89,14 @@
 
   $effect(() => {
     void app.microphone.refreshDevices();
+    // Devices come and go — a headset plugged in, or permission just granted,
+    // which is when their names first become readable — and the browser says
+    // so here. Without this the list stays empty until the page is reloaded.
+    const media = navigator.mediaDevices;
+    if (typeof media?.addEventListener !== "function") return;
+    const refresh = () => void app.microphone.refreshDevices();
+    media.addEventListener("devicechange", refresh);
+    return () => media.removeEventListener("devicechange", refresh);
   });
 
   function wake() {
@@ -342,7 +349,6 @@
       inert={!topBarVisible}
     >
       <div class="pointer-events-auto flex min-w-0 gap-2">
-        <BrandChip />
         <ClassPicker
           {app}
           bind:open={classMenuOpen}
@@ -507,7 +513,10 @@
         : ''}"
     >
       {#if app.listening && settings.showCounter}
-        <ArrivalCounter sceneId={app.scene.id} count={app.session.arrived} />
+        <ArrivalCounter
+          sceneId={app.scene.id}
+          count={app.session.creatures.length}
+        />
       {/if}
       <div
         class="pointer-events-auto flex gap-2 transition-opacity duration-300"

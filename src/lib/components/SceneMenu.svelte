@@ -9,6 +9,7 @@
   import { onMount, untrack } from "svelte";
   import { t, type UiKey } from "$lib/i18n/index.svelte";
   import { availableScenes, type SceneId } from "$lib/scenes";
+  import { loadSceneArt } from "$lib/scenes/art.svelte";
   import { newScenes } from "$lib/scenes/newScenes.svelte";
   import { isLimited, sceneHint } from "$lib/scenes/halloween/wording";
   import { today } from "$lib/today.svelte";
@@ -54,6 +55,8 @@
             ? 'text-slate-900'
             : 'text-slate-700'}"
           aria-current={current}
+          onpointerenter={() => void loadSceneArt(scene.id)}
+          onfocus={() => void loadSceneArt(scene.id)}
           onclick={() => onchoose(scene.id)}
         >
           <img src={scene.icon} alt="" class="size-9 shrink-0" />

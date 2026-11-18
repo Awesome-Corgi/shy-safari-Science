@@ -54,7 +54,7 @@ interface StoredSettings {
   loudResponse: LoudResponse;
   /** Keep the Noise Meter up over the Scene, not just in Settings. */
   showMeter: boolean;
-  /** Keep a count of the Creatures that have arrived up over the Scene. */
+  /** Keep a count of the Creatures in the Scene up over it. */
   showCounter: boolean;
 }
 

@@ -21,6 +21,7 @@
 
   import type { App } from "$lib/app.svelte";
   import { isAvailable, SCENES } from "$lib/scenes";
+  import { loadSceneArt, sceneArt } from "$lib/scenes/art.svelte";
   import {
     todaysNewcomer,
     unlockDay,
@@ -46,6 +47,12 @@
   // svelte-ignore state_referenced_locally
   let sceneId = $state<SceneId>(app.scene.id);
   const scene = $derived(SCENES[sceneId]);
+  /** This Scene's drawings; fetched by whichever tab is open. */
+  const art = $derived(sceneArt(sceneId));
+
+  $effect(() => {
+    void loadSceneArt(sceneId);
+  });
 
   const TIERS: RarityTier[] = ["common", "uncommon", "rare"];
 
@@ -71,11 +78,16 @@
   const locked = $derived.by(() => {
     if (sceneId !== "halloween") return new Set<string>();
     const unlocked = unlockedSlugs(today.day);
+    // Art that has not arrived yet is not missing art: only judge by the
+    // drawings once the Hollow's have landed, or every Newcomer would show
+    // "Coming soon" for the moment the tab takes to fill.
+    const drawn = art?.creatureArt;
     return new Set(
       scene.roster
         .filter(
           (def) =>
-            !unlocked.includes(def.slug) || !(def.slug in scene.creatureArt),
+            !unlocked.includes(def.slug) ||
+            (drawn !== undefined && !(def.slug in drawn)),
         )
         .map((def) => def.slug),
     );
@@ -241,15 +253,17 @@
                       class="flex h-12 w-full items-center justify-center"
                       class:unseen={count === 0}
                     >
-                      <img
-                        src={artUrl(
-                          `${sceneId}/${def.slug}`,
-                          scene.creatureArt[def.slug],
-                        )}
-                        alt=""
-                        draggable="false"
-                        class="size-full object-contain"
-                      />
+                      {#if art}
+                        <img
+                          src={artUrl(
+                            `${sceneId}/${def.slug}`,
+                            art.creatureArt[def.slug],
+                          )}
+                          alt=""
+                          draggable="false"
+                          class="size-full object-contain"
+                        />
+                      {/if}
                     </div>
                     <!-- Long names break at their soft hyphens (see i18n) to fit the card. -->
                     <span

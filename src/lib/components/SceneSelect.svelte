@@ -56,8 +56,9 @@
 />
 
 <div class="relative mx-auto w-72 max-w-full" bind:this={container}>
-  <!-- Its contents are hidden, not absent, until the saved Scene is known:
-       the page is prerendered, and a reload should not flash the default. -->
+  <!-- A Scene is always shown, even before the saved one is known. The page
+       is prerendered with the default, and hiding it until hydration left a
+       blank pill that looked broken and could not be opened. -->
   <button
     type="button"
     class={[
@@ -71,10 +72,7 @@
     )}{flagged ? ` (${t('scene.newScenes')})` : ''}"
     onclick={toggle}
   >
-    <span
-      class="flex min-w-0 flex-1 items-center gap-3"
-      class:invisible={!app.restored}
-    >
+    <span class="flex min-w-0 flex-1 items-center gap-3">
       <img src={app.scene.icon} alt="" class="size-9 shrink-0" />
       <span class="min-w-0 flex-1">
         <span class="block font-medium text-slate-900"

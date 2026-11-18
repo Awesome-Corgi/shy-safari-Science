@@ -162,5 +162,17 @@
         {/each}
       </dl>
     </section>
+
+    <!-- The about and privacy pages used to hang off the corner logo; with
+         that gone, this is where a teacher finds them. -->
+    <p class="mt-8 flex items-center gap-2 text-sm text-slate-600">
+      <a href={resolve("/about")} class="hover:text-slate-900 hover:underline"
+        >{t("common.about")}</a
+      >
+      <span aria-hidden="true" class="text-slate-300">·</span>
+      <a href={resolve("/privacy")} class="hover:text-slate-900 hover:underline"
+        >{t("common.privacy")}</a
+      >
+    </p>
   </div>
 </div>

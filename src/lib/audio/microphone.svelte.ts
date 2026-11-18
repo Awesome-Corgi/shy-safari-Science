@@ -56,8 +56,15 @@ export class Microphone {
 
   async refreshDevices() {
     if (!navigator.mediaDevices?.enumerateDevices) return;
-    const all = await navigator.mediaDevices.enumerateDevices();
-    this.devices = all.filter((device) => device.kind === "audioinput");
+    try {
+      const all = await navigator.mediaDevices.enumerateDevices();
+      this.devices = all.filter((device) => device.kind === "audioinput");
+    } catch {
+      // Some browsers refuse to list devices before permission is granted,
+      // and some embedded frames refuse at all. The app still works without
+      // the list — "Default microphone" is always on offer — so a failure to
+      // read it must never take down a microphone that is already listening.
+    }
   }
 
   stop() {
@@ -105,6 +112,9 @@ export class Microphone {
       const analyser = context.createAnalyser();
       analyser.fftSize = 1024;
       context.createMediaStreamSource(stream).connect(analyser);
+      // Safari can hand back a suspended context, which reads as a perfectly
+      // silent room for ever. Created inside a click, it may start running.
+      if (context.state === "suspended") void context.resume();
 
       this.activeDeviceId =
         stream.getAudioTracks()[0]?.getSettings().deviceId ?? deviceId;

@@ -1,5 +1,9 @@
 # The teacher can keep a count of arrivals on screen
 
+**Superseded by [ADR 0010](0010-counter-shows-the-scene.md).** The counter is
+still off by default and still in the bottom left, but it now shows the
+Creatures in the Scene rather than the ones that have arrived.
+
 Teachers asked for a running tally the class can see, so a checkbox under
 "How often animals arrive" in Settings keeps a small counter in the bottom
 left of the Scene. It counts every Creature that arrives this Session and

@@ -2,7 +2,7 @@
  * The arctic artwork, as inlineable SVG source. Loaded the same way as the
  * savanna's (`scenes/savanna/artwork.ts`), for the same reasons: the
  * animation layer moves part groups by class, which CSS cannot reach inside
- * an `<img>`, and eager loading means no arrival waits on a fetch.
+ * an `<img>`, and the whole set loads together the first time the Scene is used, so no arrival waits on a fetch.
  */
 
 const creatureFiles = import.meta.glob("./creatures/*.svg", {

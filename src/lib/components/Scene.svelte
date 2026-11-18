@@ -10,7 +10,14 @@
    * See docs/adr/0001-nothing-is-taken-away.md.
    */
 
+  import { t } from "$lib/i18n/index.svelte";
   import type { SceneDef } from "$lib/scenes";
+  import {
+    retrySceneArt,
+    sceneArt,
+    sceneArtFailed,
+    type SceneArt,
+  } from "$lib/scenes/art.svelte";
   import type { CreatureInstance } from "$lib/session/session.svelte";
   import { welcomeFor } from "$lib/scenes/welcome";
   import Creature from "./Creature.svelte";
@@ -53,6 +60,31 @@
   const welcome = $derived(
     welcomeFor(scene.welcomes, creatures, newestId, fleeing),
   );
+
+  /**
+   * The Scene's artwork, which is fetched per Scene (`scenes/art.svelte.ts`).
+   * Absent for the moment it takes the default Scene's share to arrive, so the
+   * stage keeps its own colours and fills in when the drawings land.
+   */
+  const art = $derived(sceneArt(scene.id));
+  /** True when this Scene's art could not be fetched at all, after retries. */
+  const failed = $derived(sceneArtFailed(scene.id));
+
+  /**
+   * What the stage is actually showing: the last Scene whose art arrived.
+   * Keeping it means switching Scene never empties the screen while the new
+   * drawings are on their way — the old world stays until the new one is ready
+   * to take its place. On the very first load there is nothing to keep, and a
+   * quiet placeholder stands in (see below).
+   */
+  // Read once on purpose: a Scene whose art is already loaded draws on its
+  // first frame, instead of flashing the placeholder for one.
+  // svelte-ignore state_referenced_locally
+  let drawn = $state<SceneArt | null>(art ?? null);
+  $effect(() => {
+    const ready = art;
+    if (ready) drawn = ready;
+  });
 </script>
 
 <div
@@ -68,36 +100,74 @@
     Too Loud filters, so a loud room clouds the Scene itself rather than
     tinting the animals in it.
   -->
-  <div class="backdrop absolute inset-y-0">
-    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-    {@html scene.ambientArt.backdrop}
-  </div>
+  {#if drawn}
+    {@const Ambient = drawn.Ambient}
+    <div class="backdrop absolute inset-y-0">
+      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+      {@html drawn.ambientArt.backdrop}
+    </div>
 
-  <scene.Ambient />
+    <Ambient />
+  {:else if !failed}
+    <!--
+      The very first load, before even the default Scene's drawings have
+      arrived: the Scene's own tile, breathing in the middle of the stage,
+      rather than a spinner or an empty screen. The stage already carries the
+      Scene's colours, so this reads as the world arriving.
+    -->
+    <div class="absolute inset-0 grid place-items-center" role="status">
+      <img src={scene.icon} alt="" class="size-16 animate-pulse opacity-70" />
+      <span class="sr-only">{t("scene.loading")}</span>
+    </div>
+  {/if}
 
-  <!--
-    Keyed by Scene as well: each Scene numbers its animals from 1, so an id
-    alone would hand the reef's fish #3 component to the savanna's giraffe #3,
-    and the giraffe would carry on with the fish's swimming motion.
-  -->
-  {#each creatures as creature (`${scene.id}:${creature.id}`)}
-    <Creature
-      {creature}
-      art={scene.creatureArt[creature.def.slug]}
-      listeningArt={scene.listeningArt[creature.def.slug]}
-      depthFade={scene.depthFade}
-      departure={creature.def.departure ?? scene.departure}
-      whilePaused={scene.whilePaused}
-      isNewest={creature.id === newestId}
-      {frozen}
-      {listening}
-      fleeing={fleeing.includes(creature.id)}
-      ongone={() => ondepart(creature.id)}
-    />
-  {/each}
+  {#if art}
+    <!--
+      Keyed by Scene as well: each Scene numbers its animals from 1, so an id
+      alone would hand the reef's fish #3 component to the savanna's giraffe #3,
+      and the giraffe would carry on with the fish's swimming motion.
+    -->
+    {#each creatures as creature (`${scene.id}:${creature.id}`)}
+      <Creature
+        {creature}
+        art={art.creatureArt[creature.def.slug]}
+        listeningArt={art.listeningArt[creature.def.slug]}
+        depthFade={scene.depthFade}
+        departure={creature.def.departure ?? scene.departure}
+        whilePaused={scene.whilePaused}
+        isNewest={creature.id === newestId}
+        {frozen}
+        {listening}
+        fleeing={fleeing.includes(creature.id)}
+        ongone={() => ondepart(creature.id)}
+      />
+    {/each}
 
-  {#if scene.id === "halloween"}
-    <HollowSign />
+    {#if scene.id === "halloween"}
+      <HollowSign />
+    {/if}
+  {/if}
+
+  {#if failed}
+    <!--
+      The drawings never arrived, even after the automatic retries. Above the
+      veil, so a loud room cannot dim the one thing that needs reading; the
+      teacher is the only one who can do anything about it.
+    -->
+    <div class="absolute inset-0 z-[2500] grid place-items-center p-4">
+      <div
+        class="w-full max-w-xs rounded-2xl bg-white/95 px-4 py-3 text-center shadow-lg"
+        role="alert"
+      >
+        <p class="text-sm font-medium text-slate-900">{t("scene.failed")}</p>
+        <button
+          class="mt-2 rounded-full bg-slate-900 px-4 py-1.5 text-sm font-medium text-white hover:bg-slate-800"
+          onclick={() => void retrySceneArt(scene.id)}
+        >
+          {t("blocked.tryAgain")}
+        </button>
+      </div>
+    </div>
   {/if}
 
   <!-- One veil over the whole Scene, never a per-Creature effect. -->

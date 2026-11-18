@@ -76,6 +76,11 @@
           </option>
         {/each}
       </select>
+      {#if !app.microphone.devices.some((device) => device.deviceId)}
+        <!-- Before permission is granted the browser hides every device, so
+             the list would look empty with no explanation. -->
+        <p class="text-xs text-slate-500">{t("mic.permission")}</p>
+      {/if}
       {#if app.microphone.status !== "on"}
         <button
           class="rounded-md border border-slate-400 px-3 py-1.5 text-sm font-medium hover:bg-slate-50"

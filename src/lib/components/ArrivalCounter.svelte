@@ -1,10 +1,10 @@
 <script lang="ts">
   /**
-   * How many Creatures have arrived this Session, in any Scene, kept up in
-   * the corner for a teacher who turns it on in Settings. Only Reset sets it
-   * back to 0: a Creature that Runs Away still arrived. Like the on-screen
-   * Noise Meter, it stays up when the controls fade, since watching it is
-   * the point.
+   * How many Creatures are out in the Scene right now, kept up in the corner
+   * for a teacher who turns it on in Settings. It follows the Scene both
+   * ways: an arrival raises it and one that Runs Away lowers it. Like the
+   * on-screen Noise Meter, it stays up when the controls fade, since
+   * watching it is the point.
    */
 
   import { tIn } from "$lib/i18n/index.svelte";

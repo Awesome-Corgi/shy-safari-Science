@@ -13,8 +13,8 @@ import { classes } from "$lib/classes/classes.svelte";
 import type { CreatureDef } from "$lib/scenes/types";
 import { drawArrival, type NewcomerState } from "$lib/session/newcomer";
 import { sightings } from "$lib/session/sightings.svelte";
+import { sceneArt } from "$lib/scenes/art.svelte";
 import { today } from "$lib/today.svelte";
-import { CREATURE_ART } from "./artwork";
 import { newcomersSoFar, unlockedSlugs } from "./calendar";
 
 function storageKey() {
@@ -46,8 +46,13 @@ function save(state: NewcomerState) {
  */
 export function availableToday(roster: CreatureDef[]): CreatureDef[] {
   const unlocked = unlockedSlugs(today.day);
+  // Nothing is known to be missing before the Hollow's art has arrived: the
+  // first arrival is minutes after the Scene loads, so waiting for it here
+  // would only ever hold back an animal that is already drawn.
+  const drawn = sceneArt("halloween")?.creatureArt;
   return roster.filter(
-    (def) => unlocked.includes(def.slug) && def.slug in CREATURE_ART,
+    (def) =>
+      unlocked.includes(def.slug) && (drawn === undefined || def.slug in drawn),
   );
 }
 
