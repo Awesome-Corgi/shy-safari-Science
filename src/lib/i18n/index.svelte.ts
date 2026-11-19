@@ -20,7 +20,6 @@ const en = {
     "app.description":
       "A free classroom noise monitor for the projector. Shy savanna and coral reef animals come out the longer the room stays quiet. No sign-up, nothing recorded.",
     "common.builtBy": "Built by teacher.dev",
-    "common.about": "about",
     "common.privacy": "privacy",
     "common.howItWorks": "how it works",
     "preview.alt":
@@ -246,29 +245,6 @@ const en = {
     "blocked.unsupported":
       "This browser cannot use a microphone. Chrome, Edge and Safari all work.",
     "blocked.tryAgain": "Try again",
-    "about.pageTitle": "About — Shy Safari",
-    "about.meta":
-      "Shy Safari is a free classroom noise tool made at the EdTech-a-thon and run by teacher.dev. No ads, no accounts.",
-    "about.title": "About",
-    "about.lede":
-      "Put it on the projector. The quieter the room, the more animals come out.",
-    "about.originTitle": "Where it came from",
-    "about.origin.beforeEvent":
-      "Shy Safari started as a three-day project at the ",
-    "about.origin.afterEvent":
-      ", an event where people get together to build free tools for classrooms. It's now run by ",
-    "about.origin.afterTeacher": ", where you can find our other tools.",
-    "about.photoAlt": "Participants of the 2026 EdTech-a-thon",
-    "about.purposeTitle": "What it does",
-    "about.purpose":
-      "Put the savanna, the coral reef, deep space, the age of dinosaurs, the forest, the jungle or the Arctic up on the board and press Start. While the class stays under the volume goal, animals come out one at a time. If it gets too loud, they run away. You can change that in Settings so the scene just pauses until it's quiet again. Most animals are common, a few are rare, and the class can look back at every one they've spotted.",
-    "about.promiseTitle": "No catch",
-    "about.promise":
-      "It's free. There's no paid version and no ads, and we don't collect personal information about you or your students.",
-    "about.feedbackTitle": "Get in touch",
-    "about.feedback":
-      "If something isn't working, or you have an idea for Shy Safari or for another tool you'd use in class, send us an email.",
-    "about.email": "Email support@teacher.dev",
     "privacy.pageTitle": "Privacy — Shy Safari",
     "privacy.meta": "What Shy Safari collects, what it doesn't, and why.",
     "privacy.title": "Privacy",
@@ -648,7 +624,6 @@ const es = {
     "app.description":
       "Un medidor de ruido gratuito para el proyector del aula. Animales tímidos de la sabana y del arrecife aparecen mientras la clase está en silencio. Sin registro, sin grabaciones.",
     "common.builtBy": "Creado por teacher.dev",
-    "common.about": "acerca de",
     "common.privacy": "privacidad",
     "common.howItWorks": "cómo funciona",
     "preview.alt":
@@ -877,30 +852,6 @@ const es = {
     "blocked.unsupported":
       "Este navegador no puede usar un micrófono. Chrome, Edge y Safari funcionan.",
     "blocked.tryAgain": "Volver a intentarlo",
-    "about.pageTitle": "Acerca de — Shy Safari",
-    "about.meta":
-      "Shy Safari es una herramienta gratuita para el ruido en el aula, creada en el EdTech-a-thon y gestionada por teacher.dev. Sin anuncios ni cuentas.",
-    "about.title": "Acerca de",
-    "about.lede":
-      "Ponlo en el proyector. Cuanto más silencio haya, más animales salen.",
-    "about.originTitle": "De dónde viene",
-    "about.origin.beforeEvent":
-      "Shy Safari empezó como un proyecto de tres días en el ",
-    "about.origin.afterEvent":
-      ", un evento donde la gente se reúne para crear herramientas gratuitas para las aulas. Ahora lo gestiona ",
-    "about.origin.afterTeacher":
-      ", donde también puedes encontrar nuestras otras herramientas.",
-    "about.photoAlt": "Participantes del EdTech-a-thon 2026",
-    "about.purposeTitle": "Qué hace",
-    "about.purpose":
-      "Proyecta la sabana, el arrecife de coral, el espacio profundo, la era de los dinosaurios, el bosque, la selva o el Ártico y pulsa Empezar. Mientras la clase no pase del límite de volumen, los animales van saliendo de uno en uno. Si hay demasiado ruido, huyen. Puedes cambiarlo en Ajustes para que la escena solo se pause hasta que vuelva el silencio. La mayoría de los animales son comunes, unos pocos son raros, y la clase puede volver a ver todos los que ha encontrado.",
-    "about.promiseTitle": "Sin trampa",
-    "about.promise":
-      "Es gratis. No hay versión de pago ni anuncios, y no recopilamos datos personales tuyos ni de tus alumnos.",
-    "about.feedbackTitle": "Escríbenos",
-    "about.feedback":
-      "Si algo no funciona, o tienes una idea para Shy Safari o para otra herramienta que usarías en clase, mándanos un correo.",
-    "about.email": "Escribir a support@teacher.dev",
     "privacy.pageTitle": "Privacidad — Shy Safari",
     "privacy.meta": "Qué recopila Shy Safari, qué no y por qué.",
     "privacy.title": "Privacidad",
@@ -1248,7 +1199,6 @@ const fr = {
     "app.description":
       "Un sonomètre gratuit pour le vidéoprojecteur de la classe. Des animaux timides de la savane et du récif sortent tant que la classe reste calme. Sans inscription, sans enregistrement.",
     "common.builtBy": "Créé par teacher.dev",
-    "common.about": "à propos",
     "common.privacy": "confidentialité",
     "common.howItWorks": "comment ça marche",
     "preview.alt":
@@ -1478,29 +1428,6 @@ const fr = {
     "blocked.unsupported":
       "Ce navigateur ne peut pas utiliser de micro. Chrome, Edge et Safari fonctionnent tous.",
     "blocked.tryAgain": "Réessayer",
-    "about.pageTitle": "À propos — Shy Safari",
-    "about.meta":
-      "Shy Safari est un outil gratuit pour le bruit en classe, créé à l’EdTech-a-thon et géré par teacher.dev. Sans publicité ni compte.",
-    "about.title": "À propos",
-    "about.lede":
-      "Affichez-le au tableau. Plus la classe est calme, plus il y a d’animaux.",
-    "about.originTitle": "D’où ça vient",
-    "about.origin.beforeEvent":
-      "Shy Safari a commencé comme un projet de trois jours à l’",
-    "about.origin.afterEvent":
-      ", un événement où l’on se réunit pour créer des outils gratuits pour les classes. Il est maintenant géré par ",
-    "about.origin.afterTeacher": ", où vous trouverez aussi nos autres outils.",
-    "about.photoAlt": "Participants de l’EdTech-a-thon 2026",
-    "about.purposeTitle": "Ce qu’il fait",
-    "about.purpose":
-      "Affichez la savane, le récif de corail, l’espace profond, l’ère des dinosaures, la forêt, la jungle ou l’Arctique au tableau et appuyez sur Commencer. Tant que la classe reste sous l’objectif de volume, les animaux sortent un par un. S’il y a trop de bruit, ils s’enfuient. Vous pouvez changer ça dans les réglages pour que la scène se mette simplement en pause jusqu’au retour du calme. La plupart des animaux sont communs, quelques-uns sont rares, et la classe peut revoir tous ceux qu’elle a aperçus.",
-    "about.promiseTitle": "Gratuit, vraiment",
-    "about.promise":
-      "C’est gratuit. Il n’y a ni version payante ni publicité, et nous ne collectons aucune donnée personnelle sur vous ou vos élèves.",
-    "about.feedbackTitle": "Nous écrire",
-    "about.feedback":
-      "Si quelque chose ne marche pas, ou si vous avez une idée pour Shy Safari ou pour un autre outil que vous utiliseriez en classe, envoyez-nous un e-mail.",
-    "about.email": "Écrire à support@teacher.dev",
     "privacy.pageTitle": "Confidentialité — Shy Safari",
     "privacy.meta":
       "Ce que Shy Safari collecte, ce qu’il ne collecte pas, et pourquoi.",

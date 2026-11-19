@@ -1,8 +1,8 @@
 # The chrome is paper and ink, taken from the Scene
 
 Every surface the teacher touches — the start card, the corner buttons, the
-control bar, the Timer, the Settings and Animals panels, the guide, the about
-and privacy pages — is now warm paper (`#fdf8ec`) on warm ink (`#262633`), with
+control bar, the Timer, the Settings and Animals panels, the guide, the
+privacy page — is now warm paper (`#fdf8ec`) on warm ink (`#262633`), with
 a single ochre accent (`#c07f36`) borrowed from the logo's disc. The previous
 `white/95` and `slate` greys are gone from the chrome. The Scene's own artwork,
 colours and motion are untouched.
@@ -63,9 +63,9 @@ the app's voice. Two families, two jobs, no third.
 text buttons for the rest, a hairline between them. **The meter's** green,
 amber and red are the creature palette's own teal, yellow and red rather than
 Tailwind's defaults, so the one place the app is allowed to shout uses the
-same colours as the animals. **The about and privacy pages** dropped their
-cards for rule-separated sections on one 65ch measure, since they are read
-rather than operated.
+same colours as the animals. **The privacy page** dropped its cards for
+rule-separated sections on one 65ch measure, since it is read rather than
+operated.
 
 ## Consequences
 

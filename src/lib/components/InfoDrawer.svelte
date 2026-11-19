@@ -183,13 +183,9 @@
       </dl>
     </section>
 
-    <!-- The about and privacy pages used to hang off the corner logo; with
-         that gone, this is where a teacher finds them. -->
-    <p class="mt-8 flex items-center gap-2 text-sm text-ink-soft">
-      <a href={resolve("/about")} class="hover:text-ink hover:underline"
-        >{t("common.about")}</a
-      >
-      <span aria-hidden="true" class="text-ink/25">·</span>
+    <!-- The privacy page used to hang off the corner logo; with that gone,
+         this is where a teacher finds it. -->
+    <p class="mt-8 text-sm text-ink-soft">
       <a href={resolve("/privacy")} class="hover:text-ink hover:underline"
         >{t("common.privacy")}</a
       >

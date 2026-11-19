@@ -68,7 +68,6 @@
     <a href={resolve("/#how-it-works")} class="hover:text-ink"
       >{t("common.howItWorks")}</a
     >
-    <a href={resolve("/about")} class="hover:text-ink">{t("common.about")}</a>
     <a href={resolve("/privacy")} class="hover:text-ink"
       >{t("common.privacy")}</a
     >
