@@ -1,5 +1,5 @@
 /**
- * Where Shy Safari lives on the web, for the few places that need absolute
+ * Where Quietly lives on the web, for the few places that need absolute
  * addresses: canonical links, social previews, structured data and the
  * sitemap. The bare domain and the vercel.app one both redirect or duplicate
  * this, so search engines are pointed here and nowhere else.

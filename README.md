@@ -1,4 +1,4 @@
-# Shy Safari
+# Quietly
 
 A calm scene on the classroom projector — a savanna, a coral reef, deep
 space, the age of dinosaurs, a woodland clearing, the jungle or the Arctic — where animals (or, in deep space, sightings

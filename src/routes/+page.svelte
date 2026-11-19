@@ -20,6 +20,8 @@
   import FloatingScene from "$lib/components/FloatingScene.svelte";
   import PausedPill from "$lib/components/PausedPill.svelte";
   import { drawFramesFrom } from "$lib/frames";
+  import type { SceneDef } from "$lib/scenes";
+  import type { CreatureInstance } from "$lib/session/session.svelte";
   import { current, t, tIn } from "$lib/i18n/index.svelte";
   import {
     copyStyles,
@@ -33,12 +35,48 @@
   const app = new App();
 
   /**
+   * The start card's backdrop: one of every animal the Scene has, scattered
+   * through it, so a teacher choosing a place sees what lives there. It is a
+   * picture only — nothing here is counted, sighted or saved — and the
+   * Session behind the card begins empty and fills as the class earns animals.
+   *
+   * Built without a random number, because the page is prerendered with this
+   * cast and the live one must match what was rendered. Ids are negative so no
+   * member of it can share a key with an animal that really arrives, whose
+   * component would then carry the cast's motion instead.
+   */
+  function startCast(scene: SceneDef): CreatureInstance[] {
+    return scene.roster.map((def, i) => ({
+      id: -(i + 1),
+      def,
+      // Two incommensurate strides across the Scene, so neighbours in the
+      // Roster never land on top of one another.
+      depth: 0.15 + ((i * 0.3819660113 + 0.11) % 1) * 0.8,
+      spawnX: (i * 0.6180339887 + 0.31) % 1,
+      spawnY: (i * 0.7548776662 + 0.19) % 1,
+      // Everyone is already at home: no entrance flourish, no glistening.
+      restored: true,
+    }));
+  }
+
+  /**
+   * What the Scene draws before the microphone is on: the whole cast, behind
+   * the start card. A class coming back to animals it earned sees those
+   * instead, so Start never takes one away.
+   */
+  const onStage = $derived(
+    !app.listening && app.session.creatures.length === 0
+      ? startCast(app.scene)
+      : app.session.creatures,
+  );
+
+  /**
    * Tells search engines and AI assistants what kind of thing this page is,
    * and gives them the questions the info drawer answers.
    */
   const webApplication = $derived({
     "@type": "WebApplication",
-    name: "Shy Safari",
+    name: "Quietly",
     url: absoluteUrl("/"),
     description: t("app.description"),
     image: PREVIEW_IMAGE,
@@ -170,7 +208,7 @@
       // 4:3, the Scene's own shape, and small enough to sit beside a slide.
       pip = await controller.requestWindow({ width: 480, height: 360 });
       const page = pip.document;
-      page.title = "Shy Safari";
+      page.title = "Quietly";
       page.documentElement.lang = current().locale;
       // Scales the corner controls with the window: see layout.css.
       page.documentElement.classList.add("floating");
@@ -266,7 +304,7 @@
     {#if app.restored}
       <Scene
         scene={app.scene}
-        creatures={app.session.creatures}
+        creatures={onStage}
         newestId={app.session.newestId}
         murky={app.monitor.state === "too-loud"}
         frozen={app.monitor.state === "too-loud"}
@@ -294,7 +332,7 @@
            colour behind the middle of the sheet and darkens only where the
            chrome needs it. -->
       <div
-        class="absolute inset-0 z-40 overflow-y-auto bg-gradient-to-t from-ink/60 via-ink/25 to-ink/30"
+        class="absolute inset-0 z-40 overflow-y-auto bg-gradient-to-t from-ink/40 via-ink/15 to-ink/25"
       >
         <!-- Scrolls rather than clips, should the card still not fit. -->
         <div
@@ -315,7 +353,7 @@
                 <h1
                   class="mt-4 font-display text-[3rem] leading-[0.92] font-semibold tracking-[-0.02em] text-balance text-ink sm:text-[3.6rem] short:mt-2 short:text-[1.75rem]"
                 >
-                  Shy Safari
+                  Quietly
                 </h1>
                 <div
                   class="mt-5 h-[3px] w-12 rounded-full bg-ochre/70 short:hidden"

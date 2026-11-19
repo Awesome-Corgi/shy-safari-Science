@@ -25,6 +25,6 @@ is what makes a second Scene (safari, butterfly garden) content work instead of
 a rewrite. The ceiling on visual fidelity is lower than filmed video: the reef
 will read as a stylised illustration, not a documentary.
 
-The product has since been rebranded from Quiet Reef to Shy Safari, and the
+The product has since been rebranded from Quiet Reef to Quietly, and the
 reef Scene is being replaced by a safari one — the content-not-rewrite path
 this decision anticipated.

@@ -129,6 +129,8 @@
   let swimmer: HTMLDivElement;
   let banker: HTMLDivElement;
   let flipper: HTMLDivElement;
+  /** Has been put where it belongs by its first animation frame. */
+  let placed = false;
 
   /**
    * Seconds a scared Creature stands startled, "!" up, before it bolts. A
@@ -258,6 +260,13 @@
       const left = state.x * sceneW - selfW / 2;
       const top = state.y * sceneH - selfH / 2;
       swimmer.style.transform = `translate3d(${left}px, ${top}px, 0)`;
+      if (!placed) {
+        // Nothing is painted before then: a Scene that arrives with a whole
+        // cast at once would otherwise flash everyone in the top-left corner
+        // for the frame or two their motion takes to start.
+        placed = true;
+        swimmer.style.visibility = "visible";
+      }
 
       let angle = bankAngle(state, style);
       if (profile.ground) {
@@ -300,6 +309,7 @@
     width:calc({width} * var(--wu));
     z-index:{creatureLayer(profile, creature.depth)};
     opacity:{depthFade ? 0.62 + creature.depth * 0.38 : 1};
+    visibility:hidden;
   "
 >
   {#if fleeing && !fading}

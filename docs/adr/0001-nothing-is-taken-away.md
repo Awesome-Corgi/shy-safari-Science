@@ -31,7 +31,7 @@ replacing them: Ambient Life keeps an unpopulated Scene from reading as broken,
 and the murk/dim shift gives loudness a visible consequence that is atmospheric
 rather than punitive.
 
-The Shy Safari framing ("the animals are shy, so they won't come out while it
+The Quietly framing ("the animals are shy, so they won't come out while it
 is too loud") is this decision told to children: loudness delays the next
 arrival, it never scares away an animal that is already out.
 
