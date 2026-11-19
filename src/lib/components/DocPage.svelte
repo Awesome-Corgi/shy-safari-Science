@@ -1,7 +1,7 @@
 <script lang="ts">
   /**
-   * The frame the about and privacy pages share. Unlike the Scene these are
-   * ordinary scrolling pages, so here a footer really can sit at the bottom.
+   * The frame the privacy page uses. Unlike the Scene it is an ordinary
+   * scrolling page, so here a footer really can sit at the bottom.
    * The page itself never scrolls (the Scene must not), so this frame does.
    */
 

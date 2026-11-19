@@ -1,2 +1,4 @@
 # The info drawer used to be its own page; old links open it on the home page.
 /how-it-works /#how-it-works 301
+# The about page is gone; links to it land on the app rather than a 404.
+/about / 301
