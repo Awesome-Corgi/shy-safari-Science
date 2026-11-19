@@ -27,28 +27,45 @@ instead of Chrome's defaults.
 - **A scene-aware chrome that recolours per Scene.** Rejected: the teacher
   changes Scene mid-lesson, and a palette that shifts under them would make
   the controls feel unreliable. One warm chrome over all of them stays put.
-- **A new display typeface.** Rejected for now: it would mean self-hosting a
-  font file. The rounded stack the Notes already speak in is the app's own
-  voice, so the chrome now uses it too and the two sound like one product.
+- **A new display typeface, at first put off** because it meant self-hosting a
+  font file. Taken up on the second pass and settled on Newsreader: the
+  rounded system stack was the platform's voice, not the product's, and a
+  display role is what makes a title read as a title. Self-hosted rather than
+  served from a CDN, so a classroom with a flaky filter still gets it.
+- **Fraunces.** Tried, then dropped: its current ubiquity is exactly the
+  sameness a display face is supposed to fix.
 - **Redesigning the artwork to match.** Out of scope: the drawings are the
   product's identity (ADR 0002), not chrome.
 
-## The sheet and the scale
+## The sheet, the scale and the display voice
 
-A second pass tightened the composition rather than the palette. The start
-screen is now one sheet with a real scale: the title at display size, the
-Scene's own line as the lead, a short ochre rule, the Scene plate, and a
-full-width primary button. The nested `bg-paper-deep` box that held the hint
-is gone (a card inside a card read as a form), the scrim over the artwork
-lightened from 55% to 35% so the savanna, the reef and deep space keep their
-colour behind it, and the panel headings across Settings, the guide, Animals
-and Classes grew to `text-3xl` with one shared label treatment.
+A second pass tightened the composition and gave the app a display voice.
 
-The control bar became a single pill: one filled primary action, quiet text
-buttons for the rest, a hairline between them. The meter's green, amber and
-red are now the creature palette's own teal, yellow and red rather than
+**The start screen is a spread, not a form.** One sheet, read from its own
+left edge: the title, the Scene's own line, an ochre rule, and one button;
+the places to choose between sit on the right as an index, and choosing one
+repaints the Scene behind the sheet, so the teacher sees the world they are
+choosing before the Session starts. On a phone the two halves stack and the
+places wrap into a stamp sheet. The nested `bg-paper-deep` box that held the
+hint is gone — a card inside a card read as a form — and the veil over the
+artwork became a vignette that darkens the edges and leaves the middle of the
+picture its colour.
+
+**Titles speak in Newsreader** (`static/fonts/`, self-hosted, SIL OFL, 220 KB
+for Latin and Latin-ext, `font-display: swap`). It has a variable optical
+axis, so a 3.5rem title is drawn for its size rather than enlarged from
+reading text, and its warm, slightly old-fashioned cut belongs to the same
+storybook world as the drawings. Everything a teacher operates — labels,
+buttons, settings, the Notes — stays in the rounded sans, which was already
+the app's voice. Two families, two jobs, no third.
+
+**The control bar** became a single pill: one filled primary action, quiet
+text buttons for the rest, a hairline between them. **The meter's** green,
+amber and red are the creature palette's own teal, yellow and red rather than
 Tailwind's defaults, so the one place the app is allowed to shout uses the
-same colours as the animals.
+same colours as the animals. **The about and privacy pages** dropped their
+cards for rule-separated sections on one 65ch measure, since they are read
+rather than operated.
 
 ## Consequences
 

@@ -75,7 +75,7 @@
     aria-label={t("preview.title")}
   >
     <div class="p-4 pr-12 pb-3 sm:p-6 sm:pr-14 sm:pb-4">
-      <h1 class="font-display text-2xl font-extrabold tracking-tight text-ink">
+      <h1 class="font-display text-2xl font-semibold tracking-tight text-ink">
         {t("preview.title")}
       </h1>
       <button

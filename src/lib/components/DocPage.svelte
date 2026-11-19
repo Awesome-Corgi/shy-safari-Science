@@ -23,11 +23,11 @@
 >
   <header class="border-b border-ink/10 bg-paper/85">
     <div
-      class="mx-auto flex w-full max-w-3xl items-center justify-between gap-4 px-4 py-3"
+      class="mx-auto flex w-full max-w-2xl items-center justify-between gap-4 px-4 py-3"
     >
       <a
         href={resolve("/")}
-        class="font-display flex items-center gap-2 text-lg font-extrabold tracking-tight text-ink hover:text-ink-soft"
+        class="flex items-center gap-2 font-display text-lg font-semibold tracking-tight text-ink hover:text-ink-soft"
       >
         <img src={logoUrl} alt="" class="size-9" />
         Shy Safari
@@ -43,18 +43,18 @@
     </div>
   </header>
 
-  <main class="mx-auto w-full max-w-3xl flex-1 px-4 py-8">
+  <main class="mx-auto w-full max-w-2xl flex-1 px-4 py-10 sm:py-14">
     <h1
-      class="font-display mb-2 text-3xl font-extrabold tracking-tight text-ink"
+      class="mb-3 font-display text-4xl font-semibold tracking-tight text-ink"
     >
       {title}
     </h1>
-    <p class="mb-8 text-ink-soft">{lede}</p>
+    <p class="max-w-[38rem] text-lg text-ink-soft">{lede}</p>
     {@render children()}
   </main>
 
   <footer
-    class="mx-auto flex w-full max-w-3xl flex-wrap items-center justify-center gap-x-4 gap-y-2 px-4 pb-6 text-center text-sm text-ink-soft"
+    class="mx-auto flex w-full max-w-2xl flex-wrap items-center justify-center gap-x-4 gap-y-2 px-4 pb-6 text-center text-sm text-ink-soft"
   >
     <a
       href="https://teacher.dev"

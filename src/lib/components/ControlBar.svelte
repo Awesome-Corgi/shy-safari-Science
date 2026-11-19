@@ -78,18 +78,18 @@
     <!-- One pill, not a row of boxes: the primary action is the only thing
          filled, everything else stays quiet until it is pointed at. -->
     <div
-      class="flex max-w-[calc(100vw-2rem)] flex-wrap items-center justify-center gap-0.5 rounded-full bg-paper/95 py-1.5 pr-1.5 pl-2.5 shadow-lift"
+      class="flex max-w-[calc(100vw-2rem)] flex-wrap items-center justify-center gap-0.5 rounded-full bg-paper/95 py-2 pr-2 pl-3 shadow-lift"
     >
       {#if !app.session.running}
         <button
-          class="rounded-full bg-ink px-7 py-2.5 font-semibold text-paper shadow-lift transition hover:bg-ink/90"
+          class="rounded-full bg-ink px-7 py-3 font-semibold text-paper shadow-lift transition hover:bg-ink/90"
           onclick={() => app.startSession()}
         >
           {t("start.button")}
         </button>
       {:else}
         <button
-          class="rounded-full px-3.5 py-2 text-sm font-medium text-ink-soft transition hover:bg-paper-deep hover:text-ink sm:px-4"
+          class="rounded-full px-4 py-2.5 text-[0.95rem] font-medium text-ink-soft transition hover:bg-paper-deep hover:text-ink sm:px-4.5"
           class:bg-paper-deep={confirmingReset}
           class:text-ink={confirmingReset}
           aria-expanded={confirmingReset}
@@ -100,7 +100,7 @@
         <!-- Just the symbol on a phone, where the bar has no room for a
              fourth word in every language. -->
         <button
-          class="flex items-center gap-1.5 rounded-full px-3.5 py-2 text-sm font-medium text-ink-soft transition hover:bg-paper-deep hover:text-ink sm:px-4"
+          class="flex items-center gap-1.5 rounded-full px-4 py-2.5 text-[0.95rem] font-medium text-ink-soft transition hover:bg-paper-deep hover:text-ink sm:px-4.5"
           class:bg-paper-deep={app.paused}
           class:text-ink={app.paused}
           aria-label={app.paused ? t("controls.resume") : t("controls.pause")}
@@ -129,9 +129,9 @@
       {/if}
 
       <!-- A hairline, so the quiet actions read as one group. -->
-      <span class="mx-1 h-5 w-px bg-ink/12" aria-hidden="true"></span>
+      <span class="mx-1 h-6 w-px bg-ink/15" aria-hidden="true"></span>
       <button
-        class="rounded-full px-3.5 py-2 text-sm font-medium text-ink-soft transition hover:bg-paper-deep hover:text-ink sm:px-4"
+        class="rounded-full px-4 py-2.5 text-[0.95rem] font-medium text-ink-soft transition hover:bg-paper-deep hover:text-ink sm:px-4.5"
         onclick={onopensettings}
       >
         {t("controls.settings")}

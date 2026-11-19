@@ -136,9 +136,7 @@
       class="flex flex-wrap items-start gap-x-4 gap-y-3 p-4 pr-12 pb-3 sm:p-6 sm:pr-14 sm:pb-4"
     >
       <div class="mr-auto">
-        <h1
-          class="font-display text-3xl font-extrabold tracking-tight text-ink"
-        >
+        <h1 class="font-display text-3xl font-semibold tracking-tight text-ink">
           {tIn(sceneId, "collection.title")}
         </h1>
         <p class="mt-1 text-sm text-ink-soft">

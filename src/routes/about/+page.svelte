@@ -4,7 +4,7 @@
   import PageMeta from "$lib/components/PageMeta.svelte";
   import { t } from "$lib/i18n/index.svelte";
 
-  const card = "mb-6 rounded-panel bg-paper p-6 shadow-lift";
+  const card = "mt-10 border-t border-ink/10 pt-8";
   const link =
     "font-semibold text-teal-deep underline-offset-4 hover:underline";
 </script>
@@ -23,7 +23,9 @@
         alt=""
         class="size-10 shrink-0"
       />
-      <h2 class="text-xl font-semibold">{t("about.originTitle")}</h2>
+      <h2 class="font-display text-2xl font-semibold">
+        {t("about.originTitle")}
+      </h2>
     </div>
     <p class="leading-relaxed text-ink-soft">
       {t("about.origin.beforeEvent")}<a
@@ -40,7 +42,7 @@
     </p>
 
     <figure
-      class="mx-auto mt-6 w-full max-w-lg -rotate-1 rounded-sm bg-paper p-3 pb-6 shadow-lift ring-1 ring-ink/10"
+      class="mx-auto mt-8 w-full max-w-lg -rotate-1 rounded-sm bg-paper p-3 pb-6 shadow-lift"
     >
       <img
         src={asset("/edtechathon-2026.jpg")}
@@ -54,17 +56,23 @@
   </section>
 
   <section class={card}>
-    <h2 class="mb-3 text-xl font-semibold">{t("about.purposeTitle")}</h2>
+    <h2 class="mb-3 font-display text-2xl font-semibold">
+      {t("about.purposeTitle")}
+    </h2>
     <p class="leading-relaxed text-ink-soft">{t("about.purpose")}</p>
   </section>
 
   <section class={card}>
-    <h2 class="mb-3 text-xl font-semibold">{t("about.promiseTitle")}</h2>
+    <h2 class="mb-3 font-display text-2xl font-semibold">
+      {t("about.promiseTitle")}
+    </h2>
     <p class="leading-relaxed text-ink-soft">{t("about.promise")}</p>
   </section>
 
   <section class={card}>
-    <h2 class="mb-3 text-xl font-semibold">{t("about.feedbackTitle")}</h2>
+    <h2 class="mb-3 font-display text-2xl font-semibold">
+      {t("about.feedbackTitle")}
+    </h2>
     <p class="mb-4 leading-relaxed text-ink-soft">{t("about.feedback")}</p>
     <a
       href="mailto:support@teacher.dev?subject=Shy%20Safari%20feedback"

@@ -25,7 +25,7 @@
   class="safe-edges absolute inset-0 z-50 grid place-items-center overflow-y-auto bg-ink/70"
 >
   <div class="rise w-full max-w-lg rounded-panel bg-paper p-6 shadow-panel">
-    <h1 class="font-display text-3xl font-extrabold tracking-tight text-ink">
+    <h1 class="font-display text-3xl font-semibold tracking-tight text-ink">
       {tIn(app.scene.id, "blocked.title")}
     </h1>
     <p class="mt-3 text-ink-soft">{message}</p>

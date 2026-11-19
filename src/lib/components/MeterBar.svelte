@@ -9,7 +9,7 @@
     level,
     goal,
     tooLoud,
-    class: className = "h-8 rounded-lg",
+    class: className = "h-7 rounded-full",
   }: {
     level: number;
     goal: number;
@@ -27,7 +27,7 @@
   const changing = $derived(tooLoud ? level <= goal : level > goal);
 </script>
 
-<div class="relative overflow-hidden bg-ink/12 {className}">
+<div class="relative overflow-hidden bg-ink/10 {className}">
   <div
     class="h-full transition-[width] duration-100 ease-linear {changing
       ? 'bg-accent-yellow'

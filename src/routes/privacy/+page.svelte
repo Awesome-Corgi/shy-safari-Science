@@ -3,7 +3,7 @@
   import PageMeta from "$lib/components/PageMeta.svelte";
   import { t } from "$lib/i18n/index.svelte";
 
-  const card = "mb-6 rounded-panel bg-paper p-6 shadow-lift";
+  const card = "mt-10 border-t border-ink/10 pt-8";
   const link =
     "font-semibold text-teal-deep underline-offset-4 hover:underline";
 </script>

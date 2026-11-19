@@ -159,7 +159,7 @@
   <div class="flex items-start justify-between gap-4">
     <h2
       id="calibration-title"
-      class="font-display text-lg font-extrabold tracking-tight text-ink"
+      class="font-display text-lg font-semibold tracking-tight text-ink"
     >
       {t("calibration.dialogTitle")}
     </h2>

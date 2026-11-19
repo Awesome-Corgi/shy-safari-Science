@@ -70,7 +70,7 @@
     aria-label={t("classes.edit")}
   >
     <div class="flex items-start justify-between gap-4 p-4 pb-2 sm:p-6 sm:pb-3">
-      <h1 class="font-display text-3xl font-extrabold tracking-tight text-ink">
+      <h1 class="font-display text-3xl font-semibold tracking-tight text-ink">
         {t("classes.edit")}
       </h1>
       <button
@@ -241,7 +241,7 @@
       >
         <h2
           id="delete-class-title"
-          class="font-display text-lg font-extrabold tracking-tight text-ink"
+          class="font-display text-lg font-semibold tracking-tight text-ink"
         >
           {t("classes.deleteTitle")}
         </h2>

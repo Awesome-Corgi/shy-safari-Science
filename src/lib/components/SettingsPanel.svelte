@@ -51,7 +51,7 @@
     aria-label={t("settings.title")}
   >
     <div class="flex items-start justify-between">
-      <h1 class="font-display text-3xl font-extrabold tracking-tight text-ink">
+      <h1 class="font-display text-3xl font-semibold tracking-tight text-ink">
         {t("settings.title")}
       </h1>
       <button

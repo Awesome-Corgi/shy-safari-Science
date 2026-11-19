@@ -39,7 +39,7 @@
   let returnFocus: HTMLElement | null = null;
 
   const heading =
-    "font-display mb-2 text-lg font-extrabold tracking-tight text-ink";
+    "font-display mb-2 text-lg font-semibold tracking-tight text-ink";
   const body = "leading-relaxed text-ink-soft";
 
   const steps: UiKey[] = ["guide.use.open", "guide.use.goal", "guide.use.rate"];
@@ -103,7 +103,7 @@
     <div class="flex items-start justify-between gap-4">
       <h2
         id="how-it-works-title"
-        class="font-display text-3xl font-extrabold tracking-tight text-ink"
+        class="font-display text-3xl font-semibold tracking-tight text-ink"
       >
         {t("guide.title")}
       </h2>

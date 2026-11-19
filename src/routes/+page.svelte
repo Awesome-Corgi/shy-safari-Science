@@ -245,7 +245,7 @@
       class="rise max-w-md rounded-panel bg-paper p-6 text-center shadow-panel"
     >
       <img src={logoUrl} alt="" class="mx-auto mb-3 size-20" />
-      <h1 class="font-display text-2xl font-extrabold tracking-tight text-ink">
+      <h1 class="font-display text-2xl font-semibold tracking-tight text-ink">
         {t("floating.title")}
       </h1>
       <p class="mt-3 text-balance text-ink-soft">
@@ -290,54 +290,75 @@
     {#if !app.listening && !app.blocked}
       <!-- Browsers only hand over a microphone after a real gesture, so the
          Session has to begin with a click either way. -->
-      <div class="absolute inset-0 z-40 overflow-y-auto bg-ink/35">
+      <!-- A warm vignette rather than a flat veil: the artwork keeps its
+           colour behind the middle of the sheet and darkens only where the
+           chrome needs it. -->
+      <div
+        class="absolute inset-0 z-40 overflow-y-auto bg-gradient-to-t from-ink/60 via-ink/25 to-ink/30"
+      >
         <!-- Scrolls rather than clips, should the card still not fit. -->
         <div
-          class="grid min-h-full place-items-center p-4 sm:p-6 short:px-30 short:py-3"
+          class="flex min-h-full items-center justify-center p-4 sm:p-6 short:px-8 short:py-3"
         >
-          <!-- One sheet, laid on the Scene: what this place asks of the room,
-               which place it is, and the single button that begins. The
-               nested box and the divided hint that used to sit here made the
-               card read as a form; the words now carry their own weight. -->
+          <!-- The sheet is a spread, not a form: the title in the field
+               guide's serif and what this place asks on the left, the places
+               to choose from on the right, and one button. On a phone the two
+               halves stack and the places wrap into a stamp sheet. -->
           <div
-            class="rise w-full max-w-md rounded-panel bg-paper px-6 py-8 text-center shadow-panel sm:px-8 sm:py-10 short:px-6 short:py-4"
+            class="rise w-full max-w-3xl min-w-0 rounded-[1.6rem] bg-paper px-6 py-7 text-left shadow-panel sm:px-11 sm:py-10 short:px-6 short:py-4"
           >
-            <img src={logoUrl} alt="" class="mx-auto size-24 short:size-14" />
-            <h1
-              class="font-display mt-5 text-[2.5rem] leading-none font-extrabold tracking-[-0.03em] text-ink short:mt-2 short:text-2xl"
-            >
-              Shy Safari
-            </h1>
             <div
-              class="mx-auto mt-6 h-0.5 w-10 rounded-full bg-ochre/60 short:hidden"
-            ></div>
-            <p
-              class="mt-4 text-lg leading-snug font-semibold text-balance text-ink short:mt-2 short:text-base"
+              class="flex flex-col gap-7 md:flex-row md:items-start md:gap-9"
             >
-              {tIn(app.scene.id, "start.shy")}
-            </p>
-            <p class="mt-2 text-balance text-ink-soft short:mt-1 short:text-sm">
-              <!-- Checked after mount: the page is prerendered with the default. -->
-              {#if app.restored && settings.loudResponse === "pause"}
-                {tIn(app.scene.id, "start.explain")}
-              {:else}
-                {tIn(app.scene.id, "start.explainFlee")}
-              {/if}
-            </p>
-            <div class="mt-7 short:mt-3">
-              <SceneSelect {app} />
+              <div class="min-w-0 flex-1">
+                <img src={logoUrl} alt="" class="size-16 short:size-10" />
+                <h1
+                  class="mt-4 font-display text-[3rem] leading-[0.92] font-semibold tracking-[-0.02em] text-balance text-ink sm:text-[3.6rem] short:mt-2 short:text-[1.75rem]"
+                >
+                  Shy Safari
+                </h1>
+                <div
+                  class="mt-5 h-[3px] w-12 rounded-full bg-ochre/70 short:hidden"
+                ></div>
+                <p
+                  class="mt-5 text-xl leading-snug font-semibold text-balance text-ink short:mt-2 short:text-base"
+                >
+                  {tIn(app.scene.id, "start.shy")}
+                </p>
+                <p
+                  class="mt-1.5 leading-relaxed text-ink-soft short:mt-1 short:text-sm"
+                >
+                  <!-- Checked after mount: the page is prerendered with the default. -->
+                  {#if app.restored && settings.loudResponse === "pause"}
+                    {tIn(app.scene.id, "start.explain")}
+                  {:else}
+                    {tIn(app.scene.id, "start.explainFlee")}
+                  {/if}
+                </p>
+                <button
+                  class="mt-6 w-full rounded-full bg-ink px-8 py-3.5 text-base font-semibold text-paper shadow-lift transition hover:bg-ink/90 active:translate-y-px sm:w-auto short:mt-4 short:py-2.5"
+                  onclick={async () => {
+                    if (await app.connect()) app.startSession();
+                  }}
+                >
+                  {t("start.button")}
+                </button>
+                <p
+                  class="mt-3 max-w-[24rem] text-xs leading-relaxed text-ink-soft"
+                >
+                  {t("start.micNote")}
+                </p>
+              </div>
+
+              <div class="md:w-56 md:shrink-0 md:self-center">
+                <p
+                  class="mb-2 text-[0.7rem] font-bold tracking-[0.16em] text-ink-soft uppercase"
+                >
+                  {t("scene.label")}
+                </p>
+                <SceneSelect {app} />
+              </div>
             </div>
-            <button
-              class="mt-5 w-full rounded-full bg-ink px-8 py-3.5 text-base font-semibold text-paper shadow-lift transition hover:bg-ink/90 active:translate-y-px short:mt-3 short:py-2.5"
-              onclick={async () => {
-                if (await app.connect()) app.startSession();
-              }}
-            >
-              {t("start.button")}
-            </button>
-            <p class="mt-4 text-xs leading-relaxed text-ink-soft short:mt-2">
-              {t("start.micNote")}
-            </p>
           </div>
         </div>
       </div>
