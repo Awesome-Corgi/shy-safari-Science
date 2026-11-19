@@ -10,7 +10,7 @@
 </script>
 
 <button
-  class="paused-pulse pointer-events-auto flex h-11 items-center gap-2 rounded-full bg-white/95 pr-4 pl-3 text-sm font-medium text-slate-800 shadow-lg hover:bg-white"
+  class="paused-pulse pointer-events-auto flex h-11 items-center gap-2 rounded-full bg-paper/95 pr-4 pl-3 text-sm font-semibold text-ink shadow-lift hover:bg-paper"
   aria-label={t("controls.resume")}
   onclick={onresume}
 >

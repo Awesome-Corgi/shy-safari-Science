@@ -62,8 +62,8 @@
   <button
     type="button"
     class={[
-      "relative flex w-full items-center gap-3 rounded-2xl border bg-white py-1.5 pr-3 pl-2 text-left text-sm hover:bg-slate-50",
-      open ? "border-slate-900" : "border-slate-300",
+      "relative flex w-full items-center gap-3 rounded-2xl border bg-white py-1.5 pr-3 pl-2 text-left text-sm transition hover:bg-paper-deep",
+      open ? "border-ink" : "border-ink/15",
     ]}
     aria-expanded={open}
     aria-controls="start-scene-menu"
@@ -75,20 +75,17 @@
     <span class="flex min-w-0 flex-1 items-center gap-3">
       <img src={app.scene.icon} alt="" class="size-9 shrink-0" />
       <span class="min-w-0 flex-1">
-        <span class="block font-medium text-slate-900"
+        <span class="block font-semibold text-ink"
           >{t(`scene.${app.scene.id}.name` as UiKey)}</span
         >
-        <span class="block truncate text-xs text-slate-500"
+        <span class="block truncate text-xs text-ink-soft"
           >{sceneHint(app.scene.id, today.day)}</span
         >
       </span>
     </span>
     <svg
       viewBox="0 0 24 24"
-      class={[
-        "size-4 shrink-0 text-slate-500 transition",
-        open && "rotate-180",
-      ]}
+      class={["size-4 shrink-0 text-ink-soft transition", open && "rotate-180"]}
       fill="none"
       stroke="currentColor"
       stroke-width="2.5"
@@ -100,7 +97,7 @@
     </svg>
     {#if flagged && !open}
       <span
-        class="pointer-events-none absolute -top-2 -right-2 rounded-full bg-orange-500 px-1.5 py-px text-[0.65rem] font-semibold tracking-wide text-white uppercase shadow ring-2 ring-white"
+        class="pointer-events-none absolute -top-2 -right-2 rounded-full bg-ochre px-1.5 py-px text-[0.65rem] font-semibold tracking-wide text-paper uppercase shadow-lift ring-2 ring-paper"
         aria-hidden="true">{t("scene.new")}</span
       >
     {/if}

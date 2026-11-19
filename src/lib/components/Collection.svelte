@@ -120,12 +120,12 @@
 />
 
 <div
-  class="safe-edges absolute inset-0 z-50 flex items-center justify-center bg-slate-900/40"
+  class="safe-edges absolute inset-0 z-50 flex items-center justify-center bg-ink/40"
   role="presentation"
   onclick={(event) => event.target === event.currentTarget && onclose()}
 >
   <div
-    class="relative flex max-h-full w-full max-w-3xl flex-col rounded-xl bg-white shadow-xl"
+    class="rise relative flex max-h-full w-full max-w-3xl flex-col rounded-panel bg-paper shadow-panel"
     role="dialog"
     aria-modal="true"
     aria-label={tIn(sceneId, "collection.title")}
@@ -136,10 +136,12 @@
       class="flex flex-wrap items-start gap-x-4 gap-y-3 p-4 pr-12 pb-3 sm:p-6 sm:pr-14 sm:pb-4"
     >
       <div class="mr-auto">
-        <h1 class="text-xl font-semibold text-slate-900">
+        <h1
+          class="font-display text-2xl font-extrabold tracking-tight text-ink"
+        >
           {tIn(sceneId, "collection.title")}
         </h1>
-        <p class="mt-1 text-sm text-slate-500">
+        <p class="mt-1 text-sm text-ink-soft">
           {tIn(sceneId, "collection.spotted", {
             class: className(classes.current.name),
             seen,
@@ -157,10 +159,10 @@
       >
         {#each tabs as option (option.id)}
           <button
-            class="rounded-full border px-3 py-1 whitespace-nowrap {sceneId ===
+            class="rounded-full border px-3 py-1 whitespace-nowrap transition {sceneId ===
             option.id
-              ? 'border-slate-900 bg-slate-900 text-white'
-              : 'border-slate-300 text-slate-700 hover:bg-slate-100'}"
+              ? 'border-ink bg-ink text-paper'
+              : 'border-ink/15 text-ink-soft hover:bg-paper-deep'}"
             aria-pressed={sceneId === option.id}
             onclick={() => (sceneId = option.id)}
             >{t(`scene.${option.id}.name`)}</button
@@ -168,7 +170,7 @@
         {/each}
       </div>
       <button
-        class="absolute top-3 right-3 grid size-8 place-items-center rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 sm:top-4 sm:right-4"
+        class="absolute top-3 right-3 grid size-8 place-items-center rounded-full text-ink-soft transition hover:bg-paper-deep hover:text-ink sm:top-4 sm:right-4"
         aria-label={t("common.close")}
         title={t("common.close")}
         onclick={onclose}
@@ -193,12 +195,12 @@
         {#if defs.length > 0}
           <section class="mt-4 first:mt-0">
             <h2
-              class="flex items-center gap-1.5 text-sm font-semibold tracking-wide text-slate-500 uppercase"
+              class="flex items-center gap-1.5 text-xs font-semibold tracking-[0.14em] text-ink-soft uppercase"
             >
               {t(`tier.${tier}`)}
               <span class="group relative normal-case">
                 <button
-                  class="grid size-4 place-items-center rounded-full text-slate-400 hover:text-slate-600 focus:text-slate-600 focus:outline-none"
+                  class="grid size-4 place-items-center rounded-full text-ink-soft hover:text-ink focus:text-ink focus:outline-none"
                   aria-label={tIn(sceneId, `chance.${tier}.label`)}
                 >
                   <svg
@@ -213,7 +215,7 @@
                   </svg>
                 </button>
                 <span
-                  class="pointer-events-none absolute top-1/2 left-full z-10 ml-2 w-max max-w-60 -translate-y-1/2 rounded-md bg-slate-900 px-2.5 py-1.5 text-xs font-normal tracking-normal text-white opacity-0 shadow transition-opacity group-focus-within:opacity-100 group-hover:opacity-100"
+                  class="pointer-events-none absolute top-1/2 left-full z-10 ml-2 w-max max-w-60 -translate-y-1/2 rounded-md bg-ink px-2.5 py-1.5 text-xs font-normal tracking-normal text-paper opacity-0 shadow-lift transition-opacity group-focus-within:opacity-100 group-hover:opacity-100"
                   role="tooltip"
                 >
                   {t(`chance.${tier}`, { percent: chance(tier) })}
@@ -227,16 +229,16 @@
                 {@const count = sightings.count(sceneId, def.slug)}
                 {#if locked.has(def.slug)}
                   <li
-                    class="flex min-w-0 flex-col items-center justify-center rounded-lg border border-dashed border-slate-300 bg-slate-50 p-2 text-center"
+                    class="flex min-w-0 flex-col items-center justify-center rounded-xl border border-dashed border-ink/20 bg-paper-deep/60 p-2 text-center"
                   >
                     <div
-                      class="flex h-12 w-full items-center justify-center text-3xl font-semibold text-slate-300"
+                      class="flex h-12 w-full items-center justify-center text-3xl font-semibold text-ink/25"
                       aria-hidden="true"
                     >
                       ?
                     </div>
                     <span
-                      class="mt-1 text-sm font-medium text-slate-500 tabular-nums"
+                      class="mt-1 text-sm font-medium text-ink-soft tabular-nums"
                       >{comesOn(def.slug)}</span
                     >
                   </li>
@@ -244,10 +246,10 @@
                   <!-- A Creature with a fact to tell shows it on hover. -->
                   <li
                     title={creatureFact(def.slug)}
-                    class="flex min-w-0 flex-col items-center rounded-lg border p-2 text-center {tier ===
+                    class="flex min-w-0 flex-col items-center rounded-xl border p-2 text-center {tier ===
                     'rare'
-                      ? 'border-amber-300 bg-amber-50'
-                      : 'border-slate-200'}"
+                      ? 'border-ochre/45 bg-paper-deep'
+                      : 'border-ink/10'}"
                   >
                     <div
                       class="flex h-12 w-full items-center justify-center"
@@ -267,10 +269,10 @@
                     </div>
                     <!-- Long names break at their soft hyphens (see i18n) to fit the card. -->
                     <span
-                      class="mt-1 max-w-full text-sm font-medium break-words hyphens-auto text-slate-800"
+                      class="mt-1 max-w-full text-sm font-medium break-words hyphens-auto text-ink"
                       >{creatureName(def.slug)}</span
                     >
-                    <span class="text-xs text-slate-500">
+                    <span class="text-xs text-ink-soft">
                       {count === 0
                         ? tIn(sceneId, "collection.notSeen")
                         : tIn(sceneId, "collection.seen", { count })}

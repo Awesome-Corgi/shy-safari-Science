@@ -14,7 +14,7 @@
 </script>
 
 <label
-  class="relative grid size-11 cursor-pointer place-items-center rounded-full bg-white/95 text-slate-700 shadow-lg transition focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-slate-900 hover:bg-white"
+  class="relative grid size-11 cursor-pointer place-items-center rounded-full bg-paper/95 text-ink-soft shadow-lift transition focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ochre hover:bg-paper hover:text-ink"
   title={t("language.change")}
 >
   <svg

@@ -405,7 +405,7 @@
       }}
     />
     <button
-      class="absolute top-3 right-3 grid size-8 place-items-center rounded-full bg-white text-slate-700 shadow-lg hover:bg-slate-100"
+      class="absolute top-3 right-3 grid size-8 place-items-center rounded-full bg-paper text-ink-soft shadow-lift hover:bg-paper-deep hover:text-ink"
       aria-label={t("notes.delete")}
       title={t("notes.delete")}
       onpointerdown={(event) => event.stopPropagation()}

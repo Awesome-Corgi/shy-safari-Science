@@ -18,6 +18,33 @@
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
+
+  /*
+   * The surfaces the browser draws for us still belong to the design: a
+   * teacher selecting a Note's text should not get Chrome's default blue.
+   */
+  ::selection {
+    background: var(--color-accent-yellow);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ochre);
+    outline-offset: 2px;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(38 38 51 / 0.35) transparent;
+  }
+
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: var(--color-ink);
+    caret-color: var(--color-ochre-deep);
+  }
 }
 
 /*
@@ -29,6 +56,35 @@
  * Creature palette from docs/svg-art-brief.md.
  */
 @theme {
+  /*
+   * The chrome: warm paper and ink, taken from the artwork's own palette (the
+   * ochre of the logo's disc, the bark of the acacia), so the panels read as
+   * part of the picture on every Scene rather than as the browser's default
+   * app furniture on top of it. Paper sits legibly over the savanna's gold,
+   * the reef's blue and the navy of deep space alike.
+   *
+   * The rounded face is the one the Notes already speak in, so the teacher's
+   * text and the app's own words sound like the same voice.
+   */
+  --font-sans:
+    ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", "Nunito", "Segoe UI",
+    system-ui, sans-serif;
+
+  --color-paper: #fdf8ec;
+  --color-paper-deep: #f4e7cd;
+  --color-ink: #262633;
+  --color-ink-soft: #6c6357;
+  --color-ochre: #c07f36;
+  --color-ochre-deep: #9a5f24;
+
+  /* Offset and a soft blur, never a flat halo: these read as light. */
+  --shadow-lift:
+    0 1px 2px rgb(38 38 51 / 0.18), 0 10px 24px -8px rgb(38 38 51 / 0.42);
+  --shadow-panel:
+    0 2px 6px rgb(38 38 51 / 0.14), 0 28px 64px -20px rgb(38 38 51 / 0.55);
+
+  --radius-panel: 1.125rem;
+
   --color-water-deep: #0b3d5c;
   --color-water-mid: #124f73;
   --color-water-shallow: #1a6f96;
@@ -1093,6 +1149,34 @@ html.floating {
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+/* --- Chrome motion ------------------------------------------------------ */
+
+/*
+ * One authored entrance: the start card and the dialogs settle into place
+ * rather than appearing. Everything starts visible and only travels a little,
+ * so a slow frame reads as a nudge, never as content arriving late.
+ */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise-in 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
 }
 
 /* The EdTech-a-thon photo's caption on the about page. */

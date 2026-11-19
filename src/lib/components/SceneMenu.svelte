@@ -40,7 +40,7 @@
 
 <div
   {id}
-  class="{width} max-w-[calc(100vw-2rem)] rounded-2xl bg-white p-1.5 text-left shadow-lg"
+  class="{width} max-w-[calc(100vw-2rem)] rounded-2xl bg-paper p-1.5 text-left shadow-panel"
 >
   <ul
     class="max-h-[50dvh] overflow-y-auto"
@@ -51,9 +51,9 @@
       <li>
         <button
           type="button"
-          class="flex w-full items-center gap-3 rounded-xl px-2 py-1.5 text-left text-sm hover:bg-slate-100 {current
-            ? 'text-slate-900'
-            : 'text-slate-700'}"
+          class="flex w-full items-center gap-3 rounded-xl px-2 py-1.5 text-left text-sm transition hover:bg-paper-deep {current
+            ? 'text-ink'
+            : 'text-ink-soft'}"
           aria-current={current}
           onpointerenter={() => void loadSceneArt(scene.id)}
           onfocus={() => void loadSceneArt(scene.id)}
@@ -77,7 +77,7 @@
                 >
               {/if}
             </span>
-            <span class="block text-xs text-slate-500"
+            <span class="block text-xs text-ink-soft"
               >{sceneHint(scene.id, today.day)}</span
             >
           </span>

@@ -38,8 +38,8 @@
   /** Where focus was before opening, to hand it back on close. */
   let returnFocus: HTMLElement | null = null;
 
-  const heading = "mb-2 text-lg font-semibold text-slate-900";
-  const body = "leading-relaxed text-slate-700";
+  const heading = "mb-2 text-lg font-bold tracking-tight text-ink";
+  const body = "leading-relaxed text-ink-soft";
 
   const steps: UiKey[] = ["guide.use.open", "guide.use.goal", "guide.use.rate"];
 
@@ -83,7 +83,7 @@
      focusable, the moment it opens. -->
 <div
   class="absolute inset-0 z-50 flex justify-end duration-300 {open
-    ? 'visible bg-slate-900/40 transition-colors'
+    ? 'visible bg-ink/40 transition-colors'
     : 'invisible bg-transparent transition-[visibility,background-color]'}"
   role="presentation"
   onclick={(event) => event.target === event.currentTarget && close()}
@@ -95,20 +95,23 @@
     role="dialog"
     aria-modal="true"
     aria-labelledby="how-it-works-title"
-    class="h-full w-full max-w-md overflow-y-auto bg-white p-4 pr-[max(1rem,env(safe-area-inset-right))] pb-[max(1rem,env(safe-area-inset-bottom))] shadow-xl transition-transform duration-300 outline-none sm:p-6 sm:pr-[max(1.5rem,env(safe-area-inset-right))] sm:pb-[max(1.5rem,env(safe-area-inset-bottom))] {open
+    class="h-full w-full max-w-md overflow-y-auto bg-paper p-4 pr-[max(1rem,env(safe-area-inset-right))] pb-[max(1rem,env(safe-area-inset-bottom))] shadow-panel transition-transform duration-300 outline-none sm:p-6 sm:pr-[max(1.5rem,env(safe-area-inset-right))] sm:pb-[max(1.5rem,env(safe-area-inset-bottom))] {open
       ? ''
       : 'translate-x-full'}"
   >
     <div class="flex items-start justify-between gap-4">
-      <h2 id="how-it-works-title" class="text-xl font-semibold text-slate-900">
+      <h2
+        id="how-it-works-title"
+        class="font-display text-2xl font-extrabold tracking-tight text-ink"
+      >
         {t("guide.title")}
       </h2>
       <button
-        class="shrink-0 rounded-md border border-slate-300 px-3 py-1 text-sm hover:bg-slate-50"
+        class="shrink-0 rounded-full border border-ink/15 px-4 py-1.5 text-sm font-medium text-ink hover:bg-paper-deep"
         onclick={close}>{t("common.close")}</button
       >
     </div>
-    <p class="mt-1 text-slate-600">{t("guide.lede")}</p>
+    <p class="mt-1 text-ink-soft">{t("guide.lede")}</p>
 
     <section class="mt-6">
       <h3 class={heading}>{t("guide.whatTitle")}</h3>
@@ -154,7 +157,7 @@
       <dl class="space-y-4">
         {#each FAQ_IDS as id (id)}
           <div>
-            <dt class="font-semibold text-slate-900">
+            <dt class="font-semibold text-ink">
               {t(`guide.faq.${id}.q`)}
             </dt>
             <dd class="mt-1 {body}">{t(`guide.faq.${id}.a`)}</dd>
@@ -165,12 +168,12 @@
 
     <!-- The about and privacy pages used to hang off the corner logo; with
          that gone, this is where a teacher finds them. -->
-    <p class="mt-8 flex items-center gap-2 text-sm text-slate-600">
-      <a href={resolve("/about")} class="hover:text-slate-900 hover:underline"
+    <p class="mt-8 flex items-center gap-2 text-sm text-ink-soft">
+      <a href={resolve("/about")} class="hover:text-ink hover:underline"
         >{t("common.about")}</a
       >
-      <span aria-hidden="true" class="text-slate-300">·</span>
-      <a href={resolve("/privacy")} class="hover:text-slate-900 hover:underline"
+      <span aria-hidden="true" class="text-ink/25">·</span>
+      <a href={resolve("/privacy")} class="hover:text-ink hover:underline"
         >{t("common.privacy")}</a
       >
     </p>

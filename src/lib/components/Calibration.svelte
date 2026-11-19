@@ -121,22 +121,22 @@
 </script>
 
 <div
-  class="flex items-center justify-between gap-3 rounded-lg bg-slate-100 p-3"
+  class="flex items-center justify-between gap-3 rounded-xl bg-paper-deep p-3"
 >
   <div class="min-w-0">
-    <p class="text-sm font-semibold text-slate-900">{t("calibration.title")}</p>
+    <p class="text-sm font-semibold text-ink">{t("calibration.title")}</p>
     {#if !ready}
-      <p class="text-xs text-slate-500">{t("calibration.needMic")}</p>
+      <p class="text-xs text-ink-soft">{t("calibration.needMic")}</p>
     {:else if calibration}
       <p class="text-xs font-medium text-emerald-700">
         {t("calibration.calibrated")}
       </p>
     {:else}
-      <p class="text-xs text-slate-500">{t("calibration.fit")}</p>
+      <p class="text-xs text-ink-soft">{t("calibration.fit")}</p>
     {/if}
   </div>
   <button
-    class="shrink-0 rounded-md border border-slate-400 px-3 py-1.5 text-sm font-medium hover:bg-white disabled:cursor-not-allowed disabled:opacity-50"
+    class="shrink-0 rounded-full border border-ink/20 px-3.5 py-1.5 text-sm font-semibold text-ink hover:bg-paper-deep disabled:cursor-not-allowed disabled:opacity-50"
     disabled={!ready}
     onclick={open}
   >
@@ -148,7 +148,7 @@
      ends any sample in flight: the timers belong to the sampling stages. -->
 <dialog
   bind:this={dialog}
-  class="m-auto w-[calc(100%-2rem)] max-w-md rounded-xl bg-white p-6 shadow-2xl backdrop:bg-slate-900/60"
+  class="m-auto w-[calc(100%-2rem)] max-w-md rounded-panel bg-paper p-6 shadow-panel backdrop:bg-ink/60"
   aria-labelledby="calibration-title"
   onclose={() => {
     stage = "intro";
@@ -157,12 +157,15 @@
   }}
 >
   <div class="flex items-start justify-between gap-4">
-    <h2 id="calibration-title" class="text-lg font-semibold text-slate-900">
+    <h2
+      id="calibration-title"
+      class="font-display text-lg font-extrabold tracking-tight text-ink"
+    >
       {t("calibration.dialogTitle")}
     </h2>
     {#if stage !== "done"}
       <button
-        class="rounded-md border border-slate-300 px-3 py-1 text-sm hover:bg-slate-50"
+        class="rounded-full border border-ink/15 px-4 py-1 text-sm font-medium text-ink hover:bg-paper-deep"
         onclick={close}>{t("common.cancel")}</button
       >
     {/if}
@@ -172,8 +175,8 @@
     {#each [t("calibration.stepQuiet"), t("calibration.stepTalking"), t("calibration.stepDone")] as label, index (index)}
       <li
         class="flex-1 border-t-4 pt-1.5 text-xs font-medium {index + 1 <= step
-          ? 'border-slate-900 text-slate-900'
-          : 'border-slate-200 text-slate-400'}"
+          ? 'border-ochre text-ink'
+          : 'border-ink/12 text-ink/35'}"
         aria-current={index + 1 === step ? "step" : undefined}
       >
         {index + 1}. {label}
@@ -183,55 +186,55 @@
 
   <div class="mt-6" aria-live="polite">
     {#if stage === "intro"}
-      <p class="text-slate-700">
+      <p class="text-ink-soft">
         <b>{t("calibration.introLead")}</b>
         {t("calibration.intro", { seconds: SAMPLE_SECONDS })}
       </p>
       <button
-        class="mt-4 rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white"
+        class="mt-4 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-paper shadow-lift"
         onclick={() => (stage = "quiet")}
       >
         {t("calibration.quietButton")}
       </button>
     {:else if stage === "quiet"}
-      <p class="text-slate-700">
+      <p class="text-ink-soft">
         <b>{t("calibration.listening")}</b>
         {t("calibration.quietLeft", { seconds: secondsLeft })}
       </p>
     {:else if stage === "ready"}
-      <p class="text-slate-700">
+      <p class="text-ink-soft">
         <b>{t("calibration.readyLead")}</b>
         {t("calibration.ready")}
       </p>
       <button
-        class="mt-4 rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white"
+        class="mt-4 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-paper shadow-lift"
         onclick={() => (stage = "talking")}
       >
         {t("calibration.talkingButton")}
       </button>
     {:else if stage === "talking"}
-      <p class="text-slate-700">
+      <p class="text-ink-soft">
         <b>{t("calibration.listening")}</b>
         {t("calibration.talkingLeft", { seconds: secondsLeft })}
       </p>
     {:else if stage === "done"}
-      <p class="text-slate-700">
+      <p class="text-ink-soft">
         <b>{t("calibration.doneLead")}</b>
         {t("calibration.done")}
       </p>
       <button
-        class="mt-4 rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white"
+        class="mt-4 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-paper shadow-lift"
         onclick={close}
       >
         {t("common.done")}
       </button>
     {:else}
-      <p class="text-slate-700">
+      <p class="text-ink-soft">
         <b>{t("calibration.retryLead")}</b>
         {t("calibration.retry")}
       </p>
       <button
-        class="mt-4 rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white"
+        class="mt-4 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-paper shadow-lift"
         onclick={() => (stage = "intro")}
       >
         {t("calibration.startAgain")}
@@ -239,9 +242,9 @@
     {/if}
 
     {#if sampling}
-      <div class="mt-4 h-2 overflow-hidden rounded-full bg-slate-200">
+      <div class="mt-4 h-2 overflow-hidden rounded-full bg-ink/12">
         <div
-          class="h-full bg-slate-900 transition-[width] duration-100 ease-linear"
+          class="h-full bg-ochre-deep transition-[width] duration-100 ease-linear"
           style="width: {Math.min(100, microphone.rawLevel)}%"
         ></div>
       </div>

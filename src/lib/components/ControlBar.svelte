@@ -51,11 +51,11 @@
   <div class="relative" class:pointer-events-auto={visible}>
     {#if confirmingReset && app.session.running}
       <div
-        class="absolute bottom-full left-1/2 mb-3 flex w-max max-w-[calc(100vw-2rem)] -translate-x-1/2 flex-wrap items-center justify-center gap-2 rounded-2xl bg-white/95 px-4 py-3 text-center shadow-lg"
+        class="absolute bottom-full left-1/2 mb-3 flex w-max max-w-[calc(100vw-2rem)] -translate-x-1/2 flex-wrap items-center justify-center gap-2 rounded-2xl bg-paper px-4 py-3 text-center shadow-panel"
         role="alertdialog"
         aria-label={t("controls.confirmReset")}
       >
-        <span class="px-1 text-sm text-slate-700"
+        <span class="px-1 text-sm text-ink-soft"
           >{t("controls.resetQuestion")}</span
         >
         <button
@@ -65,7 +65,7 @@
           {t("controls.resetYes")}
         </button>
         <button
-          class="rounded-full border border-slate-300 px-4 py-2 text-sm hover:bg-slate-50"
+          class="rounded-full border border-ink/15 px-4 py-2 text-sm text-ink hover:bg-paper-deep"
           onclick={() => (confirmingReset = false)}
         >
           {t("controls.keepGoing")}
@@ -76,19 +76,19 @@
     <!-- On the narrowest phones it wraps onto a second row rather than
          running off the screen. -->
     <div
-      class="flex max-w-[calc(100vw-2rem)] flex-wrap items-center justify-center gap-1.5 rounded-[1.6rem] bg-white/95 px-2 py-2 shadow-lg sm:gap-2 sm:px-3"
+      class="flex max-w-[calc(100vw-2rem)] flex-wrap items-center justify-center gap-1.5 rounded-[1.6rem] bg-paper/95 px-2 py-2 shadow-lift sm:gap-2 sm:px-3"
     >
       {#if !app.session.running}
         <button
-          class="rounded-full bg-slate-900 px-5 py-2 font-medium text-white"
+          class="rounded-full bg-ink px-6 py-2.5 font-semibold text-paper shadow-lift transition hover:bg-ink/90"
           onclick={() => app.startSession()}
         >
           {t("start.button")}
         </button>
       {:else}
         <button
-          class="rounded-full border border-slate-300 px-3 py-2 text-sm hover:bg-slate-50 sm:px-4"
-          class:bg-slate-100={confirmingReset}
+          class="rounded-full border border-ink/15 px-3 py-2 text-sm text-ink transition hover:bg-paper-deep sm:px-4"
+          class:bg-paper-deep={confirmingReset}
           aria-expanded={confirmingReset}
           onclick={() => (confirmingReset = !confirmingReset)}
         >
@@ -97,8 +97,8 @@
         <!-- Just the symbol on a phone, where the bar has no room for a
              fourth word in every language. -->
         <button
-          class="flex items-center gap-1.5 rounded-full border border-slate-300 px-3 py-2 text-sm hover:bg-slate-50 sm:px-4"
-          class:bg-slate-100={app.paused}
+          class="flex items-center gap-1.5 rounded-full border border-ink/15 px-3 py-2 text-sm text-ink transition hover:bg-paper-deep sm:px-4"
+          class:bg-paper-deep={app.paused}
           aria-label={app.paused ? t("controls.resume") : t("controls.pause")}
           title={app.paused ? t("controls.resume") : t("controls.pauseHint")}
           onclick={() => app.setPaused(!app.paused)}
@@ -125,7 +125,7 @@
       {/if}
 
       <button
-        class="rounded-full border border-slate-300 px-3 py-2 text-sm hover:bg-slate-50 sm:px-4"
+        class="rounded-full border border-ink/15 px-3 py-2 text-sm text-ink transition hover:bg-paper-deep sm:px-4"
         onclick={onopensettings}
       >
         {t("controls.settings")}

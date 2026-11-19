@@ -3,7 +3,7 @@
   import PageMeta from "$lib/components/PageMeta.svelte";
   import { t } from "$lib/i18n/index.svelte";
 
-  const card = "mb-6 rounded-2xl bg-white/90 p-6 shadow-lg shadow-amber-900/5";
+  const card = "mb-6 rounded-panel bg-paper p-6 shadow-lift";
   const link = "font-semibold text-teal-700 underline-offset-4 hover:underline";
 </script>
 
@@ -14,7 +14,7 @@
 />
 
 <DocPage title={t("privacy.title")} lede={t("privacy.lede")}>
-  <section class="{card} space-y-4 leading-relaxed text-slate-700">
+  <section class="{card} space-y-4 leading-relaxed text-ink-soft">
     <p>{t("privacy.microphone")}</p>
     <p>{t("privacy.local")}</p>
     <p>

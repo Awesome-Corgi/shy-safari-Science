@@ -27,7 +27,7 @@
   const changing = $derived(tooLoud ? level <= goal : level > goal);
 </script>
 
-<div class="relative overflow-hidden bg-slate-200 {className}">
+<div class="relative overflow-hidden bg-ink/12 {className}">
   <div
     class="h-full transition-[width] duration-100 ease-linear {changing
       ? 'bg-amber-400'
@@ -37,7 +37,7 @@
     style="width:{Math.max(0, Math.min(100, level))}%"
   ></div>
   <div
-    class="pointer-events-none absolute inset-y-0 w-0.5 bg-slate-900"
+    class="pointer-events-none absolute inset-y-0 w-0.5 bg-ink"
     style="left:{goal}%"
   ></div>
 </div>

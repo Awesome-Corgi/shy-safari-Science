@@ -166,12 +166,12 @@
     -->
     <div class="absolute inset-0 z-[2500] grid place-items-center p-4">
       <div
-        class="w-full max-w-xs rounded-2xl bg-white/95 px-4 py-3 text-center shadow-lg"
+        class="w-full max-w-xs rounded-2xl bg-paper px-4 py-3 text-center shadow-panel"
         role="alert"
       >
-        <p class="text-sm font-medium text-slate-900">{t("scene.failed")}</p>
+        <p class="text-sm font-semibold text-ink">{t("scene.failed")}</p>
         <button
-          class="mt-2 rounded-full bg-slate-900 px-4 py-1.5 text-sm font-medium text-white hover:bg-slate-800"
+          class="mt-2 rounded-full bg-ink px-4 py-1.5 text-sm font-semibold text-paper hover:bg-ink/90"
           onclick={() => void retrySceneArt(scene.id)}
         >
           {t("blocked.tryAgain")}

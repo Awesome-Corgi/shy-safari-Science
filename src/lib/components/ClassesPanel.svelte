@@ -59,37 +59,37 @@
 />
 
 <div
-  class="safe-edges absolute inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4"
+  class="safe-edges absolute inset-0 z-50 flex items-center justify-center bg-ink/40 p-4"
   role="presentation"
   onclick={(event) => event.target === event.currentTarget && onclose()}
 >
   <div
-    class="flex max-h-full w-full max-w-md flex-col rounded-xl bg-white shadow-xl"
+    class="rise flex max-h-full w-full max-w-md flex-col rounded-panel bg-paper shadow-panel"
     role="dialog"
     aria-modal="true"
     aria-label={t("classes.edit")}
   >
     <div class="flex items-start justify-between gap-4 p-4 pb-2 sm:p-6 sm:pb-3">
-      <h1 class="text-xl font-semibold text-slate-900">
+      <h1 class="font-display text-2xl font-extrabold tracking-tight text-ink">
         {t("classes.edit")}
       </h1>
       <button
-        class="rounded-md border border-slate-300 px-3 py-1 text-sm hover:bg-slate-50"
+        class="rounded-full border border-ink/15 px-4 py-1.5 text-sm font-medium text-ink hover:bg-paper-deep"
         onclick={onclose}>{t("common.close")}</button
       >
     </div>
 
     <div class="min-h-0 flex-1 overflow-y-auto px-4 pb-4 sm:px-6 sm:pb-6">
-      <p class="text-sm text-slate-500">{t("classes.hint")}</p>
+      <p class="text-sm text-ink-soft">{t("classes.hint")}</p>
 
       <ul class="mt-4 space-y-2">
         {#each classes.all as info (info.id)}
           {@const current = info.id === classes.currentId}
           {@const name = className(info.name)}
           <li
-            class="flex items-center gap-1 rounded-lg border p-1 {current
-              ? 'border-slate-900'
-              : 'border-slate-200'}"
+            class="flex items-center gap-1 rounded-xl border p-1 {current
+              ? 'border-ink'
+              : 'border-ink/12'}"
           >
             {#if renamingId === info.id}
               <form
@@ -97,35 +97,35 @@
                 onsubmit={saveRename}
               >
                 <input
-                  class="min-w-0 flex-1 rounded-md border border-slate-300 px-2 py-1.5"
+                  class="min-w-0 flex-1 rounded-lg border border-ink/15 bg-white px-2 py-1.5"
                   aria-label={t("classes.renameLabel", { name })}
                   maxlength={MAX_NAME_LENGTH}
                   bind:value={renameTo}
                   {@attach focus}
                 />
                 <button
-                  class="rounded-md bg-slate-900 px-3 py-1.5 text-sm font-medium text-white"
+                  class="rounded-full bg-ink px-3.5 py-1.5 text-sm font-semibold text-paper"
                   >{t("classes.save")}</button
                 >
                 <button
                   type="button"
-                  class="rounded-md border border-slate-300 px-3 py-1.5 text-sm hover:bg-slate-50"
+                  class="rounded-full border border-ink/15 px-3.5 py-1.5 text-sm text-ink hover:bg-paper-deep"
                   onclick={() => (renamingId = null)}
                   >{t("common.cancel")}</button
                 >
               </form>
             {:else}
               <div class="flex min-w-0 flex-1 items-center gap-2 px-2 py-1.5">
-                <span class="truncate font-medium text-slate-900">{name}</span>
+                <span class="truncate font-semibold text-ink">{name}</span>
                 {#if current}
                   <span
-                    class="shrink-0 rounded-full bg-slate-900 px-2 py-0.5 text-xs text-white"
+                    class="shrink-0 rounded-full bg-ink px-2 py-0.5 text-xs text-paper"
                     >{t("classes.current")}</span
                   >
                 {/if}
               </div>
               <button
-                class="grid size-9 shrink-0 place-items-center rounded-md text-slate-500 hover:bg-slate-100 hover:text-slate-800"
+                class="grid size-9 shrink-0 place-items-center rounded-lg text-ink-soft hover:bg-paper-deep hover:text-ink"
                 aria-label={t("classes.renameLabel", { name })}
                 title={t("classes.rename")}
                 onclick={() => startRename(info)}
@@ -146,7 +146,7 @@
                 </svg>
               </button>
               <button
-                class="grid size-9 shrink-0 place-items-center rounded-md text-slate-500 hover:bg-rose-50 hover:text-rose-700"
+                class="grid size-9 shrink-0 place-items-center rounded-lg text-ink-soft hover:bg-rose-50 hover:text-rose-700"
                 aria-label={t("classes.deleteLabel", { name })}
                 title={t("classes.delete")}
                 onclick={() => {
@@ -176,20 +176,20 @@
 
       <form class="mt-4 flex gap-2" onsubmit={add}>
         <input
-          class="min-w-0 flex-1 rounded-md border border-slate-300 px-3 py-2"
+          class="min-w-0 flex-1 rounded-lg border border-ink/15 bg-white px-3 py-2"
           aria-label={t("classes.addLabel")}
           placeholder={t("classes.addPlaceholder")}
           maxlength={MAX_NAME_LENGTH}
           bind:value={newName}
         />
         <button
-          class="shrink-0 rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-40"
+          class="shrink-0 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-paper shadow-lift disabled:opacity-40"
           disabled={!newName.trim()}>{t("classes.add")}</button
         >
       </form>
 
       <p
-        class="mt-4 flex gap-2 border-t border-slate-200 pt-4 text-xs text-slate-500"
+        class="mt-4 flex gap-2 border-t border-ink/10 pt-4 text-xs text-ink-soft"
       >
         <svg
           viewBox="0 0 24 24"
@@ -213,13 +213,13 @@
     {@const name = className(deleting.name)}
     <!-- Above the panel, and its backdrop cancels rather than closing both. -->
     <div
-      class="absolute inset-0 z-10 flex items-center justify-center bg-slate-900/40 p-4"
+      class="absolute inset-0 z-10 flex items-center justify-center bg-ink/50 p-4"
       role="presentation"
       onclick={(event) =>
         event.target === event.currentTarget && (deleting = null)}
     >
       <div
-        class="w-full max-w-sm rounded-xl bg-white p-6 shadow-xl"
+        class="rise w-full max-w-sm rounded-panel bg-paper p-6 shadow-panel"
         role="alertdialog"
         aria-modal="true"
         aria-labelledby="delete-class-title"
@@ -227,13 +227,13 @@
       >
         <h2
           id="delete-class-title"
-          class="text-lg font-semibold text-slate-900"
+          class="font-display text-lg font-extrabold tracking-tight text-ink"
         >
           {t("classes.deleteTitle")}
         </h2>
         <div
           id="delete-class-body"
-          class="mt-2 space-y-2 text-sm text-slate-600"
+          class="mt-2 space-y-2 text-sm text-ink-soft"
         >
           <p>{t("classes.deleteBody", { name })}</p>
           {#if classes.all.length === 1}
@@ -243,7 +243,7 @@
         <div class="mt-5 flex flex-wrap justify-end gap-2">
           <!-- Focused first, so a stray Enter keeps the class. -->
           <button
-            class="rounded-full border border-slate-300 px-4 py-2 text-sm hover:bg-slate-50"
+            class="rounded-full border border-ink/15 px-4 py-2 text-sm text-ink hover:bg-paper-deep"
             onclick={() => (deleting = null)}
             {@attach focus}
           >

@@ -100,7 +100,7 @@
       {/if}
     </div>
     <button
-      class="pointer-events-auto grid size-11 shrink-0 place-items-center rounded-full bg-white/95 text-slate-700 shadow-lg transition-opacity duration-300 hover:bg-white"
+      class="pointer-events-auto grid size-11 shrink-0 place-items-center rounded-full bg-paper/95 text-ink-soft shadow-lift transition-opacity duration-300 hover:bg-paper hover:text-ink"
       class:opacity-0={!controlsVisible}
       aria-hidden={!controlsVisible}
       inert={!controlsVisible}

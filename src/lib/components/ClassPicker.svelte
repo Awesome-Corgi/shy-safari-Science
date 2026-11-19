@@ -43,7 +43,7 @@
        prerendered, and a reload should not flash "My class" first. -->
   <button
     type="button"
-    class="flex h-11 w-full max-w-36 items-center gap-2 rounded-full bg-white/95 px-4 text-sm font-medium text-slate-800 shadow-lg transition hover:bg-white sm:max-w-64"
+    class="flex h-11 w-full max-w-36 items-center gap-2 rounded-full bg-paper/95 px-4 text-sm font-semibold text-ink shadow-lift transition hover:bg-paper sm:max-w-64"
     class:invisible={!app.restored}
     aria-expanded={open}
     aria-controls="class-menu"
@@ -53,7 +53,7 @@
   >
     <svg
       viewBox="0 0 24 24"
-      class="size-5 shrink-0 text-slate-600"
+      class="size-5 shrink-0 text-ink-soft"
       fill="none"
       stroke="currentColor"
       stroke-width="2"
@@ -71,7 +71,7 @@
   {#if open}
     <div id="class-menu" class="absolute top-full left-0 z-10 pt-2">
       <div
-        class="w-64 max-w-[calc(100vw-2rem)] rounded-2xl bg-white/95 p-1.5 shadow-lg"
+        class="w-64 max-w-[calc(100vw-2rem)] rounded-2xl bg-paper p-1.5 shadow-panel"
       >
         <ul class="max-h-[50dvh] overflow-y-auto">
           {#each classes.all as info (info.id)}
@@ -79,9 +79,9 @@
             <li>
               <button
                 type="button"
-                class="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left text-sm hover:bg-slate-100 {current
-                  ? 'font-semibold text-slate-900'
-                  : 'text-slate-700'}"
+                class="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left text-sm transition hover:bg-paper-deep {current
+                  ? 'font-semibold text-ink'
+                  : 'text-ink-soft'}"
                 aria-current={current}
                 onclick={() => choose(info.id)}
               >
@@ -106,10 +106,10 @@
             </li>
           {/each}
         </ul>
-        <div class="mx-2 my-1 border-t border-slate-200"></div>
+        <div class="mx-2 my-1 border-t border-ink/10"></div>
         <button
           type="button"
-          class="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left text-sm text-slate-700 hover:bg-slate-100"
+          class="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left text-sm text-ink-soft transition hover:bg-paper-deep"
           onclick={() => {
             open = false;
             onedit();

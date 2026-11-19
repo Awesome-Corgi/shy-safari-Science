@@ -240,19 +240,19 @@
 {#if floatingWindow}
   <!-- The Scene is in the floating window, so nothing is drawn here twice.
        The page behind still listens to the room and keeps every animal. -->
-  <main
-    class="grid h-dvh place-items-center overflow-y-auto bg-slate-900/55 p-4"
-  >
-    <div class="max-w-md rounded-xl bg-white p-6 text-center shadow-xl">
+  <main class="grid h-dvh place-items-center overflow-y-auto bg-ink/55 p-4">
+    <div
+      class="rise max-w-md rounded-panel bg-paper p-6 text-center shadow-panel"
+    >
       <img src={logoUrl} alt="" class="mx-auto mb-3 size-20" />
-      <h1 class="text-2xl font-semibold text-slate-900">
+      <h1 class="font-display text-2xl font-extrabold tracking-tight text-ink">
         {t("floating.title")}
       </h1>
-      <p class="mt-3 text-balance text-slate-700">
+      <p class="mt-3 text-balance text-ink-soft">
         {t("floating.instructions")}
       </p>
       <button
-        class="mt-5 rounded-full bg-slate-900 px-6 py-2.5 font-medium text-white"
+        class="mt-5 rounded-full bg-ink px-6 py-2.5 font-semibold text-paper shadow-lift transition hover:bg-ink/90"
         onclick={closeFloatingWindow}
       >
         {t("floating.return")}
@@ -290,26 +290,28 @@
     {#if !app.listening && !app.blocked}
       <!-- Browsers only hand over a microphone after a real gesture, so the
          Session has to begin with a click either way. -->
-      <div class="absolute inset-0 z-40 overflow-y-auto bg-slate-900/55">
+      <div class="absolute inset-0 z-40 overflow-y-auto bg-ink/55">
         <!-- Scrolls rather than clips, should the card still not fit. -->
         <div
           class="grid min-h-full place-items-center p-4 sm:p-6 short:px-30 short:py-3"
         >
           <div
-            class="max-w-lg rounded-xl bg-white p-6 text-center shadow-xl short:px-6 short:py-4"
+            class="rise max-w-lg rounded-panel bg-paper p-6 text-center shadow-panel short:px-6 short:py-4"
           >
             <img
               src={logoUrl}
               alt=""
               class="mx-auto mb-3 size-24 short:mb-1 short:size-14"
             />
-            <h1 class="text-2xl font-semibold text-slate-900 short:text-xl">
+            <h1
+              class="font-display text-3xl font-extrabold tracking-tight text-ink short:text-2xl"
+            >
               Shy Safari
             </h1>
             <p
-              class="mt-3 rounded-lg bg-amber-50 px-4 py-3 text-balance text-slate-800 short:mt-2 short:py-2 short:text-sm"
+              class="mt-4 rounded-xl bg-paper-deep px-4 py-3 text-balance text-ink-soft short:mt-2 short:py-2 short:text-sm"
             >
-              <span class="block font-medium"
+              <span class="mb-1 block font-semibold text-ink"
                 >{tIn(app.scene.id, "start.shy")}</span
               >
               <!-- Checked after mount: the page is prerendered with the default. -->
@@ -323,14 +325,14 @@
               <SceneSelect {app} />
             </div>
             <button
-              class="mt-4 rounded-full bg-slate-900 px-6 py-2.5 font-medium text-white short:mt-3"
+              class="mt-5 rounded-full bg-ink px-8 py-3 font-semibold text-paper shadow-lift transition hover:bg-ink/90 active:translate-y-px short:mt-3 short:py-2.5"
               onclick={async () => {
                 if (await app.connect()) app.startSession();
               }}
             >
               {t("start.button")}
             </button>
-            <p class="mt-3 text-xs text-slate-500 short:mt-2">
+            <p class="mt-3 text-xs text-ink-soft short:mt-2">
               {t("start.micNote")}
             </p>
           </div>
@@ -362,10 +364,10 @@
         {#if app.listening}
           <button
             class={[
-              "grid size-11 place-items-center rounded-full shadow-lg",
+              "grid size-11 place-items-center rounded-full shadow-lift transition",
               app.timer.open
-                ? "bg-slate-900 text-white"
-                : "bg-white/95 text-slate-700 hover:bg-white",
+                ? "bg-ink text-paper"
+                : "bg-paper/95 text-ink-soft hover:bg-paper hover:text-ink",
             ]}
             aria-pressed={app.timer.open}
             aria-label={t("controls.timer")}
@@ -388,7 +390,7 @@
             </svg>
           </button>
           <button
-            class="grid size-11 place-items-center rounded-full bg-white/95 text-slate-700 shadow-lg hover:bg-white"
+            class="grid size-11 place-items-center rounded-full bg-paper/95 text-ink-soft shadow-lift transition hover:bg-paper hover:text-ink"
             aria-label={t("controls.addText")}
             title={t("controls.addTextHint")}
             onclick={() => notesLayer?.add()}
@@ -408,7 +410,7 @@
           </button>
           {#if canFloat}
             <button
-              class="grid size-11 place-items-center rounded-full bg-white/95 text-slate-700 shadow-lg hover:bg-white"
+              class="grid size-11 place-items-center rounded-full bg-paper/95 text-ink-soft shadow-lift transition hover:bg-paper hover:text-ink"
               aria-label={t("float.open")}
               title={t("float.openHint")}
               onclick={openFloatingWindow}
@@ -438,7 +440,7 @@
         {/if}
         {#if canFullScreen}
           <button
-            class="grid size-11 place-items-center rounded-full bg-white/95 text-slate-700 shadow-lg hover:bg-white"
+            class="grid size-11 place-items-center rounded-full bg-paper/95 text-ink-soft shadow-lift transition hover:bg-paper hover:text-ink"
             aria-label={fullScreen
               ? t("fullScreen.exit")
               : t("fullScreen.enter")}
@@ -526,7 +528,7 @@
         inert={!topBarVisible}
       >
         <button
-          class="grid size-11 place-items-center rounded-full bg-white/95 text-slate-700 shadow-lg hover:bg-white"
+          class="grid size-11 place-items-center rounded-full bg-paper/95 text-ink-soft shadow-lift transition hover:bg-paper hover:text-ink"
           aria-label={t("guide.title")}
           title={t("guide.title")}
           aria-expanded={infoOpen}
@@ -575,7 +577,7 @@
         <div class="pointer-events-auto flex gap-2">
           <ScenePicker {app} bind:open={sceneMenuOpen} />
           <button
-            class="grid size-11 place-items-center rounded-full bg-white/95 text-slate-700 shadow-lg hover:bg-white"
+            class="grid size-11 place-items-center rounded-full bg-paper/95 text-ink-soft shadow-lift transition hover:bg-paper hover:text-ink"
             aria-label={tIn(app.scene.id, "controls.animals")}
             title={tIn(app.scene.id, "controls.animals")}
             onclick={() => (collectionOpen = true)}
@@ -601,7 +603,7 @@
 
     {#if floatError}
       <p
-        class="absolute top-18 right-4 z-40 max-w-xs rounded-2xl bg-white/95 px-4 py-2 text-sm text-slate-800 shadow-lg"
+        class="absolute top-18 right-4 z-40 max-w-xs rounded-2xl bg-paper px-4 py-2 text-sm text-ink shadow-lift"
         role="alert"
       >
         {t("float.failed")}

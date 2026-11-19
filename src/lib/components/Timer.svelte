@@ -256,7 +256,7 @@
   }
 
   const buttonClass =
-    "rounded-full border border-slate-300 px-4 py-2 text-sm hover:bg-slate-50";
+    "rounded-full border border-ink/15 px-4 py-2 text-sm text-ink transition hover:bg-paper-deep";
 </script>
 
 <svelte:window
@@ -269,7 +269,7 @@
      keys. -->
 <section
   bind:this={card}
-  class="timer-card absolute z-30 touch-none rounded-2xl bg-white/95 px-5 pt-11 pb-4 text-center text-slate-900 shadow-xl select-none"
+  class="timer-card absolute z-30 touch-none rounded-2xl bg-paper/95 px-5 pt-11 pb-4 text-center text-ink shadow-panel select-none"
   class:cursor-grab={!dragging}
   class:cursor-grabbing={dragging}
   class:timer-done={timer.status === "done"}
@@ -311,7 +311,7 @@
     ></button>
   </div>
   <button
-    class="absolute top-2 right-2 grid size-8 place-items-center rounded-full text-slate-400 transition-opacity duration-300 hover:bg-slate-100 hover:text-slate-600"
+    class="absolute top-2 right-2 grid size-8 place-items-center rounded-full text-ink-soft transition-opacity duration-300 hover:bg-paper-deep hover:text-ink"
     class:opacity-0={!controlsVisible}
     class:pointer-events-none={!controlsVisible}
     inert={!controlsVisible}
@@ -355,7 +355,7 @@
             onfocus={selectAll}
             onblur={tidy}
           />
-          <span class="text-xs font-medium tracking-normal text-slate-500"
+          <span class="text-xs font-medium tracking-normal text-ink-soft"
             >{t("timer.minutes")}</span
           >
         </label>
@@ -370,7 +370,7 @@
             onfocus={selectAll}
             onblur={tidy}
           />
-          <span class="text-xs font-medium tracking-normal text-slate-500"
+          <span class="text-xs font-medium tracking-normal text-ink-soft"
             >{t("timer.seconds")}</span
           >
         </label>
@@ -392,8 +392,8 @@
             class={[
               "flex min-h-18 flex-col items-center justify-center gap-1 rounded-xl border-2 px-1 py-2 text-xs leading-tight font-medium text-balance",
               chosen
-                ? "border-slate-900 bg-slate-900 text-white"
-                : "border-slate-200 bg-white text-slate-700 hover:border-slate-400",
+                ? "border-ink bg-ink text-paper"
+                : "border-ink/15 bg-white text-ink-soft hover:border-ink/40",
             ]}
             aria-pressed={chosen}
             onclick={(event) => {
@@ -445,7 +445,7 @@
       </div>
       <button
         type="submit"
-        class="mt-4 w-full rounded-full bg-slate-900 px-6 py-2.5 font-medium text-white disabled:opacity-40"
+        class="mt-4 w-full rounded-full bg-ink px-6 py-2.5 font-semibold text-paper shadow-lift disabled:opacity-40"
         disabled={typedMs <= 0}
       >
         {t("timer.start")}
@@ -473,7 +473,7 @@
     <div
       class={timer.style === "digits" ? "timer-digits" : "sr-only"}
       data-timer-face={timer.style === "digits" ? "" : undefined}
-      class:text-slate-400={timer.status === "paused"}
+      class:opacity-60={timer.status === "paused"}
       role="timer"
     >
       {timer.display}
@@ -496,7 +496,7 @@
       {/if}
       <button
         class={timer.status === "done"
-          ? "rounded-full bg-slate-900 px-5 py-2 text-sm font-medium text-white"
+          ? "rounded-full bg-ink px-5 py-2 text-sm font-semibold text-paper shadow-lift"
           : buttonClass}
         onclick={reset}
       >
@@ -514,7 +514,7 @@
   /* The move and resize buttons have nothing to show, so the card lights up
      while one of them has the keyboard. */
   .timer-card:has(:global(.timer-key:focus-visible)) {
-    outline: 3px solid rgb(15 23 42 / 0.6);
+    outline: 3px solid var(--color-ochre);
     outline-offset: 4px;
   }
 
@@ -545,13 +545,13 @@
   .timer-field {
     width: 2.3ch;
     border-radius: 0.5rem;
-    background: rgb(241 245 249);
+    background: var(--color-paper-deep);
     text-align: center;
     font: inherit;
   }
 
   .timer-field:focus {
-    outline: 3px solid rgb(15 23 42 / 0.6);
+    outline: 3px solid var(--color-ochre);
     outline-offset: 2px;
   }
 
@@ -571,7 +571,7 @@
   }
 
   .timer-done {
-    background: rgb(255 251 235 / 0.97);
+    background: var(--color-paper);
     animation: timer-done-glow 1.6s ease-in-out infinite;
   }
 

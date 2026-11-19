@@ -64,22 +64,22 @@
 />
 
 <div
-  class="safe-edges absolute inset-0 z-50 flex items-center justify-center bg-slate-900/40"
+  class="safe-edges absolute inset-0 z-50 flex items-center justify-center bg-ink/40"
   role="presentation"
   onclick={(event) => event.target === event.currentTarget && onclose()}
 >
   <div
-    class="relative flex max-h-full w-full max-w-4xl flex-col rounded-xl bg-white shadow-xl"
+    class="rise relative flex max-h-full w-full max-w-4xl flex-col rounded-panel bg-paper shadow-panel"
     role="dialog"
     aria-modal="true"
     aria-label={t("preview.title")}
   >
     <div class="p-4 pr-12 pb-3 sm:p-6 sm:pr-14 sm:pb-4">
-      <h1 class="text-xl font-semibold text-slate-900">
+      <h1 class="font-display text-2xl font-extrabold tracking-tight text-ink">
         {t("preview.title")}
       </h1>
       <button
-        class="absolute top-3 right-3 grid size-8 place-items-center rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 sm:top-4 sm:right-4"
+        class="absolute top-3 right-3 grid size-8 place-items-center rounded-full text-ink-soft transition hover:bg-paper-deep hover:text-ink sm:top-4 sm:right-4"
         aria-label={t("common.close")}
         title={t("common.close")}
         onclick={onclose}
@@ -103,7 +103,7 @@
     >
       {#each lineup as { slug, day } (slug)}
         <li
-          class="flex min-w-0 flex-col items-center rounded-lg border border-slate-200 p-3 text-center"
+          class="flex min-w-0 flex-col items-center rounded-xl border border-ink/10 p-3 text-center"
         >
           <img
             src={artUrl(`halloween/${slug}`, art?.creatureArt[slug] ?? "")}
@@ -112,10 +112,10 @@
             class="h-28 w-full object-contain sm:h-40"
           />
           <span
-            class="mt-2 max-w-full text-sm font-medium break-words hyphens-auto text-slate-800"
+            class="mt-2 max-w-full text-sm font-medium break-words hyphens-auto text-ink"
             >{creatureName(slug)}</span
           >
-          <span class="text-xs text-slate-500">{unlocks(day)}</span>
+          <span class="text-xs text-ink-soft">{unlocks(day)}</span>
         </li>
       {/each}
     </ul>

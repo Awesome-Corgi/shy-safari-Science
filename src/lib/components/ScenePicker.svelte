@@ -35,10 +35,10 @@
   <button
     type="button"
     class={[
-      "grid size-11 place-items-center rounded-full shadow-lg",
+      "grid size-11 place-items-center rounded-full shadow-lift transition",
       open
-        ? "bg-slate-900 text-white"
-        : "bg-white/95 text-slate-700 hover:bg-white",
+        ? "bg-ink text-paper"
+        : "bg-paper/95 text-ink-soft hover:bg-paper hover:text-ink",
     ]}
     aria-expanded={open}
     aria-controls="scene-menu"

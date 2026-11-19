@@ -146,7 +146,7 @@
 
   {#if selected && toolsAt}
     <div
-      class="pointer-events-auto absolute flex max-w-[calc(100%-1rem)] flex-col items-center gap-1.5 rounded-2xl bg-white/95 p-1.5 shadow-lg transition-opacity duration-300"
+      class="pointer-events-auto absolute flex max-w-[calc(100%-1rem)] flex-col items-center gap-1.5 rounded-2xl bg-paper p-1.5 shadow-lift transition-opacity duration-300"
       class:opacity-0={!chrome}
       class:pointer-events-none={!chrome}
       inert={!chrome}
@@ -161,7 +161,7 @@
            get a row of their own underneath, in Draw. -->
       <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
         <div
-          class="flex rounded-full border border-slate-300 p-0.5 text-sm"
+          class="flex rounded-full border border-ink/15 p-0.5 text-sm"
           role="group"
           aria-label={t("notes.mode")}
         >
@@ -169,8 +169,8 @@
             <button
               class="flex items-center gap-1.5 rounded-full px-3 py-1.5 {mode ===
               option
-                ? 'bg-slate-900 text-white'
-                : 'text-slate-700 hover:bg-slate-100'}"
+                ? 'bg-ink text-paper'
+                : 'text-ink-soft hover:bg-paper-deep'}"
               aria-pressed={mode === option}
               onclick={() => {
                 notes.update(selected.id, { mode: option });
@@ -211,8 +211,8 @@
             >
               <span
                 class="size-6 rounded-full ring-offset-2 {selected.ink === ink
-                  ? 'ring-2 ring-slate-900'
-                  : 'ring-1 ring-slate-900/20 ring-offset-0'}"
+                  ? 'ring-2 ring-ink'
+                  : 'ring-1 ring-ink/25 ring-offset-0'}"
                 style="background:{scene.note.inks[ink]}"
               ></span>
             </button>
@@ -223,7 +223,7 @@
       {#if mode === "draw"}
         <div class="flex flex-wrap justify-center gap-1.5 sm:gap-2">
           <button
-            class="rounded-full border border-slate-300 px-3 py-1.5 text-sm hover:bg-slate-50 disabled:opacity-40"
+            class="rounded-full border border-ink/15 px-3 py-1.5 text-sm text-ink hover:bg-paper-deep disabled:opacity-40"
             disabled={selected.strokes.length === 0}
             onclick={() =>
               notes.update(selected.id, {
@@ -233,7 +233,7 @@
             {t("notes.undo")}
           </button>
           <button
-            class="rounded-full border border-slate-300 px-3 py-1.5 text-sm hover:bg-slate-50 disabled:opacity-40"
+            class="rounded-full border border-ink/15 px-3 py-1.5 text-sm text-ink hover:bg-paper-deep disabled:opacity-40"
             disabled={selected.strokes.length === 0}
             onclick={() => notes.update(selected.id, { strokes: [] })}
           >

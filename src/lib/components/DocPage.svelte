@@ -19,15 +19,15 @@
 </script>
 
 <div
-  class="fixed inset-0 flex flex-col overflow-y-auto bg-gradient-to-b from-amber-50 to-orange-100 text-slate-900"
+  class="fixed inset-0 flex flex-col overflow-y-auto bg-gradient-to-b from-paper to-paper-deep text-ink"
 >
-  <header class="border-b border-amber-200/70 bg-white/70 backdrop-blur-md">
+  <header class="border-b border-ink/10 bg-paper/85">
     <div
       class="mx-auto flex w-full max-w-3xl items-center justify-between gap-4 px-4 py-3"
     >
       <a
         href={resolve("/")}
-        class="flex items-center gap-2 text-lg font-semibold tracking-tight hover:text-slate-600"
+        class="font-display flex items-center gap-2 text-lg font-extrabold tracking-tight text-ink hover:text-ink-soft"
       >
         <img src={logoUrl} alt="" class="size-9" />
         Shy Safari
@@ -35,7 +35,7 @@
       <div class="flex items-center gap-2">
         <a
           href={resolve("/")}
-          class="rounded-lg px-2 py-1 text-sm font-medium text-slate-600 hover:text-slate-900"
+          class="rounded-lg px-2 py-1 text-sm font-medium text-ink-soft hover:text-ink"
           >{t("common.back")}</a
         >
         <LanguagePicker />
@@ -44,30 +44,32 @@
   </header>
 
   <main class="mx-auto w-full max-w-3xl flex-1 px-4 py-8">
-    <h1 class="mb-2 text-3xl font-semibold tracking-tight">{title}</h1>
-    <p class="mb-8 text-slate-600">{lede}</p>
+    <h1
+      class="font-display mb-2 text-3xl font-extrabold tracking-tight text-ink"
+    >
+      {title}
+    </h1>
+    <p class="mb-8 text-ink-soft">{lede}</p>
     {@render children()}
   </main>
 
   <footer
-    class="mx-auto flex w-full max-w-3xl flex-wrap items-center justify-center gap-x-4 gap-y-2 px-4 pb-6 text-center text-sm text-slate-600"
+    class="mx-auto flex w-full max-w-3xl flex-wrap items-center justify-center gap-x-4 gap-y-2 px-4 pb-6 text-center text-sm text-ink-soft"
   >
     <a
       href="https://teacher.dev"
       target="_blank"
       rel="noopener noreferrer"
-      class="flex items-center gap-2 hover:text-slate-900"
+      class="flex items-center gap-2 hover:text-ink"
     >
       <img src={asset("/edtechathon-logo.svg")} alt="" class="size-6" />
       {t("common.builtBy")}
     </a>
-    <a href={resolve("/#how-it-works")} class="hover:text-slate-900"
+    <a href={resolve("/#how-it-works")} class="hover:text-ink"
       >{t("common.howItWorks")}</a
     >
-    <a href={resolve("/about")} class="hover:text-slate-900"
-      >{t("common.about")}</a
-    >
-    <a href={resolve("/privacy")} class="hover:text-slate-900"
+    <a href={resolve("/about")} class="hover:text-ink">{t("common.about")}</a>
+    <a href={resolve("/privacy")} class="hover:text-ink"
       >{t("common.privacy")}</a
     >
   </footer>

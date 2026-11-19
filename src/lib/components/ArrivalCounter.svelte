@@ -17,14 +17,14 @@
 </script>
 
 <div
-  class="flex h-11 items-center gap-2 rounded-full bg-white/95 pr-4 pl-3 text-slate-800 shadow-lg"
+  class="flex h-11 items-center gap-2 rounded-full bg-paper/95 pr-4 pl-3 text-ink shadow-lift"
   role="status"
   aria-label={label}
   title={label}
 >
   <svg
     viewBox="0 0 24 24"
-    class="size-5 shrink-0 text-slate-500"
+    class="size-5 shrink-0 text-ink-soft"
     fill="currentColor"
     aria-hidden="true"
   >
