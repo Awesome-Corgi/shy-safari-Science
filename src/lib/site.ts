@@ -1,11 +1,11 @@
 /**
  * Where Quietly lives on the web, for the few places that need absolute
  * addresses: canonical links, social previews, structured data and the
- * sitemap. The bare domain and the vercel.app one both redirect or duplicate
- * this, so search engines are pointed here and nowhere else.
+ * sitemap. Every older address redirects here, so search engines are pointed
+ * at this one and nowhere else.
  */
 
-export const SITE_URL = "https://www.shysafari.com";
+export const SITE_URL = "https://shy-safari-science.cooltest.workers.dev";
 
 /** Every page a search engine should know about, in sitemap order. */
 export const PAGES = ["/", "/privacy"] as const;

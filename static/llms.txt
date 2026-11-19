@@ -8,9 +8,9 @@ Quietly came out of the EdTech-a-thon and is maintained by teacher.dev. It is fr
 
 ## Pages
 
-- [Quietly](https://www.shysafari.com/): the app itself
-- [How it works](https://www.shysafari.com/#how-it-works): what it does, how to use it in class, how it decides the room is too loud, and answers to common questions
-- [Privacy](https://www.shysafari.com/privacy): what is and is not collected
+- [Quietly](https://shy-safari-science.cooltest.workers.dev/): the app itself
+- [How it works](https://shy-safari-science.cooltest.workers.dev/#how-it-works): what it does, how to use it in class, how it decides the room is too loud, and answers to common questions
+- [Privacy](https://shy-safari-science.cooltest.workers.dev/privacy): what is and is not collected
 
 ## Contact
 
