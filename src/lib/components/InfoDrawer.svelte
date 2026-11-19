@@ -38,7 +38,8 @@
   /** Where focus was before opening, to hand it back on close. */
   let returnFocus: HTMLElement | null = null;
 
-  const heading = "mb-2 text-lg font-bold tracking-tight text-ink";
+  const heading =
+    "font-display mb-2 text-lg font-extrabold tracking-tight text-ink";
   const body = "leading-relaxed text-ink-soft";
 
   const steps: UiKey[] = ["guide.use.open", "guide.use.goal", "guide.use.rate"];
@@ -102,14 +103,28 @@
     <div class="flex items-start justify-between gap-4">
       <h2
         id="how-it-works-title"
-        class="font-display text-2xl font-extrabold tracking-tight text-ink"
+        class="font-display text-3xl font-extrabold tracking-tight text-ink"
       >
         {t("guide.title")}
       </h2>
       <button
-        class="shrink-0 rounded-full border border-ink/15 px-4 py-1.5 text-sm font-medium text-ink hover:bg-paper-deep"
-        onclick={close}>{t("common.close")}</button
+        class="grid size-9 shrink-0 place-items-center rounded-full text-ink-soft transition hover:bg-paper-deep hover:text-ink"
+        aria-label={t("common.close")}
+        title={t("common.close")}
+        onclick={close}
       >
+        <svg
+          viewBox="0 0 24 24"
+          class="size-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
     </div>
     <p class="mt-1 text-ink-soft">{t("guide.lede")}</p>
 
@@ -120,7 +135,9 @@
 
     <section class="mt-6">
       <h3 class={heading}>{t("guide.useTitle")}</h3>
-      <ol class="list-decimal space-y-2 pl-5 {body}">
+      <ol
+        class="list-decimal space-y-2 pl-5 marker:font-semibold marker:text-ochre-deep {body}"
+      >
         {#each steps as step (step)}
           <li>{t(step)}</li>
         {/each}
@@ -136,7 +153,7 @@
     <section class="mt-6">
       <h3 class={heading}>{t("guide.tooLoudTitle")}</h3>
       <p class="mb-3 {body}">{t("guide.tooLoud")}</p>
-      <ul class="list-disc space-y-2 pl-5 {body}">
+      <ul class="list-disc space-y-2 pl-5 marker:text-ochre-deep {body}">
         <li>{t("guide.tooLoud.flee")}</li>
         <li>{t("guide.tooLoud.pause")}</li>
       </ul>

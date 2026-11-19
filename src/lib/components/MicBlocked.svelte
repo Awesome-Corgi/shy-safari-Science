@@ -25,7 +25,7 @@
   class="safe-edges absolute inset-0 z-50 grid place-items-center overflow-y-auto bg-ink/70"
 >
   <div class="rise w-full max-w-lg rounded-panel bg-paper p-6 shadow-panel">
-    <h1 class="font-display text-2xl font-extrabold tracking-tight text-ink">
+    <h1 class="font-display text-3xl font-extrabold tracking-tight text-ink">
       {tIn(app.scene.id, "blocked.title")}
     </h1>
     <p class="mt-3 text-ink-soft">{message}</p>
@@ -34,7 +34,7 @@
       <label class="mt-5 block text-sm font-semibold text-ink">
         {t("settings.microphone")}
         <select
-          class="mt-1 w-full rounded-xl border border-ink/15 bg-white px-3 py-2 font-normal"
+          class="mt-1 w-full rounded-xl bg-paper-deep px-3 py-2 font-normal"
           value={settings.deviceId}
           onchange={(event) => app.selectDevice(event.currentTarget.value)}
         >
@@ -48,7 +48,7 @@
       </label>
 
       <button
-        class="mt-5 rounded-full bg-ink px-5 py-2.5 font-semibold text-paper shadow-lift transition hover:bg-ink/90"
+        class="mt-5 w-full rounded-full bg-ink px-6 py-3 font-semibold text-paper shadow-lift transition hover:bg-ink/90"
         onclick={() => app.connect()}
       >
         {t("blocked.tryAgain")}

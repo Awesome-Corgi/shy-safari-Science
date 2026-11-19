@@ -137,7 +137,7 @@
     >
       <div class="mr-auto">
         <h1
-          class="font-display text-2xl font-extrabold tracking-tight text-ink"
+          class="font-display text-3xl font-extrabold tracking-tight text-ink"
         >
           {tIn(sceneId, "collection.title")}
         </h1>
@@ -159,10 +159,10 @@
       >
         {#each tabs as option (option.id)}
           <button
-            class="rounded-full border px-3 py-1 whitespace-nowrap transition {sceneId ===
+            class="rounded-full px-3.5 py-1.5 whitespace-nowrap transition {sceneId ===
             option.id
-              ? 'border-ink bg-ink text-paper'
-              : 'border-ink/15 text-ink-soft hover:bg-paper-deep'}"
+              ? 'bg-ink text-paper shadow-lift'
+              : 'bg-paper-deep/60 text-ink-soft hover:bg-paper-deep hover:text-ink'}"
             aria-pressed={sceneId === option.id}
             onclick={() => (sceneId = option.id)}
             >{t(`scene.${option.id}.name`)}</button
@@ -195,7 +195,7 @@
         {#if defs.length > 0}
           <section class="mt-4 first:mt-0">
             <h2
-              class="flex items-center gap-1.5 text-xs font-semibold tracking-[0.14em] text-ink-soft uppercase"
+              class="flex items-center gap-1.5 text-[0.7rem] font-bold tracking-[0.16em] text-ink-soft uppercase"
             >
               {t(`tier.${tier}`)}
               <span class="group relative normal-case">
@@ -223,16 +223,16 @@
               </span>
             </h2>
             <ul
-              class="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6"
+              class="mt-3 grid grid-cols-3 gap-2.5 sm:grid-cols-4 md:grid-cols-6"
             >
               {#each defs as def (def.slug)}
                 {@const count = sightings.count(sceneId, def.slug)}
                 {#if locked.has(def.slug)}
                   <li
-                    class="flex min-w-0 flex-col items-center justify-center rounded-xl border border-dashed border-ink/20 bg-paper-deep/60 p-2 text-center"
+                    class="flex min-w-0 flex-col items-center justify-center rounded-xl border border-dashed border-ink/15 bg-paper-deep/30 p-2 text-center"
                   >
                     <div
-                      class="flex h-12 w-full items-center justify-center text-3xl font-semibold text-ink/25"
+                      class="flex h-14 w-full items-center justify-center text-3xl font-semibold text-ink/25"
                       aria-hidden="true"
                     >
                       ?
@@ -246,13 +246,13 @@
                   <!-- A Creature with a fact to tell shows it on hover. -->
                   <li
                     title={creatureFact(def.slug)}
-                    class="flex min-w-0 flex-col items-center rounded-xl border p-2 text-center {tier ===
+                    class="flex min-w-0 flex-col items-center rounded-xl p-2 text-center transition {tier ===
                     'rare'
-                      ? 'border-ochre/45 bg-paper-deep'
-                      : 'border-ink/10'}"
+                      ? 'bg-ochre/12'
+                      : 'bg-paper-deep/50'}"
                   >
                     <div
-                      class="flex h-12 w-full items-center justify-center"
+                      class="flex h-14 w-full items-center justify-center"
                       class:unseen={count === 0}
                     >
                       {#if art}
@@ -279,7 +279,7 @@
                     </span>
                     {#if def.slug === newToday}
                       <span
-                        class="mt-1 rounded-full bg-orange-100 px-2 py-px text-[0.7rem] font-semibold text-orange-800"
+                        class="mt-1 rounded-full bg-ochre-deep px-2 py-px text-[0.7rem] font-semibold text-paper"
                         >{t("collection.newToday")}</span
                       >
                     {/if}

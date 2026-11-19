@@ -393,7 +393,7 @@
               "flex min-h-18 flex-col items-center justify-center gap-1 rounded-xl border-2 px-1 py-2 text-xs leading-tight font-medium text-balance",
               chosen
                 ? "border-ink bg-ink text-paper"
-                : "border-ink/15 bg-white text-ink-soft hover:border-ink/40",
+                : "bg-paper-deep/60 text-ink-soft ring-1 ring-ink/12 hover:bg-paper-deep",
             ]}
             aria-pressed={chosen}
             onclick={(event) => {

@@ -55,15 +55,15 @@
   }}
 />
 
-<div class="relative mx-auto w-72 max-w-full" bind:this={container}>
+<div class="relative w-full" bind:this={container}>
   <!-- A Scene is always shown, even before the saved one is known. The page
        is prerendered with the default, and hiding it until hydration left a
        blank pill that looked broken and could not be opened. -->
   <button
     type="button"
     class={[
-      "relative flex w-full items-center gap-3 rounded-2xl border bg-white py-1.5 pr-3 pl-2 text-left text-sm transition hover:bg-paper-deep",
-      open ? "border-ink" : "border-ink/15",
+      "relative flex w-full items-center gap-3 rounded-2xl bg-paper-deep/70 py-2 pr-3 pl-2.5 text-left transition hover:bg-paper-deep",
+      open && "bg-paper-deep ring-1 ring-ink/35",
     ]}
     aria-expanded={open}
     aria-controls="start-scene-menu"
@@ -73,9 +73,9 @@
     onclick={toggle}
   >
     <span class="flex min-w-0 flex-1 items-center gap-3">
-      <img src={app.scene.icon} alt="" class="size-9 shrink-0" />
+      <img src={app.scene.icon} alt="" class="size-10 shrink-0" />
       <span class="min-w-0 flex-1">
-        <span class="block font-semibold text-ink"
+        <span class="block text-[0.95rem] font-semibold text-ink"
           >{t(`scene.${app.scene.id}.name` as UiKey)}</span
         >
         <span class="block truncate text-xs text-ink-soft"
@@ -85,7 +85,10 @@
     </span>
     <svg
       viewBox="0 0 24 24"
-      class={["size-4 shrink-0 text-ink-soft transition", open && "rotate-180"]}
+      class={[
+        "size-4 shrink-0 text-ochre-deep transition",
+        open && "rotate-180",
+      ]}
       fill="none"
       stroke="currentColor"
       stroke-width="2.5"

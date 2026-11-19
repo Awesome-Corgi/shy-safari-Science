@@ -5,7 +5,8 @@
   import { t } from "$lib/i18n/index.svelte";
 
   const card = "mb-6 rounded-panel bg-paper p-6 shadow-lift";
-  const link = "font-semibold text-teal-700 underline-offset-4 hover:underline";
+  const link =
+    "font-semibold text-teal-deep underline-offset-4 hover:underline";
 </script>
 
 <PageMeta
@@ -64,7 +65,7 @@
 
   <section class={card}>
     <h2 class="mb-3 text-xl font-semibold">{t("about.feedbackTitle")}</h2>
-    <p class="mb-4 leading-relaxed text-slate-700">{t("about.feedback")}</p>
+    <p class="mb-4 leading-relaxed text-ink-soft">{t("about.feedback")}</p>
     <a
       href="mailto:support@teacher.dev?subject=Shy%20Safari%20feedback"
       class="inline-block rounded-full bg-ink px-5 py-2 font-semibold text-paper shadow-lift transition hover:bg-ink/90"

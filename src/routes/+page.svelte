@@ -290,30 +290,33 @@
     {#if !app.listening && !app.blocked}
       <!-- Browsers only hand over a microphone after a real gesture, so the
          Session has to begin with a click either way. -->
-      <div class="absolute inset-0 z-40 overflow-y-auto bg-ink/55">
+      <div class="absolute inset-0 z-40 overflow-y-auto bg-ink/35">
         <!-- Scrolls rather than clips, should the card still not fit. -->
         <div
           class="grid min-h-full place-items-center p-4 sm:p-6 short:px-30 short:py-3"
         >
+          <!-- One sheet, laid on the Scene: what this place asks of the room,
+               which place it is, and the single button that begins. The
+               nested box and the divided hint that used to sit here made the
+               card read as a form; the words now carry their own weight. -->
           <div
-            class="rise max-w-lg rounded-panel bg-paper p-6 text-center shadow-panel short:px-6 short:py-4"
+            class="rise w-full max-w-md rounded-panel bg-paper px-6 py-8 text-center shadow-panel sm:px-8 sm:py-10 short:px-6 short:py-4"
           >
-            <img
-              src={logoUrl}
-              alt=""
-              class="mx-auto mb-3 size-24 short:mb-1 short:size-14"
-            />
+            <img src={logoUrl} alt="" class="mx-auto size-24 short:size-14" />
             <h1
-              class="font-display text-3xl font-extrabold tracking-tight text-ink short:text-2xl"
+              class="font-display mt-5 text-[2.5rem] leading-none font-extrabold tracking-[-0.03em] text-ink short:mt-2 short:text-2xl"
             >
               Shy Safari
             </h1>
+            <div
+              class="mx-auto mt-6 h-0.5 w-10 rounded-full bg-ochre/60 short:hidden"
+            ></div>
             <p
-              class="mt-4 rounded-xl bg-paper-deep px-4 py-3 text-balance text-ink-soft short:mt-2 short:py-2 short:text-sm"
+              class="mt-4 text-lg leading-snug font-semibold text-balance text-ink short:mt-2 short:text-base"
             >
-              <span class="mb-1 block font-semibold text-ink"
-                >{tIn(app.scene.id, "start.shy")}</span
-              >
+              {tIn(app.scene.id, "start.shy")}
+            </p>
+            <p class="mt-2 text-balance text-ink-soft short:mt-1 short:text-sm">
               <!-- Checked after mount: the page is prerendered with the default. -->
               {#if app.restored && settings.loudResponse === "pause"}
                 {tIn(app.scene.id, "start.explain")}
@@ -321,18 +324,18 @@
                 {tIn(app.scene.id, "start.explainFlee")}
               {/if}
             </p>
-            <div class="mt-5 short:mt-3">
+            <div class="mt-7 short:mt-3">
               <SceneSelect {app} />
             </div>
             <button
-              class="mt-5 rounded-full bg-ink px-8 py-3 font-semibold text-paper shadow-lift transition hover:bg-ink/90 active:translate-y-px short:mt-3 short:py-2.5"
+              class="mt-5 w-full rounded-full bg-ink px-8 py-3.5 text-base font-semibold text-paper shadow-lift transition hover:bg-ink/90 active:translate-y-px short:mt-3 short:py-2.5"
               onclick={async () => {
                 if (await app.connect()) app.startSession();
               }}
             >
               {t("start.button")}
             </button>
-            <p class="mt-3 text-xs text-ink-soft short:mt-2">
+            <p class="mt-4 text-xs leading-relaxed text-ink-soft short:mt-2">
               {t("start.micNote")}
             </p>
           </div>

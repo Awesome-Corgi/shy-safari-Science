@@ -30,10 +30,10 @@
 <div class="relative overflow-hidden bg-ink/12 {className}">
   <div
     class="h-full transition-[width] duration-100 ease-linear {changing
-      ? 'bg-amber-400'
+      ? 'bg-accent-yellow'
       : tooLoud
-        ? 'bg-rose-400'
-        : 'bg-emerald-400'}"
+        ? 'bg-accent-red'
+        : 'bg-accent-teal'}"
     style="width:{Math.max(0, Math.min(100, level))}%"
   ></div>
   <div

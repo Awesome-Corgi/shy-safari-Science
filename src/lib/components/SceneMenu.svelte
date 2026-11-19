@@ -67,12 +67,12 @@
               >
               {#if isLimited(scene.id)}
                 <span
-                  class="inline-flex h-[1.125rem] shrink-0 items-center rounded-full bg-orange-100 px-2 pt-px text-[0.625rem] leading-none font-semibold tracking-wide whitespace-nowrap text-orange-800 uppercase"
+                  class="inline-flex h-[1.125rem] shrink-0 items-center rounded-full bg-ink/10 px-2 pt-px text-[0.625rem] leading-none font-semibold tracking-wide whitespace-nowrap text-ink-soft uppercase"
                   >{t("hollow.limited")}</span
                 >
               {:else if fresh.includes(scene.id)}
                 <span
-                  class="inline-flex h-[1.125rem] shrink-0 items-center rounded-full bg-sky-100 px-2 pt-px text-[0.625rem] leading-none font-semibold tracking-wide whitespace-nowrap text-sky-800 uppercase"
+                  class="inline-flex h-[1.125rem] shrink-0 items-center rounded-full bg-ochre-deep px-2 pt-px text-[0.625rem] leading-none font-semibold tracking-wide whitespace-nowrap text-paper uppercase"
                   >{t("scene.new")}</span
                 >
               {/if}

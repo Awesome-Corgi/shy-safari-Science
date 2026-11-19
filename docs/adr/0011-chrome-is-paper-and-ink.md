@@ -33,6 +33,23 @@ instead of Chrome's defaults.
 - **Redesigning the artwork to match.** Out of scope: the drawings are the
   product's identity (ADR 0002), not chrome.
 
+## The sheet and the scale
+
+A second pass tightened the composition rather than the palette. The start
+screen is now one sheet with a real scale: the title at display size, the
+Scene's own line as the lead, a short ochre rule, the Scene plate, and a
+full-width primary button. The nested `bg-paper-deep` box that held the hint
+is gone (a card inside a card read as a form), the scrim over the artwork
+lightened from 55% to 35% so the savanna, the reef and deep space keep their
+colour behind it, and the panel headings across Settings, the guide, Animals
+and Classes grew to `text-3xl` with one shared label treatment.
+
+The control bar became a single pill: one filled primary action, quiet text
+buttons for the rest, a hairline between them. The meter's green, amber and
+red are now the creature palette's own teal, yellow and red rather than
+Tailwind's defaults, so the one place the app is allowed to shout uses the
+same colours as the animals.
+
 ## Consequences
 
 `layout.css` gains the paper/ink tokens, two shadow tokens, a panel radius, the

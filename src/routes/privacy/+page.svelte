@@ -4,7 +4,8 @@
   import { t } from "$lib/i18n/index.svelte";
 
   const card = "mb-6 rounded-panel bg-paper p-6 shadow-lift";
-  const link = "font-semibold text-teal-700 underline-offset-4 hover:underline";
+  const link =
+    "font-semibold text-teal-deep underline-offset-4 hover:underline";
 </script>
 
 <PageMeta

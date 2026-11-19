@@ -59,13 +59,13 @@
           >{t("controls.resetQuestion")}</span
         >
         <button
-          class="rounded-full bg-rose-600 px-4 py-2 text-sm font-medium text-white"
+          class="rounded-full bg-danger px-4 py-2 text-sm font-semibold text-paper hover:bg-danger/90"
           onclick={reset}
         >
           {t("controls.resetYes")}
         </button>
         <button
-          class="rounded-full border border-ink/15 px-4 py-2 text-sm text-ink hover:bg-paper-deep"
+          class="rounded-full px-4 py-2 text-sm text-ink-soft hover:bg-paper-deep hover:text-ink"
           onclick={() => (confirmingReset = false)}
         >
           {t("controls.keepGoing")}
@@ -75,20 +75,23 @@
 
     <!-- On the narrowest phones it wraps onto a second row rather than
          running off the screen. -->
+    <!-- One pill, not a row of boxes: the primary action is the only thing
+         filled, everything else stays quiet until it is pointed at. -->
     <div
-      class="flex max-w-[calc(100vw-2rem)] flex-wrap items-center justify-center gap-1.5 rounded-[1.6rem] bg-paper/95 px-2 py-2 shadow-lift sm:gap-2 sm:px-3"
+      class="flex max-w-[calc(100vw-2rem)] flex-wrap items-center justify-center gap-0.5 rounded-full bg-paper/95 py-1.5 pr-1.5 pl-2.5 shadow-lift"
     >
       {#if !app.session.running}
         <button
-          class="rounded-full bg-ink px-6 py-2.5 font-semibold text-paper shadow-lift transition hover:bg-ink/90"
+          class="rounded-full bg-ink px-7 py-2.5 font-semibold text-paper shadow-lift transition hover:bg-ink/90"
           onclick={() => app.startSession()}
         >
           {t("start.button")}
         </button>
       {:else}
         <button
-          class="rounded-full border border-ink/15 px-3 py-2 text-sm text-ink transition hover:bg-paper-deep sm:px-4"
+          class="rounded-full px-3.5 py-2 text-sm font-medium text-ink-soft transition hover:bg-paper-deep hover:text-ink sm:px-4"
           class:bg-paper-deep={confirmingReset}
+          class:text-ink={confirmingReset}
           aria-expanded={confirmingReset}
           onclick={() => (confirmingReset = !confirmingReset)}
         >
@@ -97,8 +100,9 @@
         <!-- Just the symbol on a phone, where the bar has no room for a
              fourth word in every language. -->
         <button
-          class="flex items-center gap-1.5 rounded-full border border-ink/15 px-3 py-2 text-sm text-ink transition hover:bg-paper-deep sm:px-4"
+          class="flex items-center gap-1.5 rounded-full px-3.5 py-2 text-sm font-medium text-ink-soft transition hover:bg-paper-deep hover:text-ink sm:px-4"
           class:bg-paper-deep={app.paused}
+          class:text-ink={app.paused}
           aria-label={app.paused ? t("controls.resume") : t("controls.pause")}
           title={app.paused ? t("controls.resume") : t("controls.pauseHint")}
           onclick={() => app.setPaused(!app.paused)}
@@ -124,8 +128,10 @@
         </button>
       {/if}
 
+      <!-- A hairline, so the quiet actions read as one group. -->
+      <span class="mx-1 h-5 w-px bg-ink/12" aria-hidden="true"></span>
       <button
-        class="rounded-full border border-ink/15 px-3 py-2 text-sm text-ink transition hover:bg-paper-deep sm:px-4"
+        class="rounded-full px-3.5 py-2 text-sm font-medium text-ink-soft transition hover:bg-paper-deep hover:text-ink sm:px-4"
         onclick={onopensettings}
       >
         {t("controls.settings")}

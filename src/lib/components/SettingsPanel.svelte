@@ -51,23 +51,37 @@
     aria-label={t("settings.title")}
   >
     <div class="flex items-start justify-between">
-      <h1 class="font-display text-2xl font-extrabold tracking-tight text-ink">
+      <h1 class="font-display text-3xl font-extrabold tracking-tight text-ink">
         {t("settings.title")}
       </h1>
       <button
-        class="rounded-full border border-ink/15 px-4 py-1.5 text-sm font-medium text-ink hover:bg-paper-deep"
-        onclick={onclose}>{t("common.close")}</button
+        class="grid size-9 shrink-0 place-items-center rounded-full text-ink-soft transition hover:bg-paper-deep hover:text-ink"
+        aria-label={t("common.close")}
+        title={t("common.close")}
+        onclick={onclose}
       >
+        <svg
+          viewBox="0 0 24 24"
+          class="size-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
     </div>
 
     <section class="mt-6 space-y-3">
       <h2
-        class="text-xs font-semibold tracking-[0.14em] text-ink-soft uppercase"
+        class="text-[0.7rem] font-bold tracking-[0.16em] text-ink-soft uppercase"
       >
         {t("settings.microphone")}
       </h2>
       <select
-        class="w-full rounded-xl border border-ink/15 bg-white px-3 py-2"
+        class="w-full rounded-xl bg-paper-deep px-3 py-2 text-ink"
         value={settings.deviceId}
         onchange={(event) => app.selectDevice(event.currentTarget.value)}
       >
@@ -98,7 +112,7 @@
     <section class="mt-6 space-y-3">
       <div class="flex items-center justify-between gap-3">
         <h2
-          class="text-xs font-semibold tracking-[0.14em] text-ink-soft uppercase"
+          class="text-[0.7rem] font-bold tracking-[0.16em] text-ink-soft uppercase"
         >
           {t("settings.meter")}
         </h2>
@@ -119,7 +133,7 @@
             aria-hidden="true"
           >
             <span
-              class="absolute top-0.5 left-0.5 size-4 rounded-full bg-white shadow-sm transition-transform {settings.showMeter
+              class="absolute top-0.5 left-0.5 size-4 rounded-full bg-paper shadow-sm transition-transform {settings.showMeter
                 ? 'translate-x-4'
                 : ''}"
             ></span>
@@ -136,10 +150,10 @@
       <div class="grid grid-cols-3 gap-2">
         {#each goalPresets as [key] (key)}
           <button
-            class="rounded-xl border px-2.5 py-2 text-left text-sm {settings.volumeGoalPreset ===
+            class="rounded-xl px-3 py-2.5 text-left text-sm transition {settings.volumeGoalPreset ===
             key
-              ? 'border-ink bg-ink text-paper'
-              : 'border-ink/15 text-ink hover:bg-paper-deep'}"
+              ? 'bg-ink text-paper shadow-lift'
+              : 'bg-paper-deep/70 text-ink hover:bg-paper-deep'}"
             onclick={() => settings.useVolumeGoalPreset(key)}
           >
             <span class="block font-semibold"
@@ -161,17 +175,17 @@
 
     <section class="mt-6 space-y-3">
       <h2
-        class="text-xs font-semibold tracking-[0.14em] text-ink-soft uppercase"
+        class="text-[0.7rem] font-bold tracking-[0.16em] text-ink-soft uppercase"
       >
         {t("settings.tooLoud")}
       </h2>
       <div class="grid grid-cols-2 gap-2">
         {#each LOUD_RESPONSES as key (key)}
           <button
-            class="rounded-xl border px-2.5 py-2 text-left text-sm {settings.loudResponse ===
+            class="rounded-xl px-3 py-2.5 text-left text-sm transition {settings.loudResponse ===
             key
-              ? 'border-ink bg-ink text-paper'
-              : 'border-ink/15 text-ink hover:bg-paper-deep'}"
+              ? 'bg-ink text-paper shadow-lift'
+              : 'bg-paper-deep/70 text-ink hover:bg-paper-deep'}"
             onclick={() => (settings.loudResponse = key)}
           >
             <span class="block font-semibold"
@@ -187,17 +201,17 @@
 
     <section class="mt-6 space-y-3">
       <h2
-        class="text-xs font-semibold tracking-[0.14em] text-ink-soft uppercase"
+        class="text-[0.7rem] font-bold tracking-[0.16em] text-ink-soft uppercase"
       >
         {tIn(app.scene.id, "settings.arrival")}
       </h2>
       <div class="grid grid-cols-3 gap-2">
         {#each ratePresets as [key, preset] (key)}
           <button
-            class="rounded-xl border px-2.5 py-2 text-left text-sm {settings.arrivalRatePreset ===
+            class="rounded-xl px-3 py-2.5 text-left text-sm transition {settings.arrivalRatePreset ===
             key
-              ? 'border-ink bg-ink text-paper'
-              : 'border-ink/15 text-ink hover:bg-paper-deep'}"
+              ? 'bg-ink text-paper shadow-lift'
+              : 'bg-paper-deep/70 text-ink hover:bg-paper-deep'}"
             onclick={() => settings.useArrivalRatePreset(key)}
           >
             <span class="block font-semibold">{t(`rate.${key}`)}</span>
@@ -217,10 +231,10 @@
           max={MAX_ARRIVAL_MINUTES}
           step="1"
           value={settings.arrivalMinutes}
-          class="w-20 rounded-lg border px-2 py-1 text-ink tabular-nums {settings.arrivalRatePreset ===
+          class="w-20 rounded-lg px-2 py-1 text-ink tabular-nums {settings.arrivalRatePreset ===
           'custom'
-            ? 'border-ink'
-            : 'border-ink/15'}"
+            ? 'bg-paper-deep ring-2 ring-ink/50'
+            : 'bg-paper-deep/60'}"
           oninput={(event) => {
             // Apply as the teacher types, but leave a half-typed or
             // out-of-range value alone until they finish.
@@ -252,7 +266,7 @@
 
     <section class="mt-6 space-y-3">
       <h2
-        class="text-xs font-semibold tracking-[0.14em] text-ink-soft uppercase"
+        class="text-[0.7rem] font-bold tracking-[0.16em] text-ink-soft uppercase"
       >
         {t("settings.tryIt")}
       </h2>

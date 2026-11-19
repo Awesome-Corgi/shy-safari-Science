@@ -36,13 +36,13 @@
     </span>
     <span
       class="flex items-center gap-1.5 truncate font-medium {tooLoud
-        ? 'text-rose-800'
-        : 'text-emerald-800'}"
+        ? 'text-danger'
+        : 'text-teal-deep'}"
     >
       <span
         class="size-2 shrink-0 rounded-full {tooLoud
-          ? 'bg-rose-500'
-          : 'bg-emerald-500'}"
+          ? 'bg-accent-red'
+          : 'bg-accent-teal'}"
         aria-hidden="true"
       ></span>
       <span class="truncate"

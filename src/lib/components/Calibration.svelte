@@ -128,7 +128,7 @@
     {#if !ready}
       <p class="text-xs text-ink-soft">{t("calibration.needMic")}</p>
     {:else if calibration}
-      <p class="text-xs font-medium text-emerald-700">
+      <p class="text-xs font-medium text-teal-deep">
         {t("calibration.calibrated")}
       </p>
     {:else}
@@ -248,7 +248,7 @@
           style="width: {Math.min(100, microphone.rawLevel)}%"
         ></div>
       </div>
-      <p class="mt-1 text-xs text-slate-500">{t("calibration.hears")}</p>
+      <p class="mt-1 text-xs text-ink-soft">{t("calibration.hears")}</p>
     {/if}
   </div>
 </dialog>

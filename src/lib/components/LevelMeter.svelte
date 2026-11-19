@@ -35,8 +35,8 @@
     <span class="text-sm font-medium text-ink-soft">{t("meter.current")}</span>
     <span
       class="rounded-full px-3 py-1 text-sm font-semibold {tooLoud
-        ? 'bg-rose-100 text-rose-800'
-        : 'bg-emerald-100 text-emerald-800'}"
+        ? 'bg-accent-red/15 text-danger'
+        : 'bg-accent-teal/25 text-teal-deep'}"
       aria-live="polite"
     >
       {tooLoud ? tIn(sceneId, "meter.paused") : tIn(sceneId, "meter.arriving")}
