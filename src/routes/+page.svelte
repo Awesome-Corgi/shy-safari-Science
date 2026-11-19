@@ -274,6 +274,7 @@
         scares={settings.loudResponse === "flee"}
         fleeing={app.session.fleeing}
         ondepart={(id) => app.session.depart(id)}
+        canRetry={app.listening}
       />
       <!-- Over the Scene, so the animals pass behind the words. Keyed by
          Class, so nothing stays chosen from the last class's Notes. -->

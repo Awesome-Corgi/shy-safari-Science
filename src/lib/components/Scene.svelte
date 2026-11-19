@@ -33,6 +33,7 @@
     scares,
     fleeing,
     ondepart,
+    canRetry = true,
   }: {
     scene: SceneDef;
     creatures: CreatureInstance[];
@@ -54,6 +55,13 @@
     fleeing: number[];
     /** A fleeing Creature has run out of sight, or faded away. */
     ondepart: (id: number) => void;
+    /**
+     * Whether the stage may offer to fetch its drawings again. False while the
+     * start card, or the blocked-microphone card, covers the stage: the button
+     * would sit behind it where the teacher cannot press it. Starting the
+     * Session brings the offer up.
+     */
+    canRetry?: boolean;
   } = $props();
 
   /** One the Scene answers to is here, or has just come. */
@@ -148,11 +156,13 @@
     {/if}
   {/if}
 
-  {#if failed}
+  {#if failed && canRetry}
     <!--
       The drawings never arrived, even after the automatic retries. Above the
       veil, so a loud room cannot dim the one thing that needs reading; the
-      teacher is the only one who can do anything about it.
+      teacher is the only one who can do anything about it. Waiting for the
+      start card to be out of the way, since it covers this and would swallow
+      the button.
     -->
     <div class="absolute inset-0 z-[2500] grid place-items-center p-4">
       <div
