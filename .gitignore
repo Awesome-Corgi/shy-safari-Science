@@ -16,6 +16,9 @@ dist
 .scratch/
 build
 
+# Screenshots and scratch captures from agent sessions.
+artifacts/
+
 # Wrangler local state
 .wrangler
 

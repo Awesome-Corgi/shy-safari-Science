@@ -80,9 +80,10 @@ bun run build && bunx wrangler dev   # the built site, served the way Cloudflare
 
 The site is hosted on Cloudflare Workers as static assets (`wrangler.jsonc`), with
 `static/_redirects` and `static/_headers` for redirects and caching.
-`qui-et.pages.dev` is the canonical origin, and the old addresses redirect to
-it; keep it that way, because every class's settings and notes live in that
-origin's localStorage.
+`qui-et.pages.dev` is the canonical origin; keep it that way, because every
+class's settings and notes live in that origin's localStorage, and a different
+origin starts empty. The name and that choice are recorded in
+[docs/adr/0013](docs/adr/0013-the-name-is-qui-et.md).
 
 Cloudflare Web Analytics is added to the build only when `CF_BEACON_TOKEN` is
 set, which it is only as a build variable on the production Cloudflare build.

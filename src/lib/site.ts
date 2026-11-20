@@ -1,8 +1,8 @@
 /**
  * Where qui-et lives on the web, for the few places that need absolute
  * addresses: canonical links, social previews, structured data and the
- * sitemap. Every older address redirects here, so search engines are pointed
- * at this one and nowhere else.
+ * sitemap. Search engines are pointed at this one and nowhere else, so change
+ * it rarely: settings and Notes are saved per origin (ADR 0013).
  */
 
 export const SITE_URL = "https://qui-et.pages.dev";
