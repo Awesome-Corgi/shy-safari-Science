@@ -4,9 +4,9 @@ import { sveltekit } from "@sveltejs/kit/vite";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  server: {
-    allowedHosts: ["class-noise-level.edtechathon.com"],
-  },
+  // Dev-server host names come from `__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS`,
+  // set by whatever starts the server (see README), so no host is baked in
+  // here.
   // Expose the Cloudflare Web Analytics token (set only as a build variable on
   // the production Cloudflare build) to client code.
   envPrefix: ["VITE_", "CF_BEACON_TOKEN"],

@@ -3,7 +3,7 @@
   "name": "qui-et",
   "compatibility_date": "2026-11-01",
   // Static assets only: no Worker script runs, so requests are free and unlimited.
-  // static/_redirects and static/_headers carry the rest of the old vercel.json.
+  // static/_redirects and static/_headers carry the redirects and cache rules.
   "assets": {
     "directory": "./build",
     "not_found_handling": "404-page",

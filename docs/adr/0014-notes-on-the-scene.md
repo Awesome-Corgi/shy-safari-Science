@@ -1,5 +1,8 @@
 # Teachers can put Notes on the Scene, drawn as part of it
 
+_Numbered 0014 when the Classes ADR (0004) turned out to share this number; the
+decision itself is unchanged._
+
 Teachers asked to put words on the screen — the task, the page number, "silent
 reading" — so the display on the wall does more than hold the animals. A plain
 text box would do that, but it would sit on the Scene like a sticker. A Note
@@ -20,7 +23,7 @@ many classrooms drive the projector from a Smartboard.
   are not per Scene: a Note stays put when the Scene changes and is redrawn in
   the new Scene's style. The instructions on the board don't depend on which
   animals the class is earning. Notes are remembered in localStorage, and each
-  Class has its own (see the Classes ADR).
+  Class has its own (ADR 0004).
 - **Sized for the back of the room.** Typed words shrink to the largest size
   that fits, and never break mid-word. The artwork is built at the Note's own
   size (`scenes/noteArt.ts`), so the teacher can stretch a Note to any shape:
