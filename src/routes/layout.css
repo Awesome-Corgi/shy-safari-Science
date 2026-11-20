@@ -12,21 +12,22 @@
 @custom-variant short (@media (max-height: 500px));
 
 /*
- * The display face: Newsreader, self-hosted (SIL OFL, static/fonts/OFL.txt).
- * A text serif with a warm, slightly old-fashioned cut — the voice of a
- * naturalist's field guide rather than of an app — and a variable optical
- * axis, so a 3.5rem title is drawn for its size rather than enlarged from
- * reading text. Latin and Latin-ext are the two languages the app speaks,
- * split exactly as Google serves them; `swap` so a title never blocks the
- * first paint, and the rounded sans it falls back to is the face every other
- * surface already uses.
+ * The three faces, self-hosted (SIL OFL, static/fonts/OFL.txt). Bricolage
+ * Grotesque is the display voice: a grotesque with its own mind, drawn for
+ * large sizes, so a title belongs to this app and not to a template.
+ * Instrument Sans carries the interface at reading size — plain, slightly
+ * narrow, and quiet next to it. IBM Plex Mono is for figures only, where its
+ * fixed advance keeps a number from shivering as it counts. Latin and
+ * Latin-ext are the two ranges the app speaks (en, es, fr), split exactly as
+ * Google serves them; `swap` so a title never blocks the first paint.
  */
 @font-face {
-  font-family: "Newsreader";
+  font-family: "Bricolage Grotesque";
   font-style: normal;
-  font-weight: 400 700;
+  font-weight: 400 800;
+  font-stretch: 100%;
   font-display: swap;
-  src: url("/fonts/newsreader-latin-ext.woff2") format("woff2");
+  src: url("/fonts/bricolage-latin-ext.woff2") format("woff2");
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
     U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
@@ -34,11 +35,86 @@
 }
 
 @font-face {
-  font-family: "Newsreader";
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 400 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("/fonts/bricolage-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Instrument Sans";
   font-style: normal;
   font-weight: 400 700;
+  font-stretch: 100%;
   font-display: swap;
-  src: url("/fonts/newsreader-latin.woff2") format("woff2");
+  src: url("/fonts/instrument-sans-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("/fonts/instrument-sans-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/plex-mono-400-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/plex-mono-400-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/plex-mono-500-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/plex-mono-500-latin.woff2") format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
     U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
@@ -119,23 +195,34 @@
    * text and the app's own words sound like the same voice.
    */
   --font-sans:
-    ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", "Nunito", "Segoe UI",
-    system-ui, sans-serif;
+    "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
 
   /* Titles and panel headings. Everything a teacher reads as UI stays in the
-     rounded sans above; this is the voice of the place itself. */
-  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+     sans above; this is the voice of the place itself. */
+  --font-display:
+    "Bricolage Grotesque", "Instrument Sans", ui-sans-serif, system-ui,
+    sans-serif;
 
-  --color-paper: #fdf8ec;
-  --color-paper-deep: #f4e7cd;
-  --color-ink: #262633;
-  --color-ink-soft: #6c6357;
-  --color-ochre: #c07f36;
-  --color-ochre-deep: #9a5f24;
+  /* Figures only: scores, places, times, counts. */
+  --font-mono:
+    "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --color-paper: #ffffff;
+  /* The page behind the chrome, where the Scene is not showing. */
+  --color-canvas: #f4f6f4;
+  --color-paper-deep: #e5ebe8;
+  --color-ink: #25312f;
+  --color-ink-soft: #5b6b66;
+  --color-line: #dde5e1;
+  /* Sage is a fill, not a text colour: ochre-deep is the same hue dark
+     enough to read on paper (5.6:1). */
+  --color-ochre: #91aaa1;
+  --color-ochre-deep: #4c675e;
   /* The one destructive colour: deep enough to carry paper-white text. */
-  --color-danger: #b02a4a;
+  --color-danger: #a6434b;
   /* The room is calm. The creatures' own teal, darkened to carry text. */
-  --color-teal-deep: #177a70;
+  --color-teal-deep: #2f6b60;
 
   /*
    * Offset and a soft blur, never a flat halo: these read as light. The lift
@@ -143,9 +230,9 @@
    * paper laid over it.
    */
   --shadow-lift:
-    0 1px 2px rgb(38 38 51 / 0.16), 0 8px 20px -8px rgb(38 38 51 / 0.45);
+    0 1px 2px rgb(37 49 47 / 0.1), 0 8px 22px -12px rgb(37 49 47 / 0.38);
   --shadow-panel:
-    0 4px 12px rgb(38 38 51 / 0.16), 0 32px 72px -24px rgb(38 38 51 / 0.6);
+    0 4px 14px rgb(37 49 47 / 0.1), 0 32px 72px -28px rgb(37 49 47 / 0.55);
 
   --radius-panel: 1.125rem;
 
@@ -191,10 +278,105 @@
   --color-shadow: #2b2b3a;
 }
 
+/*
+ * Motion: five durations and three curves, and nothing outside them. They are
+ * long enough to be seen and short enough that a teacher pressing Start twice
+ * never waits for the app. Nothing overshoots: a classroom instrument settles.
+ */
+:root {
+  --d-1: 120ms;
+  --d-2: 200ms;
+  --d-3: 320ms;
+  --d-4: 480ms;
+  --d-5: 620ms;
+  --e-settle: cubic-bezier(0.22, 1, 0.36, 1);
+  --e-travel: cubic-bezier(0.4, 0, 0.2, 1);
+  --e-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/*
+ * Both themes, from the same token names. Every surface in the app asks for
+ * paper, ink or ochre and gets whichever the teacher chose; nothing is styled
+ * for one theme only. app.html sets data-theme before the first paint.
+ */
+html {
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-paper: #293733;
+  --color-canvas: #202c29;
+  --color-paper-deep: #33423d;
+  --color-ink: #f4f6f4;
+  --color-ink-soft: #b9c8c1;
+  --color-line: #3a4a45;
+  --color-ochre: #91aaa1;
+  --color-ochre-deep: #a9c0b7;
+  --color-danger: #e39497;
+  --color-teal-deep: #9fd0c5;
+  --shadow-lift: 0 1px 2px rgb(0 0 0 / 0.5), 0 8px 22px -12px rgb(0 0 0 / 0.7);
+  --shadow-panel:
+    0 4px 14px rgb(0 0 0 / 0.4), 0 32px 72px -28px rgb(0 0 0 / 0.8);
+}
+
+/* The warm highlight reads as a highlighter on white, not on charcoal. */
+html[data-theme="dark"] ::selection {
+  background: #91aaa1;
+  color: #16211e;
+}
+
+/*
+ * The chrome takes its temperature from the room it is standing in. The
+ * savanna's panels are dust-paper and warm ink; deep space is always dark, so
+ * its panels are night-blue glass whatever the theme says. Scenes without an
+ * entry here use the plain theme, which is the right answer for most of them.
+ */
+html[data-scene="savanna"] {
+  --color-paper: #fbf5e8;
+  --color-paper-deep: #f1e6cf;
+  --color-line: #e5d9bf;
+  --color-ink: #2f2f22;
+  --color-ink-soft: #6a6353;
+  --shadow-lift:
+    0 1px 2px rgb(90 66 30 / 0.16), 0 8px 22px -12px rgb(90 66 30 / 0.45);
+  --shadow-panel:
+    0 4px 14px rgb(90 66 30 / 0.16), 0 32px 72px -28px rgb(90 66 30 / 0.55);
+}
+
+html[data-theme="dark"][data-scene="savanna"] {
+  --color-paper: #2f2d24;
+  --color-canvas: #24231d;
+  --color-paper-deep: #3a372c;
+  --color-line: #443f33;
+  --color-ink: #f3efe4;
+  --color-ink-soft: #c3bda9;
+}
+
+html[data-scene="space"] {
+  --color-paper: #18233c;
+  --color-canvas: #0d1526;
+  --color-paper-deep: #222f4c;
+  --color-line: #33456b;
+  --color-ink: #f0f5ff;
+  --color-ink-soft: #b3c2dd;
+  --color-ochre: #a9c4f5;
+  --color-ochre-deep: #cfe0ff;
+  --color-danger: #f0a6a0;
+  --color-teal-deep: #bcd3ff;
+  --shadow-lift:
+    inset 0 1px 0 rgb(255 255 255 / 0.06),
+    0 10px 30px -14px rgb(90 130 220 / 0.55);
+  --shadow-panel:
+    0 0 0 1px rgb(169 196 245 / 0.14), 0 34px 80px -30px rgb(0 0 0 / 0.9);
+}
+
 html,
 body {
   height: 100%;
   margin: 0;
+  color: var(--color-ink);
   /* The Scene's own colour, so the edge of the Too Loud blur fades into it. */
   background: var(--color-dust-haze);
   overflow: hidden;

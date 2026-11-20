@@ -22,10 +22,11 @@
   import InfoDrawer, { FAQ_IDS } from "$lib/components/InfoDrawer.svelte";
   import FloatingScene from "$lib/components/FloatingScene.svelte";
   import PausedPill from "$lib/components/PausedPill.svelte";
+  import ThemeSwitch from "$lib/components/ThemeSwitch.svelte";
   import { drawFramesFrom } from "$lib/frames";
   import type { SceneDef } from "$lib/scenes";
   import type { CreatureInstance } from "$lib/session/session.svelte";
-  import { current, t, tIn } from "$lib/i18n/index.svelte";
+  import { current, t, tIn, type UiKey } from "$lib/i18n/index.svelte";
   import {
     copyStyles,
     documentPictureInPicture,
@@ -77,6 +78,9 @@
    * Tells search engines and AI assistants what kind of thing this page is,
    * and gives them the questions the info drawer answers.
    */
+  /** The Scene's own name, in the language the app is speaking. */
+  const sceneName = $derived(t(`scene.${app.scene.id}.name` as UiKey));
+
   const webApplication = $derived({
     "@type": "WebApplication",
     name: "Quiet",
@@ -167,7 +171,7 @@
    * Scene; before the Session starts there is nothing to hide them for.
    */
   const topBarVisible = $derived(
-    controlsVisible || !app.listening || classMenuOpen || sceneMenuOpen,
+    app.listening && (controlsVisible || classMenuOpen || sceneMenuOpen),
   );
 
   /**
@@ -330,78 +334,120 @@
     {/if}
 
     {#if !app.listening && !app.blocked}
-      <!-- Browsers only hand over a microphone after a real gesture, so the
-         Session has to begin with a click either way. -->
-      <!-- A warm vignette rather than a flat veil: the artwork keeps its
-           colour behind the middle of the sheet and darkens only where the
-           chrome needs it. -->
-      <div
-        class="absolute inset-0 z-40 overflow-y-auto bg-gradient-to-t from-ink/40 via-ink/15 to-ink/25"
-      >
-        <!-- Scrolls rather than clips, should the card still not fit. -->
-        <div
-          class="flex min-h-full items-center justify-center p-4 sm:p-6 short:px-8 short:py-3"
-        >
-          <!-- The sheet is a spread, not a form: the title in the field
-               guide's serif and what this place asks on the left, the places
-               to choose from on the right, and one button. On a phone the two
-               halves stack and the places wrap into a stamp sheet. -->
-          <div
-            class="rise w-full max-w-3xl min-w-0 rounded-[1.6rem] bg-paper px-6 py-7 text-left shadow-panel sm:px-11 sm:py-10 short:px-6 short:py-4"
+      <!-- The start screen is a panel, not a card: the plan for the lesson on
+           the left, the place it will happen on the right. Browsers only hand
+           over a microphone after a real gesture, so the Session begins with
+           the one button either way. -->
+      <div class="absolute inset-0 z-40 overflow-y-auto">
+        <div class="flex min-h-full flex-col md:flex-row">
+          <section
+            class="relative flex min-h-dvh w-full flex-col bg-canvas px-6 pt-6 pb-8 text-left md:w-[46%] md:max-w-[640px] md:shrink-0 md:px-11 md:pt-8 md:pb-9 md:shadow-panel short:px-8 short:py-3"
           >
-            <div
-              class="flex flex-col gap-7 md:flex-row md:items-start md:gap-9"
-            >
-              <div class="min-w-0 flex-1">
-                <img src={logoUrl} alt="" class="size-16 short:size-10" />
-                <h1
-                  class="mt-4 font-display text-[3rem] leading-[0.92] font-semibold tracking-[-0.02em] text-balance text-ink sm:text-[3.6rem] short:mt-2 short:text-[1.75rem]"
-                >
-                  Quiet
-                </h1>
-                <div
-                  class="mt-5 h-[3px] w-12 rounded-full bg-ochre/70 short:hidden"
-                ></div>
-                <p
-                  class="mt-5 text-xl leading-snug font-semibold text-balance text-ink short:mt-2 short:text-base"
-                >
-                  {tIn(app.scene.id, "start.shy")}
-                </p>
-                <p
-                  class="mt-1.5 leading-relaxed text-ink-soft short:mt-1 short:text-sm"
-                >
-                  <!-- Checked after mount: the page is prerendered with the default. -->
-                  {#if app.restored && settings.loudResponse === "pause"}
-                    {tIn(app.scene.id, "start.explain")}
-                  {:else}
-                    {tIn(app.scene.id, "start.explainFlee")}
-                  {/if}
-                </p>
+            <header class="flex items-center gap-3">
+              <img src={logoUrl} alt="" class="size-8 short:size-6" />
+              <span class="font-display text-xl font-semibold tracking-tight"
+                >Quiet</span
+              >
+              <div class="ml-auto flex items-center gap-2">
+                <!-- Always available, session or not: the whole point of the
+                     Cup is to see where the classes stand before the lesson. -->
                 <button
-                  class="mt-6 w-full rounded-full bg-ink px-8 py-3.5 text-base font-semibold text-paper shadow-lift transition hover:bg-ink/90 active:translate-y-px sm:w-auto short:mt-4 short:py-2.5"
+                  class="grid size-9 place-items-center rounded-full text-ink-soft transition hover:bg-paper-deep hover:text-ink"
+                  aria-label={t("cup.title")}
+                  title={t("cup.title")}
+                  onclick={() => (cupOpen = true)}
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="size-[1.15rem]"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M8 4h8v4.5a4 4 0 0 1-8 0V4Z" />
+                    <path
+                      d="M8 5.5H5V7a3 3 0 0 0 3 3M16 5.5h3V7a3 3 0 0 1-3 3"
+                    />
+                    <path d="M12 12.5V16M8.5 20h7M10 16h4l.5 4h-5Z" />
+                  </svg>
+                </button>
+                <ThemeSwitch compact />
+                <LanguagePicker />
+              </div>
+            </header>
+
+            <div class="mt-12 md:mt-20 short:mt-4">
+              <p
+                class="flex items-center gap-2 text-[0.7rem] font-semibold tracking-[0.18em] text-ink-soft uppercase"
+              >
+                <span class="size-1.5 rounded-full bg-ochre" aria-hidden="true"
+                ></span>
+                {sceneName}
+              </p>
+              <h1
+                class="mt-4 max-w-[34rem] font-display text-[2.4rem] leading-[1.02] font-semibold tracking-[-0.025em] text-balance text-ink sm:text-[3rem] short:mt-2 short:text-[1.6rem]"
+              >
+                {tIn(app.scene.id, "start.shy")}
+              </h1>
+              <p
+                class="mt-5 max-w-[30rem] text-lg leading-relaxed text-ink-soft short:mt-2 short:text-sm"
+              >
+                <!-- Checked after mount: the page is prerendered with the default. -->
+                {#if app.restored && settings.loudResponse === "pause"}
+                  {tIn(app.scene.id, "start.explain")}
+                {:else}
+                  {tIn(app.scene.id, "start.explainFlee")}
+                {/if}
+              </p>
+              <div class="mt-8 flex flex-wrap items-center gap-2 short:mt-4">
+                <button
+                  class="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-base font-semibold text-paper shadow-lift transition hover:bg-ink/90 active:translate-y-px short:py-2.5"
                   onclick={async () => {
                     if (await app.connect()) app.startSession();
                   }}
                 >
                   {t("start.button")}
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="size-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h13M12.5 6l6 6-6 6" />
+                  </svg>
                 </button>
-                <p
-                  class="mt-3 max-w-[24rem] text-xs leading-relaxed text-ink-soft"
+                <button
+                  class="rounded-full px-4 py-3 text-sm font-medium text-ink-soft transition hover:bg-paper-deep hover:text-ink"
+                  onclick={() => (infoOpen = true)}
                 >
-                  {t("start.micNote")}
-                </p>
+                  {t("guide.title")}
+                </button>
               </div>
+              <p
+                class="mt-4 max-w-[26rem] text-xs leading-relaxed text-ink-soft"
+              >
+                {t("start.micNote")}
+              </p>
+            </div>
 
-              <div class="md:w-56 md:shrink-0 md:self-center">
+            <div class="mt-auto pt-10 short:pt-4">
+              <div class="border-t border-line pt-5">
                 <p
                   class="mb-2 text-[0.7rem] font-bold tracking-[0.16em] text-ink-soft uppercase"
                 >
                   {t("scene.label")}
                 </p>
                 <SceneSelect {app} />
-                <!-- Which Class the Session is for, chosen before Start so
-                     the Cup knows whose quiet time it is counting. -->
-                <div class="mt-5">
+                <!-- Which Class the Session is for, chosen before Start so the
+                     Cup knows whose quiet time it is counting. -->
+                <div class="mt-5 max-w-sm">
                   <p
                     class="mb-2 text-[0.7rem] font-bold tracking-[0.16em] text-ink-soft uppercase"
                   >
@@ -411,7 +457,27 @@
                 </div>
               </div>
             </div>
-          </div>
+          </section>
+
+          <!-- What lives here, framed by the panel rather than covered by it. -->
+          <aside class="relative hidden flex-1 md:block">
+            <div
+              class="absolute inset-x-5 bottom-5 flex items-end justify-between gap-3 rounded-panel bg-paper/92 px-4 py-3 shadow-lift backdrop-blur-sm lg:inset-x-7 lg:bottom-7"
+            >
+              <div class="min-w-0">
+                <p class="truncate font-display text-lg font-semibold text-ink">
+                  {sceneName}
+                </p>
+                <p class="text-xs text-ink-soft">
+                  {app.scene.roster.length} · {tIn(
+                    app.scene.id,
+                    "controls.animals",
+                  )}
+                </p>
+              </div>
+              <CupCounter />
+            </div>
+          </aside>
         </div>
       </div>
     {/if}
@@ -612,7 +678,7 @@
     <div
       class="safe-edges pointer-events-none absolute bottom-0 left-0 z-40 flex gap-2 p-4 {app.listening
         ? 'max-sm:bottom-16'
-        : ''}"
+        : 'hidden'}"
     >
       {#if app.listening && settings.showCounter}
         <ArrivalCounter

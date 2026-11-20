@@ -18,6 +18,11 @@ export type ArrivalRatePreset = "relaxed" | "normal" | "lively" | "custom";
  * settles, or start running away. See docs/adr/0003-animals-can-run-away.md.
  */
 export type LoudResponse = "flee" | "pause";
+/**
+ * Which theme the chrome wears. `system` follows the computer's own setting.
+ * See docs/adr/0017-both-themes-from-one-set-of-tokens.md.
+ */
+export type ThemeChoice = "system" | "light" | "dark";
 
 export const VOLUME_GOAL_PRESETS: Record<
   Exclude<VolumeGoalPreset, "custom">,
@@ -56,6 +61,7 @@ interface StoredSettings {
   showMeter: boolean;
   /** Keep a count of the Creatures in the Scene up over it. */
   showCounter: boolean;
+  theme: ThemeChoice;
 }
 
 const DEFAULTS: StoredSettings = {
@@ -69,6 +75,7 @@ const DEFAULTS: StoredSettings = {
   loudResponse: "flee",
   showMeter: false,
   showCounter: false,
+  theme: "system",
 };
 
 function read(): StoredSettings {
@@ -227,6 +234,16 @@ class Settings {
 
   set showCounter(value: boolean) {
     this.#stored = { ...this.#stored, showCounter: value };
+    this.#save();
+  }
+
+  get theme() {
+    return this.#stored.theme;
+  }
+
+  set theme(value: ThemeChoice) {
+    if (value === this.#stored.theme) return;
+    this.#stored = { ...this.#stored, theme: value };
     this.#save();
   }
 

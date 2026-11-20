@@ -30,17 +30,13 @@
   }
 </script>
 
-<div
-  class="grid grid-cols-4 gap-1 md:grid-cols-1 md:gap-0.5"
-  role="group"
-  aria-label={t("scene.label")}
->
+<div class="grid grid-cols-4 gap-1" role="group" aria-label={t("scene.label")}>
   {#each stamps as stamp (stamp.id)}
     {@const current = stamp.id === app.scene.id}
     {@const hint = sceneHint(stamp.id, today.day)}
     <button
       type="button"
-      class="group relative flex min-w-0 flex-col items-center gap-1 rounded-xl px-0.5 pt-1.5 pb-1 transition md:flex-row md:gap-2.5 md:rounded-lg md:px-2 md:py-1.5 {current
+      class="group relative flex min-w-0 flex-col items-center gap-1 rounded-xl px-0.5 pt-1.5 pb-1 transition {current
         ? 'bg-paper-deep'
         : 'hover:bg-paper-deep/60'}"
       aria-pressed={current}
@@ -52,28 +48,24 @@
       <img
         src={stamp.icon}
         alt=""
-        class="size-9 transition md:size-7 {current
+        class="size-9 transition {current
           ? 'drop-shadow-[0_2px_3px_rgb(38_38_51_/_0.18)]'
           : 'opacity-65 group-hover:opacity-100'}"
       />
       <span
-        class="flex min-h-7 w-full items-start justify-center text-center text-[0.66rem] leading-[1.15] font-semibold text-balance md:min-h-0 md:w-auto md:justify-start md:text-left md:text-sm {current
+        class="flex min-h-7 w-full items-start justify-center text-center text-[0.66rem] leading-[1.15] font-semibold text-balance {current
           ? 'text-ink'
           : 'text-ink-soft'}">{t(`scene.${stamp.id}.name` as UiKey)}</span
       >
       {#if current}
         <span
-          class="absolute inset-x-3 bottom-0.5 h-[2px] rounded-full bg-ochre md:hidden"
-          aria-hidden="true"
-        ></span>
-        <span
-          class="ml-auto hidden size-1.5 shrink-0 rounded-full bg-ochre-deep md:block"
+          class="absolute inset-x-3 bottom-0.5 h-[2px] rounded-full bg-ochre"
           aria-hidden="true"
         ></span>
       {/if}
       {#if fresh.includes(stamp.id) && !current}
         <span
-          class="absolute top-1 right-1 size-2 rounded-full bg-ochre-deep ring-2 ring-paper md:static md:ml-auto md:size-1.5 md:shrink-0 md:ring-0"
+          class="absolute top-1 right-1 size-2 rounded-full bg-ochre-deep ring-2 ring-paper"
           aria-hidden="true"
         ></span>
       {/if}

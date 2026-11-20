@@ -26,10 +26,21 @@
       // saved one is known. Until then, paint the saved Scene's colours so a
       // reload doesn't flash. Keep in step with settings.svelte.ts.
       try {
-        var saved = JSON.parse(
+        var settings = JSON.parse(
           localStorage.getItem("class-noise-level:settings") || "{}",
-        ).scene;
-        if (saved) document.documentElement.dataset.scene = saved;
+        );
+        if (settings.scene) {
+          document.documentElement.dataset.scene = settings.scene;
+        }
+        // Both themes are token sets in layout.css; choosing here, before
+        // the first paint, is what stops a reload flashing the other one.
+        var theme = settings.theme;
+        if (theme !== "light" && theme !== "dark") {
+          theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        }
+        document.documentElement.dataset.theme = theme;
       } catch (e) {}
     </script>
     %sveltekit.head%

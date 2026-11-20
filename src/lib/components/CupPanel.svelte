@@ -8,6 +8,9 @@
    * matters here: time under the line. The figures are read from each Class's
    * own record as the board moves, so a class watching its own score climb
    * sees what it still needs shrink with it.
+   *
+   * A sheet, not a stack of cards: one hairline between places, sub-two-pixel
+   * rules, and figures in the mono face so a score never shifts as it counts.
    */
 
   import { classes } from "$lib/classes/classes.svelte";
@@ -75,125 +78,149 @@
 />
 
 <div
-  class="safe-edges absolute inset-0 z-50 flex items-center justify-center bg-ink/40 p-4"
+  class="safe-edges absolute inset-0 z-50 flex justify-center overflow-y-auto bg-ink/40 sm:items-start sm:p-6"
   role="presentation"
   onclick={(event) => event.target === event.currentTarget && onclose()}
 >
   <div
-    class="rise flex max-h-full w-full max-w-lg flex-col rounded-panel bg-paper shadow-panel"
+    class="rise flex min-h-full w-full max-w-3xl flex-col bg-paper shadow-panel sm:min-h-0 sm:rounded-panel"
     role="dialog"
     aria-modal="true"
     aria-label={t("cup.title")}
   >
-    <div class="flex items-start justify-between gap-4 p-4 pb-2 sm:p-6 sm:pb-3">
-      <div class="min-w-0">
-        <h1
-          class="flex items-center gap-2 font-display text-3xl font-semibold tracking-tight text-ink"
+    <header class="px-5 pt-6 sm:px-9 sm:pt-8">
+      <div class="flex items-start gap-3">
+        <div class="min-w-0 flex-1">
+          <h1
+            class="font-display text-3xl font-semibold tracking-[-0.02em] text-ink sm:text-4xl"
+          >
+            {t("cup.title")}
+          </h1>
+          <p class="mt-2 max-w-xl text-sm leading-relaxed text-ink-soft">
+            {t("cup.hint")}
+          </p>
+        </div>
+        <button
+          class="grid size-9 shrink-0 place-items-center rounded-full text-ink-soft transition hover:bg-paper-deep hover:text-ink"
+          aria-label={t("common.close")}
+          title={t("common.close")}
+          onclick={onclose}
         >
           <svg
             viewBox="0 0 24 24"
-            class="size-6 shrink-0 text-ochre-deep"
+            class="size-5"
             fill="none"
             stroke="currentColor"
-            stroke-width="1.8"
+            stroke-width="2.2"
             stroke-linecap="round"
-            stroke-linejoin="round"
             aria-hidden="true"
           >
-            <path d="M8 4h8v4.5a4 4 0 0 1-8 0V4Z" />
-            <path d="M8 5.5H5V7a3 3 0 0 0 3 3M16 5.5h3V7a3 3 0 0 1-3 3" />
-            <path d="M12 12.5V16M8.5 20h7M10 16h4l.5 4h-5Z" />
+            <path d="M6 6l12 12M18 6L6 18" />
           </svg>
-          {t("cup.title")}
-        </h1>
-        <p class="mt-1 text-sm text-ink-soft">{t("cup.hint")}</p>
+        </button>
       </div>
-      <button
-        class="grid size-9 shrink-0 place-items-center rounded-full text-ink-soft transition hover:bg-paper-deep hover:text-ink"
-        aria-label={t("common.close")}
-        title={t("common.close")}
-        onclick={onclose}
-      >
-        <svg
-          viewBox="0 0 24 24"
-          class="size-5"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.2"
-          stroke-linecap="round"
-          aria-hidden="true"
-        >
-          <path d="M6 6l12 12M18 6L6 18" />
-        </svg>
-      </button>
-    </div>
+    </header>
 
-    <div class="min-h-0 flex-1 overflow-y-auto px-4 pb-4 sm:px-6 sm:pb-6">
-      <ol class="space-y-2">
+    <div class="min-h-0 flex-1 px-5 pt-6 sm:px-9">
+      <!-- Column labels, on a wide screen only: on a phone the row reads as a
+           sentence, place then class then score. Nothing to label until a
+           class has been monitored. -->
+      {#if board.ranked.length > 0}
+        <div
+          class="hidden grid-cols-[2.75rem_minmax(0,1fr)_8rem_4.5rem_11rem] gap-x-4 border-b border-line pb-2 text-[0.65rem] font-bold tracking-[0.16em] text-ink-soft uppercase sm:grid"
+        >
+          <span>{t("cup.columnPlace")}</span>
+          <span>{t("class.label")}</span>
+          <span></span>
+          <span class="text-right">{t("cup.columnScore")}</span>
+          <span class="text-right">{t("cup.columnTake")}</span>
+        </div>
+      {/if}
+
+      <ol>
         {#each board.ranked as row, index (row.info.id)}
           {@const leading = index === 0}
           {@const current = row.info.id === classes.currentId}
           <li
-            class="rounded-2xl p-3 {leading
-              ? 'bg-ochre/12 ring-1 ring-ochre/40'
-              : 'bg-paper-deep/40'}"
+            class="relative grid grid-cols-[2.25rem_minmax(0,1fr)_auto] items-baseline gap-x-3 border-b border-line py-4 sm:grid-cols-[2.75rem_minmax(0,1fr)_8rem_4.5rem_11rem] sm:items-center sm:gap-x-4"
           >
-            <div class="flex items-baseline gap-2">
+            {#if leading}
               <span
-                class="w-6 shrink-0 text-sm font-semibold text-ink-soft tabular-nums"
-                >{placeLabel(row.place)}</span
-              >
-              <span class="min-w-0 flex-1 truncate font-semibold text-ink"
-                >{className(row.info.name)}</span
-              >
-              {#if current}
-                <span
-                  class="shrink-0 rounded-full bg-ink px-2 py-0.5 text-[0.7rem] text-paper"
-                  >{t("classes.current")}</span
+                class="absolute inset-y-3 left-0 w-0.5 rounded-full bg-ochre"
+                aria-hidden="true"
+              ></span>
+            {/if}
+            <span class="font-mono text-sm font-medium text-ink-soft"
+              >{placeLabel(row.place)}</span
+            >
+            <span class="min-w-0">
+              <span class="flex items-center gap-2">
+                <span class="truncate font-semibold text-ink"
+                  >{className(row.info.name)}</span
                 >
-              {/if}
-              <span class="shrink-0 text-lg font-semibold text-ink tabular-nums"
-                >{row.percent}%</span
+                {#if current}
+                  <span
+                    class="shrink-0 rounded-full bg-ink px-2 py-0.5 text-[0.65rem] font-semibold text-paper"
+                    >{t("classes.current")}</span
+                  >
+                {/if}
+              </span>
+              <span class="mt-1 block text-xs text-ink-soft sm:hidden"
+                >{leading ? t("cup.leader") : catchUpText(row)}</span
               >
-            </div>
-            <div class="mt-2 h-1.5 overflow-hidden rounded-full bg-ink/10">
-              <div
-                class="h-full rounded-full {leading
-                  ? 'bg-ochre-deep'
-                  : 'bg-accent-teal'}"
-                style="width:{row.percent}%"
-              ></div>
-            </div>
-            <p
-              class="mt-2 text-xs {leading
-                ? 'font-semibold text-ochre-deep'
-                : 'text-ink-soft'}"
+            </span>
+            <span class="hidden sm:block">
+              <span class="block h-0.5 overflow-hidden rounded-full bg-ink/10">
+                <span
+                  class="block h-full rounded-full {leading
+                    ? 'bg-ochre'
+                    : 'bg-ink/35'}"
+                  style="width:{row.percent}%"
+                ></span>
+              </span>
+            </span>
+            <span
+              class="text-right font-mono text-lg font-medium text-ink tabular-nums"
+              >{row.percent}%</span
+            >
+            <span
+              class="hidden text-right text-xs leading-snug {leading
+                ? 'font-semibold text-ink'
+                : 'text-ink-soft'} sm:block"
             >
               {leading ? t("cup.leader") : catchUpText(row)}
-            </p>
+            </span>
           </li>
         {/each}
       </ol>
 
       {#if board.waiting.length > 0}
-        <h2
-          class="mt-5 text-[0.7rem] font-bold tracking-[0.16em] text-ink-soft uppercase"
-        >
-          {t("cup.waiting")}
-        </h2>
-        <ul class="mt-2 space-y-1.5">
-          {#each board.waiting as row (row.info.id)}
-            <li
-              class="flex items-center gap-2 rounded-xl bg-paper-deep/25 px-3 py-2 text-sm"
+        <div class="border-b border-line py-4">
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <h2
+              class="text-[0.65rem] font-bold tracking-[0.16em] text-ink-soft uppercase"
             >
-              <span class="min-w-0 flex-1 truncate text-ink"
-                >{className(row.info.name)}</span
-              >
-              <span class="shrink-0 text-ink-soft">{t("cup.noTime")}</span>
-            </li>
-          {/each}
-        </ul>
+              {t("cup.waiting")}
+            </h2>
+            {#each board.waiting as row (row.info.id)}
+              <span class="text-sm text-ink">{className(row.info.name)}</span>
+            {/each}
+            <span class="ml-auto text-xs text-ink-soft">{t("cup.noTime")}</span>
+          </div>
+        </div>
       {/if}
     </div>
+
+    <footer
+      class="mt-6 flex items-center justify-between gap-3 border-t border-line px-5 py-4 sm:px-9"
+    >
+      <p class="text-xs text-ink-soft">{t("cup.local")}</p>
+      <button
+        class="rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition hover:bg-paper-deep hover:text-ink"
+        onclick={onclose}
+      >
+        {t("common.close")}
+      </button>
+    </footer>
   </div>
 </div>
