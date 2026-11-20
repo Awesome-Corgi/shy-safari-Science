@@ -8,6 +8,7 @@
 import { CHIME_MS, playChime } from "$lib/audio/chime";
 import { Microphone, SMOOTHING_MS } from "$lib/audio/microphone.svelte";
 import { classes } from "$lib/classes/classes.svelte";
+import { cup } from "$lib/classes/cup.svelte";
 import { cancelFrame, requestFrame } from "$lib/frames";
 import { notes } from "$lib/notes/notes.svelte";
 import { RoomMonitor } from "$lib/noise/roomMonitor.svelte";
@@ -112,6 +113,7 @@ export class App {
   }
 
   #enterClass() {
+    cup.flush();
     sightings.reload();
     notes.reload();
     this.monitor.reset();
@@ -177,12 +179,14 @@ export class App {
 
   startSession() {
     this.paused = false;
+    cup.flush();
     this.monitor.reset();
     this.session.start(settings.arrivalIntervalMs);
   }
 
   resetSession() {
     this.paused = false;
+    cup.flush();
     this.session.reset(settings.arrivalIntervalMs);
   }
 
@@ -226,6 +230,16 @@ export class App {
           settings.volumeGoal,
           now,
         );
+        // The Class Cup counts the same moments that judge the room. A frame
+        // this late means the tab was not drawing — hidden, or asleep — so
+        // the room was not being watched and no Class is credited for it.
+        if (this.session.running && delta <= 1000) {
+          cup.tally(
+            classes.currentId,
+            delta,
+            this.monitor.level <= settings.volumeGoal,
+          );
+        }
         this.session.tick(
           delta,
           this.monitor.state === "quiet",

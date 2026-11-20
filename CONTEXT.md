@@ -84,8 +84,9 @@ own Notes.
 
 ## Arrival Rate
 
-How much Quiet time buys one Creature. The teacher chooses it from named
-presets or types a number of minutes. It is the only dial that changes how fast the Scene fills.
+How much time under the Volume Goal buys one Creature. The teacher chooses it
+from named presets or types a number of minutes. It is the only dial that
+changes how fast the Scene fills.
 
 ## Session
 
@@ -102,6 +103,34 @@ Timer, so one Class never sees what another earned or was told, and Reset
 empties only the Class on screen.
 Switching Class ends the Session until the teacher presses start again.
 Deleting a Class removes everything it kept. There is always at least one.
+
+## Class Cup
+
+The board that ranks the Classes by Score and gives each its Place. It can be
+opened at any time, before a Session or during one; the leading Class is
+marked, and every other Class is told how much more time under the Volume Goal
+it would need to reach the lead. The Class on screen's Score and Place also sit
+in the corner of the Scene, opposite the arrival counter.
+
+## Score
+
+A Class's share of its monitored time the room spent under the Volume Goal, as
+a percentage. Time counts only while a Session is running and the room is being
+judged — not while Paused, Calibrating, or with the page hidden — and the Score
+is kept between visits.
+
+## Place
+
+A Class's position on the Class Cup board, counted down from 1st. Classes on
+the same Score share a Place: two classes both showing 87% are both 1st, and
+the next one down is 3rd.
+
+## Catch-up
+
+The stretch of time under the Volume Goal a Class would still need to reach
+the leading Class's Score with the time it has already recorded. A Class with
+no monitored time has no Catch-up yet, and a lead at exactly 100% cannot be
+reached at all: only a room that has never been over the goal could match it.
 
 ## Quiet
 

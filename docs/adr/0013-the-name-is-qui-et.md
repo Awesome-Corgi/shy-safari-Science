@@ -1,5 +1,9 @@
 # The name is `qui-et`, and the old names stay in storage
 
+> Superseded by [ADR 0016](0016-the-name-is-quiet.md): the product is now
+> called `Quiet`. The storage keys, package name and origin described below
+> still stand.
+
 The product is called **qui-et**: lowercase, with a hyphen between the two
 syllables, and that spelling is the brand wherever it is written — the start
 sheet, page titles, social cards, the guide and the docs. It lives at

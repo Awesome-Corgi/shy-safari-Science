@@ -15,6 +15,7 @@ import { browser } from "$app/environment";
 import { SCENE_IDS } from "$lib/scenes/types";
 import {
   addClass,
+  classStorageKey,
   firstClassList,
   parseClassList,
   removeClass,
@@ -26,7 +27,7 @@ import {
 const STORAGE_KEY = "class-noise-level:classes";
 
 function prefix(classId: string) {
-  return `class-noise-level:class:${classId}:`;
+  return classStorageKey(classId, "");
 }
 
 function newId() {
@@ -43,7 +44,7 @@ function adoptUnprefixed(classId: string) {
     const old = `class-noise-level:${part}`;
     const saved = localStorage.getItem(old);
     if (saved === null) continue;
-    localStorage.setItem(prefix(classId) + part, saved);
+    localStorage.setItem(classStorageKey(classId, part), saved);
     localStorage.removeItem(old);
   }
 }
@@ -85,7 +86,7 @@ class Classes {
 
   /** Where the Class on screen keeps `part` (a Scene's animals, say). */
   storageKey(part: string) {
-    return prefix(this.currentId) + part;
+    return classStorageKey(this.currentId, part);
   }
 
   select(id: string) {

@@ -3,6 +3,9 @@
   import { classes } from "$lib/classes/classes.svelte";
   import ClassesPanel from "$lib/components/ClassesPanel.svelte";
   import ClassPicker from "$lib/components/ClassPicker.svelte";
+  import ClassSelect from "$lib/components/ClassSelect.svelte";
+  import CupCounter from "$lib/components/CupCounter.svelte";
+  import CupPanel from "$lib/components/CupPanel.svelte";
   import ScenePicker from "$lib/components/ScenePicker.svelte";
   import SceneSelect from "$lib/components/SceneSelect.svelte";
   import Collection from "$lib/components/Collection.svelte";
@@ -76,7 +79,7 @@
    */
   const webApplication = $derived({
     "@type": "WebApplication",
-    name: "qui-et",
+    name: "Quiet",
     url: absoluteUrl("/"),
     description: t("app.description"),
     image: PREVIEW_IMAGE,
@@ -113,6 +116,7 @@
   let collectionOpen = $state(false);
   let infoOpen = $state(false);
   let classesOpen = $state(false);
+  let cupOpen = $state(false);
   let classMenuOpen = $state(false);
   let sceneMenuOpen = $state(false);
   let fullScreen = $state(false);
@@ -208,7 +212,7 @@
       // 4:3, the Scene's own shape, and small enough to sit beside a slide.
       pip = await controller.requestWindow({ width: 480, height: 360 });
       const page = pip.document;
-      page.title = "qui-et";
+      page.title = "Quiet";
       page.documentElement.lang = current().locale;
       // Scales the corner controls with the window: see layout.css.
       page.documentElement.classList.add("floating");
@@ -353,7 +357,7 @@
                 <h1
                   class="mt-4 font-display text-[3rem] leading-[0.92] font-semibold tracking-[-0.02em] text-balance text-ink sm:text-[3.6rem] short:mt-2 short:text-[1.75rem]"
                 >
-                  qui-et
+                  Quiet
                 </h1>
                 <div
                   class="mt-5 h-[3px] w-12 rounded-full bg-ochre/70 short:hidden"
@@ -395,6 +399,16 @@
                   {t("scene.label")}
                 </p>
                 <SceneSelect {app} />
+                <!-- Which Class the Session is for, chosen before Start so
+                     the Cup knows whose quiet time it is counting. -->
+                <div class="mt-5">
+                  <p
+                    class="mb-2 text-[0.7rem] font-bold tracking-[0.16em] text-ink-soft uppercase"
+                  >
+                    {t("class.label")}
+                  </p>
+                  <ClassSelect {app} onedit={() => (classesOpen = true)} />
+                </div>
               </div>
             </div>
           </div>
@@ -421,6 +435,29 @@
         />
       </div>
       <div class="pointer-events-auto flex shrink-0 gap-2">
+        <!-- Always available, session or not: the whole point of the Cup is
+           to see where the classes stand before the lesson starts. -->
+        <button
+          class="grid size-11 place-items-center rounded-full bg-paper/95 text-ink-soft shadow-lift transition hover:bg-paper hover:text-ink"
+          aria-label={t("cup.title")}
+          title={t("cup.title")}
+          onclick={() => (cupOpen = true)}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            class="size-5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M8 4h8v4.5a4 4 0 0 1-8 0V4Z" />
+            <path d="M8 5.5H5V7a3 3 0 0 0 3 3M16 5.5h3V7a3 3 0 0 1-3 3" />
+            <path d="M12 12.5V16M8.5 20h7M10 16h4l.5 4h-5Z" />
+          </svg>
+        </button>
         <!-- Only once listening: neither the Timer nor a Note is shown over
            the start card. -->
         {#if app.listening}
@@ -627,38 +664,45 @@
         onopensettings={() => (settingsOpen = true)}
       />
 
-      <!-- Bottom right: which Scene is on screen, and every animal the class
-         has spotted. Mirrors the help button, and like it sits above the
-         control bar on a phone. -->
+      <!-- Bottom right: the Class's Cup percentage opposite the arrival
+         counter, then which Scene is on screen and every animal the class
+         has spotted. The Cup stays up when the controls fade, like the
+         counter; on a phone it stacks above the buttons so the two corners
+         do not meet in the middle. -->
       <div
-        class="safe-edges pointer-events-none absolute right-0 bottom-0 z-40 p-4 transition-opacity duration-300 max-sm:bottom-16"
-        class:opacity-0={!topBarVisible}
-        aria-hidden={!topBarVisible}
-        inert={!topBarVisible}
+        class="safe-edges pointer-events-none absolute right-0 bottom-0 z-40 p-4 max-sm:bottom-16"
       >
-        <div class="pointer-events-auto flex gap-2">
-          <ScenePicker {app} bind:open={sceneMenuOpen} />
-          <button
-            class="grid size-11 place-items-center rounded-full bg-paper/95 text-ink-soft shadow-lift transition hover:bg-paper hover:text-ink"
-            aria-label={tIn(app.scene.id, "controls.animals")}
-            title={tIn(app.scene.id, "controls.animals")}
-            onclick={() => (collectionOpen = true)}
+        <div class="flex flex-col items-end gap-2 sm:flex-row sm:items-center">
+          <CupCounter />
+          <div
+            class="pointer-events-auto flex gap-2 transition-opacity duration-300"
+            class:opacity-0={!topBarVisible}
+            aria-hidden={!topBarVisible}
+            inert={!topBarVisible}
           >
-            <svg
-              viewBox="0 0 24 24"
-              class="size-5"
-              fill="currentColor"
-              aria-hidden="true"
+            <ScenePicker {app} bind:open={sceneMenuOpen} />
+            <button
+              class="grid size-11 place-items-center rounded-full bg-paper/95 text-ink-soft shadow-lift transition hover:bg-paper hover:text-ink"
+              aria-label={tIn(app.scene.id, "controls.animals")}
+              title={tIn(app.scene.id, "controls.animals")}
+              onclick={() => (collectionOpen = true)}
             >
-              <ellipse cx="5.4" cy="10.6" rx="1.9" ry="2.3" />
-              <ellipse cx="9.4" cy="6.3" rx="2" ry="2.5" />
-              <ellipse cx="14.6" cy="6.3" rx="2" ry="2.5" />
-              <ellipse cx="18.6" cy="10.6" rx="1.9" ry="2.3" />
-              <path
-                d="M12 11.2c-2.6 0-5.6 3.3-5.6 5.8 0 1.7 1.3 2.7 2.8 2.7 1.2 0 1.9-.6 2.8-.6s1.6.6 2.8.6c1.5 0 2.8-1 2.8-2.7 0-2.5-3-5.8-5.6-5.8Z"
-              />
-            </svg>
-          </button>
+              <svg
+                viewBox="0 0 24 24"
+                class="size-5"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <ellipse cx="5.4" cy="10.6" rx="1.9" ry="2.3" />
+                <ellipse cx="9.4" cy="6.3" rx="2" ry="2.5" />
+                <ellipse cx="14.6" cy="6.3" rx="2" ry="2.5" />
+                <ellipse cx="18.6" cy="10.6" rx="1.9" ry="2.3" />
+                <path
+                  d="M12 11.2c-2.6 0-5.6 3.3-5.6 5.8 0 1.7 1.3 2.7 2.8 2.7 1.2 0 1.9-.6 2.8-.6s1.6.6 2.8.6c1.5 0 2.8-1 2.8-2.7 0-2.5-3-5.8-5.6-5.8Z"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     {/if}
@@ -683,6 +727,9 @@
     <InfoDrawer bind:open={infoOpen} />
     {#if classesOpen}
       <ClassesPanel {app} onclose={() => (classesOpen = false)} />
+    {/if}
+    {#if cupOpen}
+      <CupPanel onclose={() => (cupOpen = false)} />
     {/if}
   </main>
 {/if}

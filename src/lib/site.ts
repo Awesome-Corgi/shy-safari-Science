@@ -1,8 +1,8 @@
 /**
- * Where qui-et lives on the web, for the few places that need absolute
+ * Where Quiet lives on the web, for the few places that need absolute
  * addresses: canonical links, social previews, structured data and the
  * sitemap. Search engines are pointed at this one and nowhere else, so change
- * it rarely: settings and Notes are saved per origin (ADR 0013).
+ * it rarely: settings and Notes are saved per origin (ADR 0016).
  */
 
 export const SITE_URL = "https://qui-et.pages.dev";

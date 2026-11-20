@@ -22,6 +22,17 @@ export interface ClassList {
 /** Long enough for "Period 3 — Year 9 Science", short enough for the bar. */
 export const MAX_NAME_LENGTH = 40;
 
+/**
+ * Everything a Class keeps — a Scene's animals, its Notes, its Cup score —
+ * lives under this prefix, so deleting the Class is a matter of removing
+ * every key that starts with it.
+ */
+export const CLASS_STORAGE_PREFIX = "class-noise-level:class:";
+
+export function classStorageKey(classId: string, part: string): string {
+  return `${CLASS_STORAGE_PREFIX}${classId}:${part}`;
+}
+
 export function cleanName(name: string): string {
   return name.replace(/\s+/g, " ").trim().slice(0, MAX_NAME_LENGTH).trim();
 }

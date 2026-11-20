@@ -16,15 +16,16 @@ const en = {
   locale: "en",
   ui: {
     "language.change": "Change language",
-    "app.pageTitle": "qui-et — free classroom noise level monitor",
+    "app.pageTitle":
+      "Quiet — a classroom noise monitor that brings animals out",
     "app.description":
-      "A free classroom noise monitor for the projector. Shy savanna and coral reef animals come out the longer the room stays quiet. No sign-up, nothing recorded.",
+      "Put Quiet on the projector. Stay under the line and shy animals come out, one by one. No sign-up, no ads, and the microphone audio never leaves the computer.",
     "common.builtBy": "Built by teacher.dev",
     "common.privacy": "privacy",
     "common.howItWorks": "how it works",
     "preview.alt":
-      "A calm savanna with an elephant, zebras, a lion, a giraffe and a meerkat, beside the words qui-et, a free classroom noise monitor",
-    "common.back": "← Back to qui-et",
+      "A calm savanna with an elephant, zebras, a lion, a giraffe and a meerkat, beside the Quiet logo, a classroom noise monitor that fills with animals",
+    "common.back": "← Back to Quiet",
     "common.close": "Close",
     "common.cancel": "Cancel",
     "common.done": "Done",
@@ -34,16 +35,16 @@ const en = {
     "float.openHint":
       "Float the scene in a small window over your slides or other tabs",
     "float.failed": "The floating window could not be opened.",
-    "floating.title": "qui-et is floating",
+    "floating.title": "Quiet is in its own window",
     "floating.instructions":
       "The scene is in its own window over your other tabs, and keeps listening to the room. Keep this tab open: the window's back-to-tab button brings it back here.",
-    "floating.return": "Bring qui-et back here",
-    "start.shy": "Shh… these animals are shy!",
+    "floating.return": "Bring Quiet back here",
+    "start.shy": "They only come out when it's quiet.",
     "start.explain":
-      "If it gets too loud, they stay hidden. When the room is calm again, they'll start coming out.",
+      "Stay under the line and shy animals keep coming out. Go over it and they stop — nothing gets taken away.",
     "start.button": "Start",
     "start.micNote":
-      "Your browser will ask to use the microphone. Audio is measured on this computer and never recorded or sent anywhere.",
+      "Your browser will ask for the mic. The sound is measured right here — never recorded, never sent.",
     "scene.label": "Scene",
     "scene.change": "Change scene",
     "scene.new": "New",
@@ -145,6 +146,22 @@ const en = {
     "classes.deleteOnly":
       "It's your only class, so a new, empty one will take its place.",
     "classes.deleteYes": "Yes, delete",
+    "class.label": "Class",
+    "cup.title": "Class Cup",
+    "cup.hint":
+      "A class's score is the share of its monitored time the room stayed under the line. Only time during a session counts.",
+    "cup.sceneChip": "{name}: Class Cup, {place}, {percent}%",
+    "cup.chipNone": "{name}: Class Cup, no session yet",
+    "cup.leader": "First place",
+    "cup.level": "Tied for first",
+    "cup.catchUp": "{time} under the line to take first place",
+    "cup.needsPerfect": "Out of reach: that class has never gone over the line",
+    "cup.waiting": "Not started yet",
+    "cup.noTime": "No session yet",
+    "cup.place.1": "1st",
+    "cup.place.2": "2nd",
+    "cup.place.3": "3rd",
+    "cup.place.other": "{place}th",
     "settings.title": "Settings",
     "settings.microphone": "Microphone",
     "settings.meter": "Noise Meter",
@@ -152,7 +169,7 @@ const en = {
     "settings.showMeterHint":
       "Keep the noise meter up over the scene while the class works",
     "start.explainFlee":
-      "If it gets too loud, they'll run away! Keep the room calm and they'll come out and stay.",
+      "Stay under the line and shy animals keep coming out. Go over it and they bolt.",
     "settings.tooLoud": "When it's too loud",
     "loud.flee.label": "Animals run away",
     "loud.flee.hint":
@@ -245,29 +262,28 @@ const en = {
     "blocked.unsupported":
       "This browser cannot use a microphone. Chrome, Edge and Safari all work.",
     "blocked.tryAgain": "Try again",
-    "privacy.pageTitle": "Privacy — qui-et",
-    "privacy.meta": "What qui-et collects, what it doesn't, and why.",
+    "privacy.pageTitle": "Privacy — Quiet",
+    "privacy.meta": "What Quiet collects, what it doesn't, and why.",
     "privacy.title": "Privacy",
     "privacy.lede": "What we collect, what we don't, and why.",
     "privacy.microphone":
-      "qui-et listens through your microphone only to measure how loud the room is. The sound is turned into a single volume level on this computer, moment by moment; it is never recorded, never saved, and never sent anywhere.",
+      "Quiet listens through your microphone only to measure how loud the room is. The sound is turned into a single volume level on this computer, moment by moment; it is never recorded, never saved, and never sent anywhere.",
     "privacy.local":
       "There are no accounts, and we do not collect personal information from teachers or students. Your settings, your calibration and the animals each of your classes has spotted are kept in this browser's local storage on this computer only, and clearing your browser data removes them.",
     "privacy.analytics.beforeLink":
-      "We use Cloudflare Web Analytics to anonymously count visits, which helps us understand how qui-et is being used in classrooms. Cloudflare Web Analytics is cookieless, does not fingerprint visitors, and does not track users across other sites; see Cloudflare's ",
+      "We use Cloudflare Web Analytics to anonymously count visits, which helps us understand how Quiet is being used in classrooms. Cloudflare Web Analytics is cookieless, does not fingerprint visitors, and does not track users across other sites; see Cloudflare's ",
     "privacy.analytics.link": "privacy policy",
     "privacy.analytics.afterLink":
       " for details. We do not share, sell, or otherwise transfer any visitor data to third parties.",
     "privacy.contact": "Questions or concerns? Email ",
-    "guide.title": "How qui-et works",
-    "guide.lede":
-      "A free classroom noise level monitor that rewards quiet instead of punishing noise.",
+    "guide.title": "How Quiet works",
+    "guide.lede": "A classroom noise monitor that pays quiet back in animals.",
     "guide.whatTitle": "What it is",
     "guide.what":
-      "qui-et is a classroom noise monitor that runs in a web browser. Put it on the projector or interactive whiteboard and it shows a calm savanna, coral reef, night sky in deep space, Cretaceous floodplain, woodland clearing, rainforest jungle or Arctic sea ice. It listens to how loud the room is through the computer's microphone, and while the class stays under the volume goal, shy animals come out one at a time. It is the opposite of a bouncing noise meter: there is no score, no needle and no red warning light, so nothing makes being loud more interesting than being quiet.",
+      "Quiet is a classroom noise monitor that runs in a web browser. Put it on the projector or interactive whiteboard and it shows a calm savanna, coral reef, night sky in deep space, Cretaceous floodplain, woodland clearing, rainforest jungle or Arctic sea ice. It listens to how loud the room is through the computer's microphone, and while the class stays under the volume goal, shy animals come out one at a time. It is the opposite of a bouncing noise meter: there is no live score, no needle and no red warning light, so nothing makes being loud more interesting than being quiet.",
     "guide.useTitle": "Using it in class",
     "guide.use.open":
-      "Open qui-et on the computer connected to your projector, pick the savanna, the coral reef, deep space, the prehistoric scene, the forest, the jungle or the Arctic, and press Start. The browser asks to use the microphone.",
+      "Open Quiet on the computer connected to your projector, pick the savanna, the coral reef, deep space, the prehistoric scene, the forest, the jungle or the Arctic, and press Start. The browser asks to use the microphone.",
     "guide.use.goal":
       "Set the volume goal for the activity: Silent, Independent (quiet whispers) or Partner work (conversation voices), or drag the line on the meter to anywhere in between.",
     "guide.use.rate":
@@ -291,7 +307,7 @@ const en = {
     "guide.for":
       "Teachers of any grade who want a calm, visual cue for voice levels during independent work, reading time, tests, centers or group work. The whole class shares one screen, and students need nothing at all.",
     "guide.faqTitle": "Questions teachers ask",
-    "guide.faq.free.q": "Is qui-et free?",
+    "guide.faq.free.q": "Is Quiet free?",
     "guide.faq.free.a":
       "Yes. There are no paywalls, no ads and no premium version. It came out of the EdTech-a-thon, a community of builders making free tools for classrooms, and is maintained by teacher.dev.",
     "guide.faq.record.q": "Does it record the classroom?",
@@ -308,7 +324,7 @@ const en = {
       "English, Spanish and French. It follows the browser's language, and you can change it from the menu at the top of the screen.",
     "guide.faq.meter.q": "How is it different from a noise meter?",
     "guide.faq.meter.a":
-      "A noise meter shows the class how loud they are, which can turn getting louder into a game. qui-et shows only a peaceful scene that slowly fills with animals, so the reward for quiet work is what the class sees, and there is no score to beat.",
+      "A noise meter shows the class how loud they are, which can turn getting louder into a game. Quiet shows only a peaceful scene that slowly fills with animals, so the reward for quiet work is what the class sees, and there is no live score to beat.",
   },
   creatures: {
     meerkat: "Meerkat",
@@ -620,15 +636,16 @@ const es = {
   locale: "es",
   ui: {
     "language.change": "Cambiar idioma",
-    "app.pageTitle": "qui-et — medidor de ruido gratuito para el aula",
+    "app.pageTitle":
+      "Quiet — un medidor de ruido para el aula que hace salir animales",
     "app.description":
-      "Un medidor de ruido gratuito para el proyector del aula. Animales tímidos de la sabana y del arrecife aparecen mientras la clase está en silencio. Sin registro, sin grabaciones.",
+      "Pon Quiet en el proyector. Mantén la clase bajo la línea y los animales tímidos irán saliendo uno a uno. Sin registro, sin puntuaciones y el micrófono nunca sale de la computadora.",
     "common.builtBy": "Creado por teacher.dev",
     "common.privacy": "privacidad",
     "common.howItWorks": "cómo funciona",
     "preview.alt":
-      "Una sabana tranquila con un elefante, cebras, un león, una jirafa y un suricata, junto a las palabras qui-et, un medidor de ruido gratuito para el aula",
-    "common.back": "← Volver a qui-et",
+      "Una sabana tranquila con un elefante, cebras, un león, una jirafa y un suricata, junto al logo de Quiet, un medidor de ruido para el aula que se llena de animales",
+    "common.back": "← Volver a Quiet",
     "common.close": "Cerrar",
     "common.cancel": "Cancelar",
     "common.done": "Listo",
@@ -638,16 +655,16 @@ const es = {
     "float.openHint":
       "Mostrar la escena en una ventana pequeña sobre tus diapositivas u otras pestañas",
     "float.failed": "No se pudo abrir la ventana flotante.",
-    "floating.title": "qui-et está flotando",
+    "floating.title": "Quiet está en su propia ventana",
     "floating.instructions":
       "La escena está en su propia ventana sobre tus otras pestañas y sigue escuchando el aula. Deja esta pestaña abierta: el botón de la ventana para volver a la pestaña la trae de vuelta aquí.",
-    "floating.return": "Traer qui-et de vuelta aquí",
-    "start.shy": "Shh… ¡estos animales son tímidos!",
+    "floating.return": "Traer Quiet de vuelta aquí",
+    "start.shy": "El silencio los hace salir.",
     "start.explain":
-      "Si hay demasiado ruido, se quedan escondidos. Cuando el aula vuelva a estar tranquila, empezarán a salir.",
+      "Mantén la clase bajo la línea y los animales tímidos seguirán saliendo. Si se pasa, se paran: no se pierde nada.",
     "start.button": "Empezar",
     "start.micNote":
-      "El navegador pedirá permiso para usar el micrófono. El sonido se mide en esta computadora y nunca se graba ni se envía a ningún sitio.",
+      "El navegador pedirá el micrófono. El sonido se mide aquí mismo: nunca se graba ni se envía.",
     "scene.label": "Escena",
     "scene.change": "Cambiar escena",
     "scene.new": "Nuevo",
@@ -751,6 +768,23 @@ const es = {
     "classes.deleteOnly":
       "Es tu única clase, así que una nueva y vacía ocupará su lugar.",
     "classes.deleteYes": "Sí, eliminar",
+    "class.label": "Clase",
+    "cup.title": "Copa de clase",
+    "cup.hint":
+      "La puntuación de una clase es la parte del tiempo medido en la que el aula estuvo bajo la línea. Solo cuenta el tiempo durante una sesión.",
+    "cup.sceneChip": "{name}: Copa de clase, {place}, {percent}%",
+    "cup.chipNone": "{name}: Copa de clase, aún sin sesión",
+    "cup.leader": "Primer puesto",
+    "cup.level": "Empatada en el primer puesto",
+    "cup.catchUp": "{time} bajo la línea para alcanzar el primer puesto",
+    "cup.needsPerfect":
+      "Inalcanzable: esa clase nunca se ha pasado de la línea",
+    "cup.waiting": "Aún sin empezar",
+    "cup.noTime": "Aún sin sesión",
+    "cup.place.1": "1.º",
+    "cup.place.2": "2.º",
+    "cup.place.3": "3.º",
+    "cup.place.other": "{place}.º",
     "settings.title": "Ajustes",
     "settings.microphone": "Micrófono",
     "settings.meter": "Medidor de ruido",
@@ -758,7 +792,7 @@ const es = {
     "settings.showMeterHint":
       "Dejar el medidor de ruido sobre la escena mientras la clase trabaja",
     "start.explainFlee":
-      "¡Si hay demasiado ruido, se escaparán! Mantengan el aula tranquila y saldrán y se quedarán.",
+      "Mantén la clase bajo la línea y los animales tímidos seguirán saliendo. Si se pasa, se escapan.",
     "settings.tooLoud": "Cuando hay demasiado ruido",
     "loud.flee.label": "Los animales se escapan",
     "loud.flee.hint":
@@ -852,29 +886,29 @@ const es = {
     "blocked.unsupported":
       "Este navegador no puede usar un micrófono. Chrome, Edge y Safari funcionan.",
     "blocked.tryAgain": "Volver a intentarlo",
-    "privacy.pageTitle": "Privacidad — qui-et",
-    "privacy.meta": "Qué recopila qui-et, qué no y por qué.",
+    "privacy.pageTitle": "Privacidad — Quiet",
+    "privacy.meta": "Qué recopila Quiet, qué no y por qué.",
     "privacy.title": "Privacidad",
     "privacy.lede": "Qué recopilamos, qué no y por qué.",
     "privacy.microphone":
-      "qui-et escucha por el micrófono solo para medir cuánto ruido hay en el aula. El sonido se convierte en un único nivel de volumen en esta computadora, momento a momento; nunca se graba, nunca se guarda y nunca se envía a ningún sitio.",
+      "Quiet escucha por el micrófono solo para medir cuánto ruido hay en el aula. El sonido se convierte en un único nivel de volumen en esta computadora, momento a momento; nunca se graba, nunca se guarda y nunca se envía a ningún sitio.",
     "privacy.local":
       "No hay cuentas y no recopilamos información personal de docentes ni estudiantes. Tus ajustes, tu calibración y los animales que ha visto cada una de tus clases se guardan en el almacenamiento local de este navegador, solo en esta computadora; al borrar los datos del navegador se eliminan.",
     "privacy.analytics.beforeLink":
-      "Usamos Cloudflare Web Analytics para contar las visitas de forma anónima, lo que nos ayuda a entender cómo se usa qui-et en las aulas. Cloudflare Web Analytics no usa cookies, no crea huellas digitales de los visitantes y no los rastrea en otros sitios; consulta la ",
+      "Usamos Cloudflare Web Analytics para contar las visitas de forma anónima, lo que nos ayuda a entender cómo se usa Quiet en las aulas. Cloudflare Web Analytics no usa cookies, no crea huellas digitales de los visitantes y no los rastrea en otros sitios; consulta la ",
     "privacy.analytics.link": "política de privacidad",
     "privacy.analytics.afterLink":
       " de Cloudflare para más detalles. No compartimos, vendemos ni transferimos de ningún otro modo los datos de los visitantes a terceros.",
     "privacy.contact": "¿Tienes preguntas o dudas? Escribe a ",
-    "guide.title": "Cómo funciona qui-et",
+    "guide.title": "Cómo funciona Quiet",
     "guide.lede":
-      "Un medidor de ruido gratuito para el aula que premia el silencio en lugar de castigar el ruido.",
+      "Un medidor de ruido para el aula que paga el silencio con animales.",
     "guide.whatTitle": "Qué es",
     "guide.what":
-      "qui-et es un medidor de ruido para el aula que funciona en el navegador. Ponlo en el proyector o en la pizarra digital y muestra una sabana, un arrecife de coral, un cielo del espacio profundo, una llanura del Cretácico, un claro del bosque, una selva tropical o el hielo ártico tranquilos. Escucha lo fuerte que suena la clase a través del micrófono del ordenador y, mientras la clase se mantiene por debajo del límite de volumen, van apareciendo animales tímidos uno a uno. Es lo contrario de un medidor de ruido que salta: no hay puntuación, ni aguja, ni luz roja de aviso, así que hacer ruido nunca resulta más interesante que estar en silencio.",
+      "Quiet es un medidor de ruido para el aula que funciona en el navegador. Ponlo en el proyector o en la pizarra digital y muestra una sabana, un arrecife de coral, un cielo del espacio profundo, una llanura del Cretácico, un claro del bosque, una selva tropical o el hielo ártico tranquilos. Escucha lo fuerte que suena la clase a través del micrófono del ordenador y, mientras la clase se mantiene por debajo del límite de volumen, van apareciendo animales tímidos uno a uno. Es lo contrario de un medidor de ruido que salta: no hay una puntuación en vivo, ni aguja, ni luz roja de aviso, así que hacer ruido nunca resulta más interesante que estar en silencio.",
     "guide.useTitle": "Cómo usarlo en clase",
     "guide.use.open":
-      "Abre qui-et en el ordenador conectado al proyector, elige la sabana, el arrecife de coral, el espacio profundo, la prehistoria, el bosque, la selva o el Ártico y pulsa Empezar. El navegador pedirá permiso para usar el micrófono.",
+      "Abre Quiet en el ordenador conectado al proyector, elige la sabana, el arrecife de coral, el espacio profundo, la prehistoria, el bosque, la selva o el Ártico y pulsa Empezar. El navegador pedirá permiso para usar el micrófono.",
     "guide.use.goal":
       "Elige el límite de volumen para la actividad: Silencio, Individual (solo susurros) o En parejas (voz de conversación), o arrastra la línea del medidor a cualquier punto intermedio.",
     "guide.use.rate":
@@ -898,7 +932,7 @@ const es = {
     "guide.for":
       "Para docentes de cualquier etapa que quieren una señal visual y tranquila del nivel de voz durante el trabajo individual, la lectura, los exámenes, los rincones o el trabajo en grupo. Toda la clase comparte una pantalla y el alumnado no necesita nada.",
     "guide.faqTitle": "Preguntas frecuentes",
-    "guide.faq.free.q": "¿qui-et es gratis?",
+    "guide.faq.free.q": "¿Quiet es gratis?",
     "guide.faq.free.a":
       "Sí. No hay muros de pago, ni anuncios, ni versión premium. Nació en el EdTech-a-thon, una comunidad que crea herramientas gratuitas para las aulas, y lo mantiene teacher.dev.",
     "guide.faq.record.q": "¿Graba lo que pasa en el aula?",
@@ -915,7 +949,7 @@ const es = {
       "En inglés, español y francés. Sigue el idioma del navegador, y puedes cambiarlo desde el menú de la parte superior de la pantalla.",
     "guide.faq.meter.q": "¿En qué se diferencia de un medidor de ruido?",
     "guide.faq.meter.a":
-      "Un medidor de ruido le muestra a la clase lo fuerte que está hablando, y eso puede convertir el hacer ruido en un juego. qui-et solo muestra una escena tranquila que se va llenando de animales, así que lo que la clase ve es la recompensa por trabajar en silencio, y no hay ninguna puntuación que batir.",
+      "Un medidor de ruido le muestra a la clase lo fuerte que está hablando, y eso puede convertir el hacer ruido en un juego. Quiet solo muestra una escena tranquila que se va llenando de animales, así que lo que la clase ve es la recompensa por trabajar en silencio, y no hay ninguna puntuación en vivo que batir.",
   },
   scenes: {
     space: {
@@ -1195,15 +1229,16 @@ const fr = {
   locale: "fr",
   ui: {
     "language.change": "Changer de langue",
-    "app.pageTitle": "qui-et — sonomètre gratuit pour la classe",
+    "app.pageTitle":
+      "Quiet — un sonomètre de classe qui fait sortir les animaux",
     "app.description":
-      "Un sonomètre gratuit pour le vidéoprojecteur de la classe. Des animaux timides de la savane et du récif sortent tant que la classe reste calme. Sans inscription, sans enregistrement.",
+      "Mettez Quiet au vidéoprojecteur. Restez sous la ligne et des animaux timides sortent un par un. Sans inscription, sans score, et le micro ne quitte jamais l’ordinateur.",
     "common.builtBy": "Créé par teacher.dev",
     "common.privacy": "confidentialité",
     "common.howItWorks": "comment ça marche",
     "preview.alt":
-      "Une savane paisible avec un éléphant, des zèbres, un lion, une girafe et un suricate, à côté des mots qui-et, un sonomètre gratuit pour la classe",
-    "common.back": "← Retour à qui-et",
+      "Une savane paisible avec un éléphant, des zèbres, un lion, une girafe et un suricate, à côté du logo Quiet, un sonomètre de classe qui se remplit d’animaux",
+    "common.back": "← Retour à Quiet",
     "common.close": "Fermer",
     "common.cancel": "Annuler",
     "common.done": "Terminé",
@@ -1213,16 +1248,16 @@ const fr = {
     "float.openHint":
       "Afficher la scène dans une petite fenêtre au-dessus de vos diapositives ou d’autres onglets",
     "float.failed": "Impossible d’ouvrir la fenêtre flottante.",
-    "floating.title": "qui-et est dans une fenêtre flottante",
+    "floating.title": "Quiet est dans sa propre fenêtre",
     "floating.instructions":
       "La scène est dans sa propre fenêtre au-dessus de vos autres onglets et continue d’écouter la classe. Gardez cet onglet ouvert : le bouton de retour à l’onglet de la fenêtre la ramène ici.",
-    "floating.return": "Ramener qui-et ici",
-    "start.shy": "Chut… ces animaux sont timides !",
+    "floating.return": "Ramener Quiet ici",
+    "start.shy": "Le calme les fait sortir.",
     "start.explain":
-      "S’il y a trop de bruit, ils restent cachés. Quand la classe redevient calme, ils commencent à sortir.",
+      "Restez sous la ligne et les animaux timides continuent de sortir. Si ça dépasse, ils s’arrêtent : rien n’est retiré.",
     "start.button": "Commencer",
     "start.micNote":
-      "Le navigateur va demander l’accès au micro. Le son est mesuré sur cet ordinateur ; il n’est jamais enregistré ni envoyé nulle part.",
+      "Le navigateur va demander le micro. Le son est mesuré ici même : jamais enregistré, jamais envoyé.",
     "scene.label": "Décor",
     "scene.change": "Changer de décor",
     "scene.new": "Nouveau",
@@ -1327,6 +1362,23 @@ const fr = {
     "classes.deleteOnly":
       "C’est votre seule classe : une nouvelle classe vide la remplacera.",
     "classes.deleteYes": "Oui, supprimer",
+    "class.label": "Classe",
+    "cup.title": "Coupe de classe",
+    "cup.hint":
+      "Le score d’une classe, c’est la part de son temps mesuré où la salle est restée sous la ligne. Seul le temps passé en séance compte.",
+    "cup.sceneChip": "{name} : Coupe de classe, {place}, {percent} %",
+    "cup.chipNone": "{name} : Coupe de classe, pas encore de séance",
+    "cup.leader": "Première place",
+    "cup.level": "À égalité en tête",
+    "cup.catchUp": "{time} sous la ligne pour prendre la première place",
+    "cup.needsPerfect":
+      "Hors d’atteinte : cette classe n’a jamais dépassé la ligne",
+    "cup.waiting": "Pas encore commencé",
+    "cup.noTime": "Pas encore de séance",
+    "cup.place.1": "1er",
+    "cup.place.2": "2e",
+    "cup.place.3": "3e",
+    "cup.place.other": "{place}e",
     "settings.title": "Réglages",
     "settings.microphone": "Micro",
     "settings.meter": "Sonomètre",
@@ -1334,7 +1386,7 @@ const fr = {
     "settings.showMeterHint":
       "Garder le sonomètre au-dessus de la scène pendant que la classe travaille",
     "start.explainFlee":
-      "S’il y a trop de bruit, ils s’enfuient ! Gardez la classe calme et ils sortiront et resteront.",
+      "Restez sous la ligne et les animaux timides continuent de sortir. Si ça dépasse, ils filent.",
     "settings.tooLoud": "Quand il y a trop de bruit",
     "loud.flee.label": "Les animaux s’enfuient",
     "loud.flee.hint":
@@ -1428,31 +1480,31 @@ const fr = {
     "blocked.unsupported":
       "Ce navigateur ne peut pas utiliser de micro. Chrome, Edge et Safari fonctionnent tous.",
     "blocked.tryAgain": "Réessayer",
-    "privacy.pageTitle": "Confidentialité — qui-et",
+    "privacy.pageTitle": "Confidentialité — Quiet",
     "privacy.meta":
-      "Ce que qui-et collecte, ce qu’il ne collecte pas, et pourquoi.",
+      "Ce que Quiet collecte, ce qu’il ne collecte pas, et pourquoi.",
     "privacy.title": "Confidentialité",
     "privacy.lede":
       "Ce que nous collectons, ce que nous ne collectons pas, et pourquoi.",
     "privacy.microphone":
-      "qui-et écoute par le micro uniquement pour mesurer le niveau sonore de la classe. Le son est transformé en un simple niveau de volume sur cet ordinateur, instant après instant ; il n’est jamais enregistré, jamais conservé et jamais envoyé nulle part.",
+      "Quiet écoute par le micro uniquement pour mesurer le niveau sonore de la classe. Le son est transformé en un simple niveau de volume sur cet ordinateur, instant après instant ; il n’est jamais enregistré, jamais conservé et jamais envoyé nulle part.",
     "privacy.local":
       "Il n’y a pas de compte, et nous ne collectons aucune information personnelle sur les enseignants ou les élèves. Vos réglages, votre étalonnage et les animaux aperçus par chacune de vos classes sont conservés dans le stockage local de ce navigateur, sur cet ordinateur uniquement ; effacer les données du navigateur les supprime.",
     "privacy.analytics.beforeLink":
-      "Nous utilisons Cloudflare Web Analytics pour compter les visites de façon anonyme, ce qui nous aide à comprendre comment qui-et est utilisé en classe. Cloudflare Web Analytics n’utilise pas de cookies, ne crée pas d’empreinte des visiteurs et ne les suit pas sur d’autres sites ; consultez la ",
+      "Nous utilisons Cloudflare Web Analytics pour compter les visites de façon anonyme, ce qui nous aide à comprendre comment Quiet est utilisé en classe. Cloudflare Web Analytics n’utilise pas de cookies, ne crée pas d’empreinte des visiteurs et ne les suit pas sur d’autres sites ; consultez la ",
     "privacy.analytics.link": "politique de confidentialité",
     "privacy.analytics.afterLink":
       " de Cloudflare pour en savoir plus. Nous ne partageons, ne vendons ni ne transférons d’aucune autre manière les données des visiteurs à des tiers.",
     "privacy.contact": "Des questions ou des inquiétudes ? Écrivez à ",
-    "guide.title": "Comment fonctionne qui-et",
+    "guide.title": "Comment fonctionne Quiet",
     "guide.lede":
-      "Un sonomètre gratuit pour la classe qui récompense le calme au lieu de punir le bruit.",
+      "Un sonomètre de classe qui récompense le calme avec des animaux.",
     "guide.whatTitle": "Ce que c'est",
     "guide.what":
-      "qui-et est un sonomètre pour la classe qui fonctionne dans le navigateur. Affichez-le au vidéoprojecteur ou sur le tableau interactif : il montre une savane, un récif de corail, un ciel de l'espace profond, une plaine du Crétacé, une clairière en forêt, une jungle tropicale ou une banquise arctique paisibles. Il écoute le niveau sonore de la salle grâce au micro de l'ordinateur et, tant que la classe reste sous l'objectif de volume, des animaux timides sortent un par un. C'est le contraire d'un sonomètre qui s'agite : pas de score, pas d'aiguille, pas de voyant rouge, donc rien ne rend le bruit plus intéressant que le calme.",
+      "Quiet est un sonomètre pour la classe qui fonctionne dans le navigateur. Affichez-le au vidéoprojecteur ou sur le tableau interactif : il montre une savane, un récif de corail, un ciel de l'espace profond, une plaine du Crétacé, une clairière en forêt, une jungle tropicale ou une banquise arctique paisibles. Il écoute le niveau sonore de la salle grâce au micro de l'ordinateur et, tant que la classe reste sous l'objectif de volume, des animaux timides sortent un par un. C'est le contraire d'un sonomètre qui s'agite : pas de score en direct, pas d'aiguille, pas de voyant rouge, donc rien ne rend le bruit plus intéressant que le calme.",
     "guide.useTitle": "L'utiliser en classe",
     "guide.use.open":
-      "Ouvrez qui-et sur l'ordinateur relié au vidéoprojecteur, choisissez la savane, le récif de corail, l'espace profond, la préhistoire, la forêt, la jungle ou l'Arctique, puis appuyez sur Commencer. Le navigateur demande l'accès au micro.",
+      "Ouvrez Quiet sur l'ordinateur relié au vidéoprojecteur, choisissez la savane, le récif de corail, l'espace profond, la préhistoire, la forêt, la jungle ou l'Arctique, puis appuyez sur Commencer. Le navigateur demande l'accès au micro.",
     "guide.use.goal":
       "Réglez l'objectif de volume pour l'activité : Silence, Travail seul (chuchotements) ou En binôme (voix de conversation), ou faites glisser la ligne du sonomètre n'importe où entre les deux.",
     "guide.use.rate":
@@ -1476,7 +1528,7 @@ const fr = {
     "guide.for":
       "Pour les enseignants de tous niveaux qui veulent un repère visuel et apaisant du niveau de voix pendant le travail autonome, la lecture, les évaluations, les ateliers ou le travail de groupe. Toute la classe partage un seul écran et les élèves n'ont besoin de rien.",
     "guide.faqTitle": "Questions fréquentes",
-    "guide.faq.free.q": "qui-et est-il gratuit ?",
+    "guide.faq.free.q": "Quiet est-il gratuit ?",
     "guide.faq.free.a":
       "Oui. Pas de paiement, pas de publicité, pas de version premium. Il est né de l'EdTech-a-thon, une communauté qui crée des outils gratuits pour les classes, et il est maintenu par teacher.dev.",
     "guide.faq.record.q": "Est-ce qu'il enregistre la classe ?",
@@ -1493,7 +1545,7 @@ const fr = {
       "L'anglais, l'espagnol et le français. Il suit la langue du navigateur, et vous pouvez la changer depuis le menu en haut de l'écran.",
     "guide.faq.meter.q": "En quoi est-ce différent d'un sonomètre ?",
     "guide.faq.meter.a":
-      "Un sonomètre montre à la classe à quel point elle est bruyante, ce qui peut transformer le bruit en jeu. qui-et ne montre qu'une scène paisible qui se remplit peu à peu d'animaux : ce que la classe voit, c'est la récompense du travail silencieux, et il n'y a aucun score à battre.",
+      "Un sonomètre montre à la classe à quel point elle est bruyante, ce qui peut transformer le bruit en jeu. Quiet ne montre qu'une scène paisible qui se remplit peu à peu d'animaux : ce que la classe voit, c'est la récompense du travail silencieux, et il n'y a aucun score en direct à battre.",
   },
   scenes: {
     space: {
@@ -1865,6 +1917,14 @@ export function creatureName(slug: string): string {
 /** A Class's name, or "My class" in this language if it has none yet. */
 export function className(name: string): string {
   return name || t("classes.unnamed");
+}
+
+const PLACE_KEYS = ["cup.place.1", "cup.place.2", "cup.place.3"] as const;
+
+/** A place on the Class Cup board: "1st", "2.º", "3e". */
+export function placeLabel(place: number): string {
+  const key = PLACE_KEYS[place - 1];
+  return key ? t(key) : t("cup.place.other", { place });
 }
 
 /** A one-line fact about a Creature, where it has one. */

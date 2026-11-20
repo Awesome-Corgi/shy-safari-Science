@@ -1,12 +1,12 @@
-# qui-et
+# Quiet
 
 A calm scene on the classroom projector — a savanna, a coral reef, deep
 space, the age of dinosaurs, a woodland clearing, the jungle or the Arctic — where animals (or, in deep space, sightings
 through a telescope) come out the longer the room stays quiet. The animals are shy: if the room is too loud,
 they stay hidden until it is calm again.
 
-It is the opposite of a noise meter. There is no bouncing, no score, no red
-warning light — nothing that makes being loud more interesting than being
+It is the opposite of a noise meter. There is no bouncing, no live score, no
+red warning light — nothing that makes being loud more interesting than being
 quiet. The class starts with an empty scene. The first animal comes out
 after 10–20 quiet seconds, as a taste of what is coming; after that, every few
 minutes of quiet working brings another one. Some of them are rare.
@@ -26,6 +26,11 @@ minutes of quiet working brings another one. Some of them are rare.
 3. Move the mouse to bring up the controls. **Settings** has everything:
    which scene, which microphone, how loud is too loud, and how often animals
    arrive. Each scene keeps its own animals, so switching never loses any.
+
+The trophy in the top bar opens the **Class Cup**: every class ranked by the
+share of its session time spent under the volume goal, each with its place and
+how much longer under the line it needs to take first place. The **Class** menu
+in the top-left gives each class you teach its own animals, notes and Cup run.
 
 That is the whole app. No account, no sign-in, nothing to install.
 
@@ -92,7 +97,7 @@ and `static/_redirects` and `static/_headers` carry the redirects and cache
 rules. `https://qui-et.pages.dev` is the canonical origin; keep it that way,
 because every class's settings and notes live in that origin's localStorage,
 and a different origin starts empty. The name and that choice are recorded in
-[docs/adr/0013](docs/adr/0013-the-name-is-qui-et.md).
+[docs/adr/0016](docs/adr/0016-the-name-is-quiet.md).
 
 Cloudflare Web Analytics is added to the build only when `CF_BEACON_TOKEN` is
 set, which it is only as a build variable on the production Cloudflare build.
