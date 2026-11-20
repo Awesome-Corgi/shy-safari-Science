@@ -76,7 +76,7 @@
    */
   const webApplication = $derived({
     "@type": "WebApplication",
-    name: "Quietly",
+    name: "qui-et",
     url: absoluteUrl("/"),
     description: t("app.description"),
     image: PREVIEW_IMAGE,
@@ -208,7 +208,7 @@
       // 4:3, the Scene's own shape, and small enough to sit beside a slide.
       pip = await controller.requestWindow({ width: 480, height: 360 });
       const page = pip.document;
-      page.title = "Quietly";
+      page.title = "qui-et";
       page.documentElement.lang = current().locale;
       // Scales the corner controls with the window: see layout.css.
       page.documentElement.classList.add("floating");
@@ -353,7 +353,7 @@
                 <h1
                   class="mt-4 font-display text-[3rem] leading-[0.92] font-semibold tracking-[-0.02em] text-balance text-ink sm:text-[3.6rem] short:mt-2 short:text-[1.75rem]"
                 >
-                  Quietly
+                  qui-et
                 </h1>
                 <div
                   class="mt-5 h-[3px] w-12 rounded-full bg-ochre/70 short:hidden"

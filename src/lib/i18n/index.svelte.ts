@@ -16,15 +16,15 @@ const en = {
   locale: "en",
   ui: {
     "language.change": "Change language",
-    "app.pageTitle": "Quietly — free classroom noise level monitor",
+    "app.pageTitle": "qui-et — free classroom noise level monitor",
     "app.description":
       "A free classroom noise monitor for the projector. Shy savanna and coral reef animals come out the longer the room stays quiet. No sign-up, nothing recorded.",
     "common.builtBy": "Built by teacher.dev",
     "common.privacy": "privacy",
     "common.howItWorks": "how it works",
     "preview.alt":
-      "A calm savanna with an elephant, zebras, a lion, a giraffe and a meerkat, beside the words Quietly, a free classroom noise monitor",
-    "common.back": "← Back to Quietly",
+      "A calm savanna with an elephant, zebras, a lion, a giraffe and a meerkat, beside the words qui-et, a free classroom noise monitor",
+    "common.back": "← Back to qui-et",
     "common.close": "Close",
     "common.cancel": "Cancel",
     "common.done": "Done",
@@ -34,10 +34,10 @@ const en = {
     "float.openHint":
       "Float the scene in a small window over your slides or other tabs",
     "float.failed": "The floating window could not be opened.",
-    "floating.title": "Quietly is floating",
+    "floating.title": "qui-et is floating",
     "floating.instructions":
       "The scene is in its own window over your other tabs, and keeps listening to the room. Keep this tab open: the window's back-to-tab button brings it back here.",
-    "floating.return": "Bring Quietly back here",
+    "floating.return": "Bring qui-et back here",
     "start.shy": "Shh… these animals are shy!",
     "start.explain":
       "If it gets too loud, they stay hidden. When the room is calm again, they'll start coming out.",
@@ -245,29 +245,29 @@ const en = {
     "blocked.unsupported":
       "This browser cannot use a microphone. Chrome, Edge and Safari all work.",
     "blocked.tryAgain": "Try again",
-    "privacy.pageTitle": "Privacy — Quietly",
-    "privacy.meta": "What Quietly collects, what it doesn't, and why.",
+    "privacy.pageTitle": "Privacy — qui-et",
+    "privacy.meta": "What qui-et collects, what it doesn't, and why.",
     "privacy.title": "Privacy",
     "privacy.lede": "What we collect, what we don't, and why.",
     "privacy.microphone":
-      "Quietly listens through your microphone only to measure how loud the room is. The sound is turned into a single volume level on this computer, moment by moment; it is never recorded, never saved, and never sent anywhere.",
+      "qui-et listens through your microphone only to measure how loud the room is. The sound is turned into a single volume level on this computer, moment by moment; it is never recorded, never saved, and never sent anywhere.",
     "privacy.local":
       "There are no accounts, and we do not collect personal information from teachers or students. Your settings, your calibration and the animals each of your classes has spotted are kept in this browser's local storage on this computer only, and clearing your browser data removes them.",
     "privacy.analytics.beforeLink":
-      "We use Cloudflare Web Analytics to anonymously count visits, which helps us understand how Quietly is being used in classrooms. Cloudflare Web Analytics is cookieless, does not fingerprint visitors, and does not track users across other sites; see Cloudflare's ",
+      "We use Cloudflare Web Analytics to anonymously count visits, which helps us understand how qui-et is being used in classrooms. Cloudflare Web Analytics is cookieless, does not fingerprint visitors, and does not track users across other sites; see Cloudflare's ",
     "privacy.analytics.link": "privacy policy",
     "privacy.analytics.afterLink":
       " for details. We do not share, sell, or otherwise transfer any visitor data to third parties.",
     "privacy.contact": "Questions or concerns? Email ",
-    "guide.title": "How Quietly works",
+    "guide.title": "How qui-et works",
     "guide.lede":
       "A free classroom noise level monitor that rewards quiet instead of punishing noise.",
     "guide.whatTitle": "What it is",
     "guide.what":
-      "Quietly is a classroom noise monitor that runs in a web browser. Put it on the projector or interactive whiteboard and it shows a calm savanna, coral reef, night sky in deep space, Cretaceous floodplain, woodland clearing, rainforest jungle or Arctic sea ice. It listens to how loud the room is through the computer's microphone, and while the class stays under the volume goal, shy animals come out one at a time. It is the opposite of a bouncing noise meter: there is no score, no needle and no red warning light, so nothing makes being loud more interesting than being quiet.",
+      "qui-et is a classroom noise monitor that runs in a web browser. Put it on the projector or interactive whiteboard and it shows a calm savanna, coral reef, night sky in deep space, Cretaceous floodplain, woodland clearing, rainforest jungle or Arctic sea ice. It listens to how loud the room is through the computer's microphone, and while the class stays under the volume goal, shy animals come out one at a time. It is the opposite of a bouncing noise meter: there is no score, no needle and no red warning light, so nothing makes being loud more interesting than being quiet.",
     "guide.useTitle": "Using it in class",
     "guide.use.open":
-      "Open Quietly on the computer connected to your projector, pick the savanna, the coral reef, deep space, the prehistoric scene, the forest, the jungle or the Arctic, and press Start. The browser asks to use the microphone.",
+      "Open qui-et on the computer connected to your projector, pick the savanna, the coral reef, deep space, the prehistoric scene, the forest, the jungle or the Arctic, and press Start. The browser asks to use the microphone.",
     "guide.use.goal":
       "Set the volume goal for the activity: Silent, Independent (quiet whispers) or Partner work (conversation voices), or drag the line on the meter to anywhere in between.",
     "guide.use.rate":
@@ -291,7 +291,7 @@ const en = {
     "guide.for":
       "Teachers of any grade who want a calm, visual cue for voice levels during independent work, reading time, tests, centers or group work. The whole class shares one screen, and students need nothing at all.",
     "guide.faqTitle": "Questions teachers ask",
-    "guide.faq.free.q": "Is Quietly free?",
+    "guide.faq.free.q": "Is qui-et free?",
     "guide.faq.free.a":
       "Yes. There are no paywalls, no ads and no premium version. It came out of the EdTech-a-thon, a community of builders making free tools for classrooms, and is maintained by teacher.dev.",
     "guide.faq.record.q": "Does it record the classroom?",
@@ -308,7 +308,7 @@ const en = {
       "English, Spanish and French. It follows the browser's language, and you can change it from the menu at the top of the screen.",
     "guide.faq.meter.q": "How is it different from a noise meter?",
     "guide.faq.meter.a":
-      "A noise meter shows the class how loud they are, which can turn getting louder into a game. Quietly shows only a peaceful scene that slowly fills with animals, so the reward for quiet work is what the class sees, and there is no score to beat.",
+      "A noise meter shows the class how loud they are, which can turn getting louder into a game. qui-et shows only a peaceful scene that slowly fills with animals, so the reward for quiet work is what the class sees, and there is no score to beat.",
   },
   creatures: {
     meerkat: "Meerkat",
@@ -620,15 +620,15 @@ const es = {
   locale: "es",
   ui: {
     "language.change": "Cambiar idioma",
-    "app.pageTitle": "Quietly — medidor de ruido gratuito para el aula",
+    "app.pageTitle": "qui-et — medidor de ruido gratuito para el aula",
     "app.description":
       "Un medidor de ruido gratuito para el proyector del aula. Animales tímidos de la sabana y del arrecife aparecen mientras la clase está en silencio. Sin registro, sin grabaciones.",
     "common.builtBy": "Creado por teacher.dev",
     "common.privacy": "privacidad",
     "common.howItWorks": "cómo funciona",
     "preview.alt":
-      "Una sabana tranquila con un elefante, cebras, un león, una jirafa y un suricata, junto a las palabras Quietly, un medidor de ruido gratuito para el aula",
-    "common.back": "← Volver a Quietly",
+      "Una sabana tranquila con un elefante, cebras, un león, una jirafa y un suricata, junto a las palabras qui-et, un medidor de ruido gratuito para el aula",
+    "common.back": "← Volver a qui-et",
     "common.close": "Cerrar",
     "common.cancel": "Cancelar",
     "common.done": "Listo",
@@ -638,10 +638,10 @@ const es = {
     "float.openHint":
       "Mostrar la escena en una ventana pequeña sobre tus diapositivas u otras pestañas",
     "float.failed": "No se pudo abrir la ventana flotante.",
-    "floating.title": "Quietly está flotando",
+    "floating.title": "qui-et está flotando",
     "floating.instructions":
       "La escena está en su propia ventana sobre tus otras pestañas y sigue escuchando el aula. Deja esta pestaña abierta: el botón de la ventana para volver a la pestaña la trae de vuelta aquí.",
-    "floating.return": "Traer Quietly de vuelta aquí",
+    "floating.return": "Traer qui-et de vuelta aquí",
     "start.shy": "Shh… ¡estos animales son tímidos!",
     "start.explain":
       "Si hay demasiado ruido, se quedan escondidos. Cuando el aula vuelva a estar tranquila, empezarán a salir.",
@@ -852,29 +852,29 @@ const es = {
     "blocked.unsupported":
       "Este navegador no puede usar un micrófono. Chrome, Edge y Safari funcionan.",
     "blocked.tryAgain": "Volver a intentarlo",
-    "privacy.pageTitle": "Privacidad — Quietly",
-    "privacy.meta": "Qué recopila Quietly, qué no y por qué.",
+    "privacy.pageTitle": "Privacidad — qui-et",
+    "privacy.meta": "Qué recopila qui-et, qué no y por qué.",
     "privacy.title": "Privacidad",
     "privacy.lede": "Qué recopilamos, qué no y por qué.",
     "privacy.microphone":
-      "Quietly escucha por el micrófono solo para medir cuánto ruido hay en el aula. El sonido se convierte en un único nivel de volumen en esta computadora, momento a momento; nunca se graba, nunca se guarda y nunca se envía a ningún sitio.",
+      "qui-et escucha por el micrófono solo para medir cuánto ruido hay en el aula. El sonido se convierte en un único nivel de volumen en esta computadora, momento a momento; nunca se graba, nunca se guarda y nunca se envía a ningún sitio.",
     "privacy.local":
       "No hay cuentas y no recopilamos información personal de docentes ni estudiantes. Tus ajustes, tu calibración y los animales que ha visto cada una de tus clases se guardan en el almacenamiento local de este navegador, solo en esta computadora; al borrar los datos del navegador se eliminan.",
     "privacy.analytics.beforeLink":
-      "Usamos Cloudflare Web Analytics para contar las visitas de forma anónima, lo que nos ayuda a entender cómo se usa Quietly en las aulas. Cloudflare Web Analytics no usa cookies, no crea huellas digitales de los visitantes y no los rastrea en otros sitios; consulta la ",
+      "Usamos Cloudflare Web Analytics para contar las visitas de forma anónima, lo que nos ayuda a entender cómo se usa qui-et en las aulas. Cloudflare Web Analytics no usa cookies, no crea huellas digitales de los visitantes y no los rastrea en otros sitios; consulta la ",
     "privacy.analytics.link": "política de privacidad",
     "privacy.analytics.afterLink":
       " de Cloudflare para más detalles. No compartimos, vendemos ni transferimos de ningún otro modo los datos de los visitantes a terceros.",
     "privacy.contact": "¿Tienes preguntas o dudas? Escribe a ",
-    "guide.title": "Cómo funciona Quietly",
+    "guide.title": "Cómo funciona qui-et",
     "guide.lede":
       "Un medidor de ruido gratuito para el aula que premia el silencio en lugar de castigar el ruido.",
     "guide.whatTitle": "Qué es",
     "guide.what":
-      "Quietly es un medidor de ruido para el aula que funciona en el navegador. Ponlo en el proyector o en la pizarra digital y muestra una sabana, un arrecife de coral, un cielo del espacio profundo, una llanura del Cretácico, un claro del bosque, una selva tropical o el hielo ártico tranquilos. Escucha lo fuerte que suena la clase a través del micrófono del ordenador y, mientras la clase se mantiene por debajo del límite de volumen, van apareciendo animales tímidos uno a uno. Es lo contrario de un medidor de ruido que salta: no hay puntuación, ni aguja, ni luz roja de aviso, así que hacer ruido nunca resulta más interesante que estar en silencio.",
+      "qui-et es un medidor de ruido para el aula que funciona en el navegador. Ponlo en el proyector o en la pizarra digital y muestra una sabana, un arrecife de coral, un cielo del espacio profundo, una llanura del Cretácico, un claro del bosque, una selva tropical o el hielo ártico tranquilos. Escucha lo fuerte que suena la clase a través del micrófono del ordenador y, mientras la clase se mantiene por debajo del límite de volumen, van apareciendo animales tímidos uno a uno. Es lo contrario de un medidor de ruido que salta: no hay puntuación, ni aguja, ni luz roja de aviso, así que hacer ruido nunca resulta más interesante que estar en silencio.",
     "guide.useTitle": "Cómo usarlo en clase",
     "guide.use.open":
-      "Abre Quietly en el ordenador conectado al proyector, elige la sabana, el arrecife de coral, el espacio profundo, la prehistoria, el bosque, la selva o el Ártico y pulsa Empezar. El navegador pedirá permiso para usar el micrófono.",
+      "Abre qui-et en el ordenador conectado al proyector, elige la sabana, el arrecife de coral, el espacio profundo, la prehistoria, el bosque, la selva o el Ártico y pulsa Empezar. El navegador pedirá permiso para usar el micrófono.",
     "guide.use.goal":
       "Elige el límite de volumen para la actividad: Silencio, Individual (solo susurros) o En parejas (voz de conversación), o arrastra la línea del medidor a cualquier punto intermedio.",
     "guide.use.rate":
@@ -898,7 +898,7 @@ const es = {
     "guide.for":
       "Para docentes de cualquier etapa que quieren una señal visual y tranquila del nivel de voz durante el trabajo individual, la lectura, los exámenes, los rincones o el trabajo en grupo. Toda la clase comparte una pantalla y el alumnado no necesita nada.",
     "guide.faqTitle": "Preguntas frecuentes",
-    "guide.faq.free.q": "¿Quietly es gratis?",
+    "guide.faq.free.q": "¿qui-et es gratis?",
     "guide.faq.free.a":
       "Sí. No hay muros de pago, ni anuncios, ni versión premium. Nació en el EdTech-a-thon, una comunidad que crea herramientas gratuitas para las aulas, y lo mantiene teacher.dev.",
     "guide.faq.record.q": "¿Graba lo que pasa en el aula?",
@@ -915,7 +915,7 @@ const es = {
       "En inglés, español y francés. Sigue el idioma del navegador, y puedes cambiarlo desde el menú de la parte superior de la pantalla.",
     "guide.faq.meter.q": "¿En qué se diferencia de un medidor de ruido?",
     "guide.faq.meter.a":
-      "Un medidor de ruido le muestra a la clase lo fuerte que está hablando, y eso puede convertir el hacer ruido en un juego. Quietly solo muestra una escena tranquila que se va llenando de animales, así que lo que la clase ve es la recompensa por trabajar en silencio, y no hay ninguna puntuación que batir.",
+      "Un medidor de ruido le muestra a la clase lo fuerte que está hablando, y eso puede convertir el hacer ruido en un juego. qui-et solo muestra una escena tranquila que se va llenando de animales, así que lo que la clase ve es la recompensa por trabajar en silencio, y no hay ninguna puntuación que batir.",
   },
   scenes: {
     space: {
@@ -1195,15 +1195,15 @@ const fr = {
   locale: "fr",
   ui: {
     "language.change": "Changer de langue",
-    "app.pageTitle": "Quietly — sonomètre gratuit pour la classe",
+    "app.pageTitle": "qui-et — sonomètre gratuit pour la classe",
     "app.description":
       "Un sonomètre gratuit pour le vidéoprojecteur de la classe. Des animaux timides de la savane et du récif sortent tant que la classe reste calme. Sans inscription, sans enregistrement.",
     "common.builtBy": "Créé par teacher.dev",
     "common.privacy": "confidentialité",
     "common.howItWorks": "comment ça marche",
     "preview.alt":
-      "Une savane paisible avec un éléphant, des zèbres, un lion, une girafe et un suricate, à côté des mots Quietly, un sonomètre gratuit pour la classe",
-    "common.back": "← Retour à Quietly",
+      "Une savane paisible avec un éléphant, des zèbres, un lion, une girafe et un suricate, à côté des mots qui-et, un sonomètre gratuit pour la classe",
+    "common.back": "← Retour à qui-et",
     "common.close": "Fermer",
     "common.cancel": "Annuler",
     "common.done": "Terminé",
@@ -1213,10 +1213,10 @@ const fr = {
     "float.openHint":
       "Afficher la scène dans une petite fenêtre au-dessus de vos diapositives ou d’autres onglets",
     "float.failed": "Impossible d’ouvrir la fenêtre flottante.",
-    "floating.title": "Quietly est dans une fenêtre flottante",
+    "floating.title": "qui-et est dans une fenêtre flottante",
     "floating.instructions":
       "La scène est dans sa propre fenêtre au-dessus de vos autres onglets et continue d’écouter la classe. Gardez cet onglet ouvert : le bouton de retour à l’onglet de la fenêtre la ramène ici.",
-    "floating.return": "Ramener Quietly ici",
+    "floating.return": "Ramener qui-et ici",
     "start.shy": "Chut… ces animaux sont timides !",
     "start.explain":
       "S’il y a trop de bruit, ils restent cachés. Quand la classe redevient calme, ils commencent à sortir.",
@@ -1428,31 +1428,31 @@ const fr = {
     "blocked.unsupported":
       "Ce navigateur ne peut pas utiliser de micro. Chrome, Edge et Safari fonctionnent tous.",
     "blocked.tryAgain": "Réessayer",
-    "privacy.pageTitle": "Confidentialité — Quietly",
+    "privacy.pageTitle": "Confidentialité — qui-et",
     "privacy.meta":
-      "Ce que Quietly collecte, ce qu’il ne collecte pas, et pourquoi.",
+      "Ce que qui-et collecte, ce qu’il ne collecte pas, et pourquoi.",
     "privacy.title": "Confidentialité",
     "privacy.lede":
       "Ce que nous collectons, ce que nous ne collectons pas, et pourquoi.",
     "privacy.microphone":
-      "Quietly écoute par le micro uniquement pour mesurer le niveau sonore de la classe. Le son est transformé en un simple niveau de volume sur cet ordinateur, instant après instant ; il n’est jamais enregistré, jamais conservé et jamais envoyé nulle part.",
+      "qui-et écoute par le micro uniquement pour mesurer le niveau sonore de la classe. Le son est transformé en un simple niveau de volume sur cet ordinateur, instant après instant ; il n’est jamais enregistré, jamais conservé et jamais envoyé nulle part.",
     "privacy.local":
       "Il n’y a pas de compte, et nous ne collectons aucune information personnelle sur les enseignants ou les élèves. Vos réglages, votre étalonnage et les animaux aperçus par chacune de vos classes sont conservés dans le stockage local de ce navigateur, sur cet ordinateur uniquement ; effacer les données du navigateur les supprime.",
     "privacy.analytics.beforeLink":
-      "Nous utilisons Cloudflare Web Analytics pour compter les visites de façon anonyme, ce qui nous aide à comprendre comment Quietly est utilisé en classe. Cloudflare Web Analytics n’utilise pas de cookies, ne crée pas d’empreinte des visiteurs et ne les suit pas sur d’autres sites ; consultez la ",
+      "Nous utilisons Cloudflare Web Analytics pour compter les visites de façon anonyme, ce qui nous aide à comprendre comment qui-et est utilisé en classe. Cloudflare Web Analytics n’utilise pas de cookies, ne crée pas d’empreinte des visiteurs et ne les suit pas sur d’autres sites ; consultez la ",
     "privacy.analytics.link": "politique de confidentialité",
     "privacy.analytics.afterLink":
       " de Cloudflare pour en savoir plus. Nous ne partageons, ne vendons ni ne transférons d’aucune autre manière les données des visiteurs à des tiers.",
     "privacy.contact": "Des questions ou des inquiétudes ? Écrivez à ",
-    "guide.title": "Comment fonctionne Quietly",
+    "guide.title": "Comment fonctionne qui-et",
     "guide.lede":
       "Un sonomètre gratuit pour la classe qui récompense le calme au lieu de punir le bruit.",
     "guide.whatTitle": "Ce que c'est",
     "guide.what":
-      "Quietly est un sonomètre pour la classe qui fonctionne dans le navigateur. Affichez-le au vidéoprojecteur ou sur le tableau interactif : il montre une savane, un récif de corail, un ciel de l'espace profond, une plaine du Crétacé, une clairière en forêt, une jungle tropicale ou une banquise arctique paisibles. Il écoute le niveau sonore de la salle grâce au micro de l'ordinateur et, tant que la classe reste sous l'objectif de volume, des animaux timides sortent un par un. C'est le contraire d'un sonomètre qui s'agite : pas de score, pas d'aiguille, pas de voyant rouge, donc rien ne rend le bruit plus intéressant que le calme.",
+      "qui-et est un sonomètre pour la classe qui fonctionne dans le navigateur. Affichez-le au vidéoprojecteur ou sur le tableau interactif : il montre une savane, un récif de corail, un ciel de l'espace profond, une plaine du Crétacé, une clairière en forêt, une jungle tropicale ou une banquise arctique paisibles. Il écoute le niveau sonore de la salle grâce au micro de l'ordinateur et, tant que la classe reste sous l'objectif de volume, des animaux timides sortent un par un. C'est le contraire d'un sonomètre qui s'agite : pas de score, pas d'aiguille, pas de voyant rouge, donc rien ne rend le bruit plus intéressant que le calme.",
     "guide.useTitle": "L'utiliser en classe",
     "guide.use.open":
-      "Ouvrez Quietly sur l'ordinateur relié au vidéoprojecteur, choisissez la savane, le récif de corail, l'espace profond, la préhistoire, la forêt, la jungle ou l'Arctique, puis appuyez sur Commencer. Le navigateur demande l'accès au micro.",
+      "Ouvrez qui-et sur l'ordinateur relié au vidéoprojecteur, choisissez la savane, le récif de corail, l'espace profond, la préhistoire, la forêt, la jungle ou l'Arctique, puis appuyez sur Commencer. Le navigateur demande l'accès au micro.",
     "guide.use.goal":
       "Réglez l'objectif de volume pour l'activité : Silence, Travail seul (chuchotements) ou En binôme (voix de conversation), ou faites glisser la ligne du sonomètre n'importe où entre les deux.",
     "guide.use.rate":
@@ -1476,7 +1476,7 @@ const fr = {
     "guide.for":
       "Pour les enseignants de tous niveaux qui veulent un repère visuel et apaisant du niveau de voix pendant le travail autonome, la lecture, les évaluations, les ateliers ou le travail de groupe. Toute la classe partage un seul écran et les élèves n'ont besoin de rien.",
     "guide.faqTitle": "Questions fréquentes",
-    "guide.faq.free.q": "Quietly est-il gratuit ?",
+    "guide.faq.free.q": "qui-et est-il gratuit ?",
     "guide.faq.free.a":
       "Oui. Pas de paiement, pas de publicité, pas de version premium. Il est né de l'EdTech-a-thon, une communauté qui crée des outils gratuits pour les classes, et il est maintenu par teacher.dev.",
     "guide.faq.record.q": "Est-ce qu'il enregistre la classe ?",
@@ -1493,7 +1493,7 @@ const fr = {
       "L'anglais, l'espagnol et le français. Il suit la langue du navigateur, et vous pouvez la changer depuis le menu en haut de l'écran.",
     "guide.faq.meter.q": "En quoi est-ce différent d'un sonomètre ?",
     "guide.faq.meter.a":
-      "Un sonomètre montre à la classe à quel point elle est bruyante, ce qui peut transformer le bruit en jeu. Quietly ne montre qu'une scène paisible qui se remplit peu à peu d'animaux : ce que la classe voit, c'est la récompense du travail silencieux, et il n'y a aucun score à battre.",
+      "Un sonomètre montre à la classe à quel point elle est bruyante, ce qui peut transformer le bruit en jeu. qui-et ne montre qu'une scène paisible qui se remplit peu à peu d'animaux : ce que la classe voit, c'est la récompense du travail silencieux, et il n'y a aucun score à battre.",
   },
   scenes: {
     space: {

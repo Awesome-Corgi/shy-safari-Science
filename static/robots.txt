@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shy-safari-science.cooltest.workers.dev/sitemap.xml
+Sitemap: https://qui-et.pages.dev/sitemap.xml
