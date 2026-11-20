@@ -17,7 +17,7 @@
 </script>
 
 <div
-  class="flex h-11 items-center gap-2 rounded-full bg-paper/95 pr-4 pl-3 text-ink shadow-lift"
+  class="chrome flex h-11 items-center gap-2 rounded-full pr-4 pl-3 text-ink"
   role="status"
   aria-label={label}
   title={label}

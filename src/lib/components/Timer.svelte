@@ -269,7 +269,7 @@
      keys. -->
 <section
   bind:this={card}
-  class="timer-card absolute z-30 touch-none rounded-2xl bg-paper/95 px-5 pt-11 pb-4 text-center text-ink shadow-panel select-none"
+  class="timer-card chrome absolute z-30 touch-none rounded-2xl px-5 pt-11 pb-4 text-center text-ink shadow-panel select-none"
   class:cursor-grab={!dragging}
   class:cursor-grabbing={dragging}
   class:timer-done={timer.status === "done"}

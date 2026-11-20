@@ -26,7 +26,7 @@
 </script>
 
 <div
-  class="w-64 max-w-full space-y-1.5 rounded-2xl bg-paper/95 px-3 py-2 shadow-lift"
+  class="chrome w-64 max-w-full space-y-1.5 rounded-2xl px-3 py-2"
   role="group"
   aria-label={t("settings.meter")}
 >

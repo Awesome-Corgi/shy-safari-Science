@@ -339,6 +339,10 @@ html[data-scene="savanna"] {
   --color-line: #e5d9bf;
   --color-ink: #2f2f22;
   --color-ink-soft: #6a6353;
+  /* Dust and ochre, not sage: the accent is as dry as the ground. */
+  --color-ochre: #c9a06a;
+  --color-ochre-deep: #8a5f2b;
+  --color-danger: #a34a34;
   --shadow-lift:
     0 1px 2px rgb(90 66 30 / 0.16), 0 8px 22px -12px rgb(90 66 30 / 0.45);
   --shadow-panel:
@@ -352,6 +356,9 @@ html[data-theme="dark"][data-scene="savanna"] {
   --color-line: #443f33;
   --color-ink: #f3efe4;
   --color-ink-soft: #c3bda9;
+  --color-ochre: #c9a06a;
+  --color-ochre-deep: #dcbd8f;
+  --color-danger: #ee9a86;
 }
 
 html[data-scene="space"] {
@@ -472,6 +479,121 @@ html.floating {
   padding-right: max(1rem, env(safe-area-inset-right));
   padding-bottom: max(1rem, env(safe-area-inset-bottom));
   padding-left: max(1rem, env(safe-area-inset-left));
+}
+
+/* --- Floating chrome ---------------------------------------------------- */
+
+@layer components {
+  /*
+   * Everything that floats over the Scene is the same surface: a soft, rounded
+   * sheet of glass a shade warmer than what is behind it. It takes its colour
+   * from the Scene's own temperature (the tokens above), so most Scenes get
+   * plain paper, the savanna gets dust, and Deep space gets night glass.
+   *
+   * In the components layer on purpose: utilities still win, so a button can
+   * swap its glass for solid ink while it is open.
+   */
+  .chrome {
+    background: color-mix(in srgb, var(--color-paper) 88%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-line) 80%, transparent);
+    box-shadow: var(--shadow-lift);
+    backdrop-filter: blur(10px) saturate(1.05);
+    -webkit-backdrop-filter: blur(10px) saturate(1.05);
+    transition:
+      background-color var(--d-2) var(--e-travel),
+      border-color var(--d-2) var(--e-travel),
+      color var(--d-2) var(--e-travel);
+  }
+
+  .chrome:hover {
+    background: color-mix(in srgb, var(--color-paper) 96%, transparent);
+  }
+
+  /*
+   * Deep space is the one Scene whose chrome is genuinely see-through: thin
+   * night glass, lit from behind, so the stars run on past the panel instead
+   * of stopping at its edge.
+   */
+  html[data-scene="space"] .chrome {
+    background: rgb(18 26 46 / 0.42);
+    border-color: rgb(169 196 245 / 0.26);
+    backdrop-filter: blur(20px) saturate(1.15);
+    -webkit-backdrop-filter: blur(20px) saturate(1.15);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.07),
+      0 22px 60px -34px rgb(0 0 0 / 0.9),
+      0 0 44px -22px rgb(120 160 255 / 0.6);
+  }
+
+  html[data-scene="space"] .chrome:hover {
+    background: rgb(24 34 58 / 0.5);
+    border-color: rgb(169 196 245 / 0.36);
+  }
+
+  /*
+   * The savanna is dry: dust-paper and matte, and completely opaque. Nothing
+   * of the artwork shows through anything standing in it.
+   */
+  html[data-scene="savanna"] .chrome {
+    background: var(--color-paper);
+    border-color: var(--color-line);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow:
+      0 1px 2px rgb(90 66 30 / 0.14),
+      0 18px 42px -30px rgb(112 84 40 / 0.55);
+  }
+
+  html[data-scene="savanna"] .chrome:hover {
+    background: var(--color-paper);
+  }
+
+  /* The Cup figure in the dock, sitting in a soft blob of the Scene's accent. */
+  .dock-score {
+    background: color-mix(in srgb, var(--color-ochre) 26%, transparent);
+    box-shadow: inset 0 0 0 1px
+      color-mix(in srgb, var(--color-ochre) 30%, transparent);
+  }
+
+  html[data-scene="space"] .dock-score {
+    background: rgb(169 196 245 / 0.16);
+    box-shadow:
+      inset 0 0 0 1px rgb(169 196 245 / 0.3),
+      0 0 26px -8px rgb(169 196 245 / 0.65);
+  }
+
+  /*
+   * The dock's one action, a shade firmer than the glass it sits on: enough to
+   * find without a solid block of ink glowing in a dark room.
+   */
+  .dock-action {
+    background: color-mix(in srgb, var(--color-ink) 9%, transparent);
+    box-shadow: inset 0 0 0 1px
+      color-mix(in srgb, var(--color-ink) 10%, transparent);
+    transition:
+      background-color var(--d-2) var(--e-travel),
+      box-shadow var(--d-2) var(--e-travel);
+  }
+
+  .dock-action:hover {
+    background: color-mix(in srgb, var(--color-ink) 14%, transparent);
+  }
+
+  html[data-scene="space"] .dock-action {
+    background: rgb(169 196 245 / 0.16);
+    box-shadow:
+      inset 0 0 0 1px rgb(169 196 245 / 0.3),
+      0 0 26px -12px rgb(169 196 245 / 0.8);
+  }
+
+  html[data-scene="space"] .dock-action:hover {
+    background: rgb(169 196 245 / 0.24);
+  }
+
+  html[data-scene="savanna"] .dock-action {
+    background: color-mix(in srgb, var(--color-ink) 8%, transparent);
+    box-shadow: inset 0 0 0 1px rgb(90 66 30 / 0.16);
+  }
 }
 
 .backdrop {

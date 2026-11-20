@@ -43,7 +43,7 @@
        prerendered, and a reload should not flash "My class" first. -->
   <button
     type="button"
-    class="flex h-11 w-full max-w-36 items-center gap-2 rounded-full bg-paper/95 px-4 text-sm font-semibold text-ink shadow-lift transition hover:bg-paper sm:max-w-64"
+    class="chrome flex h-11 w-full max-w-36 items-center gap-2 rounded-full px-4 text-sm font-semibold text-ink sm:max-w-64"
     class:invisible={!app.restored}
     aria-expanded={open}
     aria-controls="class-menu"

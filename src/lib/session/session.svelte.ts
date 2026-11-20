@@ -113,6 +113,7 @@ export class Session {
     this.running = false;
     this.#clock = createArrivalClock(intervalMs, this.#random);
     this.#scare = createScareClock();
+    this.progress = 0;
     this.restore();
   }
 
@@ -124,6 +125,7 @@ export class Session {
     this.#clock = createArrivalClock(intervalMs, this.#random, {
       teaser: this.creatures.length === 0,
     });
+    this.progress = 0;
     this.running = true;
   }
 
@@ -134,13 +136,16 @@ export class Session {
     this.fleeing = [];
     this.#clock = createArrivalClock(intervalMs, this.#random);
     this.#scare = createScareClock();
+    this.progress = 0;
     this.#save();
   }
 
-  /** Fraction of the way to the next arrival — teacher-facing only. */
-  get progress(): number {
-    return Math.min(1, this.#clock.bankedMs / this.#clock.targetMs);
-  }
+  /**
+   * Fraction of the way to the next arrival — teacher-facing only. State, not
+   * a getter: the dock counts down from it, and the clock's own fields are
+   * plain numbers that no view can see change.
+   */
+  progress = $state(0);
 
   /**
    * `scares` is the teacher's choice that Too Loud makes Creatures run away
@@ -156,6 +161,7 @@ export class Session {
       this.#random,
     );
     this.#clock = step.clock;
+    this.progress = Math.min(1, step.clock.bankedMs / step.clock.targetMs);
     if (step.arrived) this.#arrive();
 
     const scare = advanceScareClock(this.#scare, deltaMs, scares && !isQuiet);

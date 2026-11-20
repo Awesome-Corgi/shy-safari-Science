@@ -9,12 +9,11 @@
   import ScenePicker from "$lib/components/ScenePicker.svelte";
   import SceneSelect from "$lib/components/SceneSelect.svelte";
   import Collection from "$lib/components/Collection.svelte";
-  import ControlBar from "$lib/components/ControlBar.svelte";
+  import Dock from "$lib/components/Dock.svelte";
   import MicBlocked from "$lib/components/MicBlocked.svelte";
   import NotesLayer from "$lib/components/notes/NotesLayer.svelte";
   import Scene from "$lib/components/Scene.svelte";
   import ScreenMeter from "$lib/components/ScreenMeter.svelte";
-  import ArrivalCounter from "$lib/components/ArrivalCounter.svelte";
   import SettingsPanel from "$lib/components/SettingsPanel.svelte";
   import Timer from "$lib/components/Timer.svelte";
   import LanguagePicker from "$lib/components/LanguagePicker.svelte";
@@ -462,7 +461,7 @@
           <!-- What lives here, framed by the panel rather than covered by it. -->
           <aside class="relative hidden flex-1 md:block">
             <div
-              class="absolute inset-x-5 bottom-5 flex items-end justify-between gap-3 rounded-panel bg-paper/92 px-4 py-3 shadow-lift backdrop-blur-sm lg:inset-x-7 lg:bottom-7"
+              class="chrome absolute inset-x-5 bottom-5 flex items-end justify-between gap-3 rounded-panel px-4 py-3 lg:inset-x-7 lg:bottom-7"
             >
               <div class="min-w-0">
                 <p class="truncate font-display text-lg font-semibold text-ink">
@@ -504,7 +503,7 @@
         <!-- Always available, session or not: the whole point of the Cup is
            to see where the classes stand before the lesson starts. -->
         <button
-          class="grid size-11 place-items-center rounded-full bg-paper/95 text-ink-soft shadow-lift transition hover:bg-paper hover:text-ink"
+          class="chrome grid size-11 place-items-center rounded-full text-ink-soft transition hover:text-ink"
           aria-label={t("cup.title")}
           title={t("cup.title")}
           onclick={() => (cupOpen = true)}
@@ -529,10 +528,10 @@
         {#if app.listening}
           <button
             class={[
-              "grid size-11 place-items-center rounded-full shadow-lift transition",
+              "grid size-11 place-items-center rounded-full transition",
               app.timer.open
-                ? "bg-ink text-paper"
-                : "bg-paper/95 text-ink-soft hover:bg-paper hover:text-ink",
+                ? "bg-ink text-paper shadow-lift"
+                : "chrome text-ink-soft hover:text-ink",
             ]}
             aria-pressed={app.timer.open}
             aria-label={t("controls.timer")}
@@ -555,7 +554,7 @@
             </svg>
           </button>
           <button
-            class="grid size-11 place-items-center rounded-full bg-paper/95 text-ink-soft shadow-lift transition hover:bg-paper hover:text-ink"
+            class="chrome grid size-11 place-items-center rounded-full text-ink-soft transition hover:text-ink"
             aria-label={t("controls.addText")}
             title={t("controls.addTextHint")}
             onclick={() => notesLayer?.add()}
@@ -575,7 +574,7 @@
           </button>
           {#if canFloat}
             <button
-              class="grid size-11 place-items-center rounded-full bg-paper/95 text-ink-soft shadow-lift transition hover:bg-paper hover:text-ink"
+              class="chrome grid size-11 place-items-center rounded-full text-ink-soft transition hover:text-ink"
               aria-label={t("float.open")}
               title={t("float.openHint")}
               onclick={openFloatingWindow}
@@ -605,7 +604,7 @@
         {/if}
         {#if canFullScreen}
           <button
-            class="grid size-11 place-items-center rounded-full bg-paper/95 text-ink-soft shadow-lift transition hover:bg-paper hover:text-ink"
+            class="chrome grid size-11 place-items-center rounded-full text-ink-soft transition hover:text-ink"
             aria-label={fullScreen
               ? t("fullScreen.exit")
               : t("fullScreen.enter")}
@@ -647,13 +646,13 @@
       {/key}
     {/if}
 
-    {#if app.listening && (app.paused || settings.showMeter)}
-      <!-- Top centre: what the teacher keeps an eye on, which stays up when
-         the control bar fades. The Noise Meter, if the teacher turned it on
-         in Settings; or, once Paused for an announcement, a reminder in its
-         place that the room isn't being judged, to resume from right here.
-         On a phone it sits below the corner buttons, which leave no room
-         between them. -->
+    {#if app.listening && !controlsVisible && (app.paused || settings.showMeter)}
+      <!-- Top centre, only once the dock has faded: the Scene is for the class
+         then, and this is for whoever is watching the room from the back. The
+         Noise Meter, if the teacher turned it on in Settings; or, once Paused
+         for an announcement, a reminder in its place that the room isn't being
+         judged, to resume from right here. While the dock is up it carries the
+         meter itself, so there is only ever one of them on screen. -->
       <div
         class="safe-edges pointer-events-none absolute inset-x-0 top-0 z-40 flex justify-center p-4 max-sm:top-12"
       >
@@ -670,22 +669,12 @@
       </div>
     {/if}
 
-    <!-- Bottom left: help for the teacher and the page's language, out of
-       the way of the controls above and fading with them, and the arrival
-       counter, if the teacher turned it on in Settings, which stays up in
-       the corner when they fade. On a phone the control bar spans the
-       bottom edge, so during a Session they sit just above the bar. -->
+    <!-- Bottom left: help for the teacher and the page's language, fading
+       with the rest of the chrome. On a phone the dock floats above them. -->
     <div
-      class="safe-edges pointer-events-none absolute bottom-0 left-0 z-40 flex gap-2 p-4 {app.listening
-        ? 'max-sm:bottom-16'
-        : 'hidden'}"
+      class="safe-edges pointer-events-none absolute bottom-0 left-0 z-40 flex gap-2 p-4"
+      class:hidden={!app.listening}
     >
-      {#if app.listening && settings.showCounter}
-        <ArrivalCounter
-          sceneId={app.scene.id}
-          count={app.session.creatures.length}
-        />
-      {/if}
       <div
         class="pointer-events-auto flex gap-2 transition-opacity duration-300"
         class:opacity-0={!topBarVisible}
@@ -693,7 +682,7 @@
         inert={!topBarVisible}
       >
         <button
-          class="grid size-11 place-items-center rounded-full bg-paper/95 text-ink-soft shadow-lift transition hover:bg-paper hover:text-ink"
+          class="chrome grid size-11 place-items-center rounded-full text-ink-soft transition hover:text-ink"
           aria-label={t("guide.title")}
           title={t("guide.title")}
           aria-expanded={infoOpen}
@@ -724,22 +713,18 @@
     {/if}
 
     {#if app.listening}
-      <ControlBar
+      <Dock
         {app}
         visible={controlsVisible || settingsOpen || collectionOpen}
         onopensettings={() => (settingsOpen = true)}
       />
 
-      <!-- Bottom right: the Class's Cup percentage opposite the arrival
-         counter, then which Scene is on screen and every animal the class
-         has spotted. The Cup stays up when the controls fade, like the
-         counter; on a phone it stacks above the buttons so the two corners
-         do not meet in the middle. -->
+      <!-- Bottom right: which Scene is on screen and every animal the class
+         has spotted. The Cup is in the dock, opposite them. -->
       <div
-        class="safe-edges pointer-events-none absolute right-0 bottom-0 z-40 p-4 max-sm:bottom-16"
+        class="safe-edges pointer-events-none absolute right-0 bottom-0 z-40 p-4"
       >
-        <div class="flex flex-col items-end gap-2 sm:flex-row sm:items-center">
-          <CupCounter />
+        <div class="flex items-center gap-2">
           <div
             class="pointer-events-auto flex gap-2 transition-opacity duration-300"
             class:opacity-0={!topBarVisible}
@@ -748,7 +733,7 @@
           >
             <ScenePicker {app} bind:open={sceneMenuOpen} />
             <button
-              class="grid size-11 place-items-center rounded-full bg-paper/95 text-ink-soft shadow-lift transition hover:bg-paper hover:text-ink"
+              class="chrome grid size-11 place-items-center rounded-full text-ink-soft transition hover:text-ink"
               aria-label={tIn(app.scene.id, "controls.animals")}
               title={tIn(app.scene.id, "controls.animals")}
               onclick={() => (collectionOpen = true)}

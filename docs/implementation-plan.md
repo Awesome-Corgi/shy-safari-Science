@@ -49,7 +49,7 @@ src/lib/
   components/
     Scene.svelte       backdrop + Ambient Life + Creature list + murk filter
     Creature.svelte    one SVG, drift path, part-* animations, arrival entrance
-    ControlBar.svelte  auto-hiding, opens settings, Start / Reset (Reset confirms)
+    Dock.svelte        auto-hiding: Cup, meter, next arrival, Pause / Reset / Settings
     SettingsPanel.svelte  mic picker, live meter, goal slider, state pill, calibration
     MicBlocked.svelte  the hard-fail state with retry and device picker
 src/routes/+page.svelte
