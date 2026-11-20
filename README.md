@@ -78,6 +78,14 @@ bun run build    # static production build into build/
 bun run build && bunx wrangler dev   # the built site, served the way Cloudflare serves it
 ```
 
+`bun run build` rewrites `.svelte-kit`, so restart `bun run dev` afterwards;
+a dev server left running across a build will fail to load modules that the
+build moved. If the log shows `failed to load virtual css module` for a Svelte
+component, reload the page: `@tailwindcss/vite` then tries to parse the raw
+component as CSS, which is an upstream race between it and
+`vite-plugin-svelte`, not a fault in this code. The module serves correctly on
+the next request, and the production build is unaffected.
+
 The build is plain static files, served by Cloudflare. `wrangler.jsonc`
 describes the Workers deployment, which is also how you check the build locally,
 and `static/_redirects` and `static/_headers` carry the redirects and cache
